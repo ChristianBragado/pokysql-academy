@@ -1,0 +1,1941 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>pokysql-academy.html</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe id="codex-visualization" sandbox="allow-scripts" scrolling="no" referrerpolicy="no-referrer" title="pokysql-academy.html" data-srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'&quot;&gt;
+&lt;title&gt;pokysql-academy.html&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;(() =&gt; {
+  const root = document.documentElement;
+  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
+  const apply = Reflect.apply;
+  const isArray = Array.isArray;
+  const parentWindow = globalThis.parent;
+  /**
+   * @param {object} prototype
+   * @param {string} property
+   */
+  const getPrototypeGetter = (prototype, property) =&gt; {
+    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
+    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
+    if (getter == null) {
+      throw new Error(`Missing ${property} getter`);
+    }
+    return getter;
+  };
+  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
+  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
+  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const addHostMessageListener = MessagePort.prototype.addEventListener;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const postHostMessage = MessagePort.prototype.postMessage;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const startHostPort = MessagePort.prototype.start;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
+  /** @type {MessagePort | null} */
+  let hostPort = null;
+  const postToHost = (type, payload) =&gt; {
+    if (hostPort != null) {
+      apply(postHostMessage, hostPort, [{ type, ...payload }]);
+    }
+  };
+  const openExternal = ({ href }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;open-external&quot;, { href });
+    }
+  };
+  const sendFollowUpMessage = ({ context, prompt, title }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;follow-up&quot;, { context, prompt, title });
+    }
+    return Promise.resolve();
+  };
+  const syncTheme = () =&gt; {
+    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
+    root.dataset.theme = theme;
+    globalThis.openai = {
+      ...globalThis.openai,
+      openExternal,
+      sendFollowUpMessage,
+      theme,
+      visualizationStyleVariables: {},
+      visualizationTheme: theme,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: globalThis.openai },
+      }),
+    );
+  };
+  const sendHeight = () =&gt; {
+    postToHost(&quot;height&quot;, {
+      height: Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.getBoundingClientRect().height,
+        ),
+      ),
+    });
+  };
+
+  globalThis.addEventListener(
+    &quot;message&quot;,
+    (event) =&gt; {
+      const data = apply(getMessageData, event, []);
+      const ports = apply(getMessagePorts, event, []);
+      const source = apply(getMessageSource, event, []);
+      if (
+        source !== parentWindow ||
+        typeof data !== &quot;object&quot; ||
+        data == null ||
+        data.type !== &quot;codex-visualization-initialize&quot; ||
+        !isArray(ports) ||
+        ports.length !== 1
+      ) {
+        return;
+      }
+      apply(stopMessagePropagation, event, []);
+      const nextHostPort = ports[0];
+      try {
+        apply(addHostMessageListener, nextHostPort, [
+          &quot;message&quot;,
+          (event) =&gt; {
+            const data = apply(getMessageData, event, []);
+            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
+              sendHeight();
+            }
+          },
+        ]);
+        apply(startHostPort, nextHostPort, []);
+      } catch {
+        return;
+      }
+      hostPort = nextHostPort;
+      sendHeight();
+    },
+    { capture: true },
+  );
+  document.currentScript?.remove();
+  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
+  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
+    if (event.defaultPrevented) {
+      return;
+    }
+    let element = null;
+    if (event.target instanceof globalThis.Element) {
+      element = event.target;
+    } else if (event.target instanceof globalThis.Node) {
+      element = event.target.parentElement;
+    }
+    const link = element?.closest(&quot;a[href]&quot;);
+    const href = link?.getAttribute(&quot;href&quot;);
+    if (href == null) {
+      return;
+    }
+    if (href.startsWith(&quot;#&quot;)) {
+      let id;
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch {
+        return;
+      }
+      const target = id.length === 0 ? root : document.getElementById(id);
+      if (
+        target == null ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      event.preventDefault();
+      postToHost(&quot;scroll-to&quot;, {
+        top: target.getBoundingClientRect().top + globalThis.scrollY,
+      });
+      return;
+    }
+    event.preventDefault();
+    openExternal({ href });
+  });
+  new ResizeObserver(sendHeight).observe(document.body);
+  syncTheme();
+})();
+&lt;/script&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --red: light-dark(rgb(186 38 35), rgb(250 66 62));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;script&gt;
+(() =&gt; {
+  const root = document.documentElement;
+  const initialGlobals =
+    globalThis.__codexVisualizationInitialGlobals ?? globalThis.openai;
+  delete globalThis.__codexVisualizationInitialGlobals;
+  let appliedProperties = [];
+
+  const applyHostStyleVariables = (styleVariables) =&gt; {
+    if (styleVariables == null || typeof styleVariables !== &quot;object&quot;) {
+      return;
+    }
+    for (const property of appliedProperties) {
+      root.style.removeProperty(property);
+    }
+    appliedProperties = [];
+    for (const [property, value] of Object.entries(styleVariables)) {
+      if (property.startsWith(&quot;--&quot;) &amp;&amp; typeof value === &quot;string&quot;) {
+        root.style.setProperty(property, value);
+        appliedProperties.push(property);
+      }
+    }
+  };
+
+  const syncHostStyles = (globals) =&gt; {
+    applyHostStyleVariables(globals?.visualizationStyleVariables);
+  };
+
+  syncHostStyles(initialGlobals);
+  globalThis.addEventListener(&quot;openai:set_globals&quot;, (event) =&gt; {
+    syncHostStyles(event.detail?.globals);
+  });
+})();
+&lt;/script&gt;
+
+&lt;div id=&quot;pokysql-academy&quot;&gt;
+  &lt;style&gt;
+    #pokysql-academy {
+      --pk-background: var(--background, #0d1117);
+      --pk-foreground: var(--foreground, #f3f6fb);
+      --pk-card: var(--card, #151b25);
+      --pk-card-foreground: var(--card-foreground, #f3f6fb);
+      --pk-muted: var(--muted, #202937);
+      --pk-muted-foreground: var(--muted-foreground, #aab5c7);
+      --pk-border: var(--border, #2b3647);
+      --pk-primary: var(--primary, #f3b63f);
+      --pk-primary-foreground: var(--primary-foreground, #17120a);
+      --pk-accent: var(--accent, #65d6c7);
+      --pk-danger: var(--destructive, #ef7b79);
+      --pk-series-1: var(--viz-series-1, #65d6c7);
+      --pk-series-2: var(--viz-series-2, #f3b63f);
+      --pk-series-3: var(--viz-series-3, #b38cff);
+      --pk-series-4: var(--viz-series-4, #78a9ff);
+      color: var(--pk-foreground);
+      background: var(--pk-background);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+      padding: 4px 0 8px;
+    }
+
+    #pokysql-academy * { box-sizing: border-box; }
+
+    #pokysql-academy .pk-shell {
+      display: grid;
+      gap: 14px;
+    }
+
+    #pokysql-academy .pk-topbar,
+    #pokysql-academy .pk-panel {
+      background: var(--pk-card);
+      border: 1px solid var(--pk-border);
+      border-radius: 16px;
+    }
+
+    #pokysql-academy .pk-topbar {
+      padding: 15px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    #pokysql-academy .pk-kicker {
+      color: var(--pk-primary);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    #pokysql-academy .pk-level {
+      color: var(--pk-muted-foreground);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    #pokysql-academy .pk-level strong { color: var(--pk-foreground); }
+
+    #pokysql-academy .pk-progress-wrap {
+      min-width: 220px;
+      flex: 1;
+      max-width: 420px;
+    }
+
+    #pokysql-academy .pk-progress-label {
+      display: flex;
+      justify-content: space-between;
+      color: var(--pk-muted-foreground);
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    #pokysql-academy .pk-progress {
+      height: 8px;
+      background: var(--pk-muted);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    #pokysql-academy .pk-progress &gt; span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--pk-accent), var(--pk-primary));
+      border-radius: inherit;
+      transition: width .25s ease;
+    }
+
+    #pokysql-academy .pk-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: 14px;
+    }
+
+    #pokysql-academy .pk-panel { padding: 16px; }
+
+    #pokysql-academy .pk-panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    #pokysql-academy .pk-panel-head strong { font-weight: 500; }
+
+    #pokysql-academy .pk-panel-head span {
+      color: var(--pk-muted-foreground);
+      font-size: 12px;
+    }
+
+    #pokysql-academy .pk-map {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    #pokysql-academy .pk-stage {
+      appearance: none;
+      border: 1px solid var(--pk-border);
+      border-radius: 12px;
+      background: var(--pk-background);
+      color: var(--pk-foreground);
+      text-align: left;
+      padding: 10px;
+      min-height: 84px;
+      cursor: pointer;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+
+    #pokysql-academy .pk-stage:hover,
+    #pokysql-academy .pk-stage:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--pk-primary);
+      outline: none;
+    }
+
+    #pokysql-academy .pk-stage.is-active {
+      border-color: var(--pk-accent);
+      background: color-mix(in srgb, var(--pk-accent) 10%, var(--pk-background));
+    }
+
+    #pokysql-academy .pk-stage.is-done { border-color: var(--pk-primary); }
+
+    #pokysql-academy .pk-stage .pk-stage-num {
+      color: var(--pk-primary);
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    #pokysql-academy .pk-stage .pk-stage-name {
+      display: block;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    #pokysql-academy .pk-stage .pk-stage-state {
+      display: block;
+      color: var(--pk-muted-foreground);
+      font-size: 11px;
+      margin-top: 5px;
+    }
+
+    #pokysql-academy .pk-detail {
+      border-top: 1px solid var(--pk-border);
+      margin-top: 14px;
+      padding-top: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    #pokysql-academy .pk-detail-title { font-size: 16px; font-weight: 500; }
+
+    #pokysql-academy .pk-detail-copy { color: var(--pk-muted-foreground); }
+
+    #pokysql-academy .pk-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    #pokysql-academy .pk-tag {
+      border: 1px solid var(--pk-border);
+      border-radius: 999px;
+      color: var(--pk-muted-foreground);
+      padding: 3px 8px;
+      font-size: 11px;
+    }
+
+    #pokysql-academy .pk-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    #pokysql-academy button.pk-button {
+      appearance: none;
+      border: 1px solid var(--pk-border);
+      border-radius: 9px;
+      background: var(--pk-muted);
+      color: var(--pk-foreground);
+      padding: 8px 11px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    #pokysql-academy button.pk-button:hover,
+    #pokysql-academy button.pk-button:focus-visible {
+      border-color: var(--pk-primary);
+      outline: none;
+    }
+
+    #pokysql-academy button.pk-button.pk-primary {
+      background: var(--pk-primary);
+      color: var(--pk-primary-foreground);
+      border-color: var(--pk-primary);
+    }
+
+    #pokysql-academy .pk-quiz {
+      display: grid;
+      gap: 12px;
+    }
+
+    #pokysql-academy .pk-quiz-prompt { font-size: 15px; }
+
+    #pokysql-academy .pk-choices { display: grid; gap: 7px; }
+
+    #pokysql-academy .pk-choice {
+      appearance: none;
+      border: 1px solid var(--pk-border);
+      border-radius: 10px;
+      background: var(--pk-background);
+      color: var(--pk-foreground);
+      padding: 9px 10px;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    #pokysql-academy .pk-choice:hover,
+    #pokysql-academy .pk-choice:focus-visible { border-color: var(--pk-accent); outline: none; }
+
+    #pokysql-academy .pk-choice.is-correct { border-color: var(--pk-accent); background: color-mix(in srgb, var(--pk-accent) 12%, var(--pk-background)); }
+    #pokysql-academy .pk-choice.is-wrong { border-color: var(--pk-danger); background: color-mix(in srgb, var(--pk-danger) 10%, var(--pk-background)); }
+
+    #pokysql-academy .pk-feedback { min-height: 20px; color: var(--pk-muted-foreground); font-size: 12px; }
+    #pokysql-academy .pk-feedback.is-good { color: var(--pk-accent); }
+    #pokysql-academy .pk-feedback.is-bad { color: var(--pk-danger); }
+
+    #pokysql-academy .pk-schema {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    #pokysql-academy .pk-table {
+      border: 1px solid var(--pk-border);
+      border-radius: 10px;
+      padding: 10px;
+      background: var(--pk-background);
+    }
+
+    #pokysql-academy .pk-table strong { display: block; color: var(--pk-primary); font-weight: 500; }
+    #pokysql-academy .pk-table span { display: block; color: var(--pk-muted-foreground); font-size: 11px; margin-top: 4px; }
+
+    #pokysql-academy .pk-quest {
+      display: grid;
+      gap: 8px;
+    }
+
+    #pokysql-academy .pk-quest-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--pk-border);
+      padding-bottom: 8px;
+    }
+
+    #pokysql-academy .pk-quest-line:last-child { border-bottom: 0; padding-bottom: 0; }
+    #pokysql-academy .pk-quest-line span { color: var(--pk-muted-foreground); }
+
+    @media (max-width: 720px) {
+      #pokysql-academy .pk-grid { grid-template-columns: 1fr; }
+      #pokysql-academy .pk-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #pokysql-academy .pk-schema { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 420px) {
+      #pokysql-academy .pk-map, #pokysql-academy .pk-schema { grid-template-columns: 1fr; }
+      #pokysql-academy .pk-topbar { align-items: stretch; }
+      #pokysql-academy .pk-progress-wrap { min-width: 0; max-width: none; }
+    }
+  &lt;/style&gt;
+
+  &lt;div class=&quot;pk-shell&quot;&gt;
+    &lt;div class=&quot;pk-topbar&quot;&gt;
+      &lt;div&gt;
+        &lt;div class=&quot;pk-kicker&quot;&gt;Journey status&lt;/div&gt;
+        &lt;div class=&quot;pk-level&quot;&gt;Your journey: &lt;strong id=&quot;pk-rank&quot;&gt;SQL Trainer&lt;/strong&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;pk-progress-wrap&quot; aria-label=&quot;Course progress&quot;&gt;
+        &lt;div class=&quot;pk-progress-label&quot;&gt;&lt;span id=&quot;pk-progress-text&quot;&gt;0 / 12 badges&lt;/span&gt;&lt;span id=&quot;pk-xp&quot;&gt;0 XP&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;pk-progress&quot;&gt;&lt;span id=&quot;pk-progress-bar&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;pk-grid&quot;&gt;
+      &lt;section class=&quot;pk-panel&quot; aria-label=&quot;Course map&quot;&gt;
+        &lt;div class=&quot;pk-panel-head&quot;&gt;&lt;strong&gt;Choose your next badge&lt;/strong&gt;&lt;span&gt;Click a stage to inspect the quest&lt;/span&gt;&lt;/div&gt;
+        &lt;div id=&quot;pk-map&quot; class=&quot;pk-map&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;pk-detail&quot; class=&quot;pk-detail&quot;&gt;&lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section class=&quot;pk-panel&quot; aria-label=&quot;Interactive SQL challenge&quot;&gt;
+        &lt;div class=&quot;pk-panel-head&quot;&gt;&lt;strong&gt;Wild SQL encounter&lt;/strong&gt;&lt;span id=&quot;pk-quiz-count&quot;&gt;Encounter 1&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;pk-quiz&quot;&gt;
+          &lt;div id=&quot;pk-quiz-prompt&quot; class=&quot;pk-quiz-prompt&quot;&gt;&lt;/div&gt;
+          &lt;div id=&quot;pk-choices&quot; class=&quot;pk-choices&quot;&gt;&lt;/div&gt;
+          &lt;div id=&quot;pk-feedback&quot; class=&quot;pk-feedback&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;pk-actions&quot;&gt;&lt;button id=&quot;pk-next&quot; class=&quot;pk-button pk-primary&quot; type=&quot;button&quot;&gt;Next encounter&lt;/button&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;pk-grid&quot;&gt;
+      &lt;section class=&quot;pk-panel&quot; aria-label=&quot;Support database schema&quot;&gt;
+        &lt;div class=&quot;pk-panel-head&quot;&gt;&lt;strong&gt;Field schema&lt;/strong&gt;&lt;span&gt;We will query this together&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;pk-schema&quot;&gt;
+          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;trainers&lt;/strong&gt;&lt;span&gt;trainer_id · region · joined_at&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;pokemon&lt;/strong&gt;&lt;span&gt;pokemon_id · name · type · base_xp&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;captures&lt;/strong&gt;&lt;span&gt;trainer_id · pokemon_id · captured_at&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;support_tickets&lt;/strong&gt;&lt;span&gt;ticket_id · trainer_id · priority · status&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;incidents&lt;/strong&gt;&lt;span&gt;incident_id · service · severity · started_at&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;ad_events&lt;/strong&gt;&lt;span&gt;event_id · campaign_id · event_type · event_at&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section class=&quot;pk-panel&quot; aria-label=&quot;Current quest&quot;&gt;
+        &lt;div class=&quot;pk-panel-head&quot;&gt;&lt;strong&gt;Current quest&lt;/strong&gt;&lt;span&gt;Trainer habits&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;pk-quest&quot;&gt;
+          &lt;div class=&quot;pk-quest-line&quot;&gt;&lt;span&gt;Recall&lt;/span&gt;&lt;strong&gt;5 minutes&lt;/strong&gt;&lt;/div&gt;
+          &lt;div class=&quot;pk-quest-line&quot;&gt;&lt;span&gt;Write&lt;/span&gt;&lt;strong&gt;3 queries&lt;/strong&gt;&lt;/div&gt;
+          &lt;div class=&quot;pk-quest-line&quot;&gt;&lt;span&gt;Explain&lt;/span&gt;&lt;strong&gt;1 finding&lt;/strong&gt;&lt;/div&gt;
+          &lt;div class=&quot;pk-actions&quot;&gt;&lt;button id=&quot;pk-reset&quot; class=&quot;pk-button&quot; type=&quot;button&quot;&gt;Reset local progress&lt;/button&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (() =&gt; {
+      const root = document.getElementById('pokysql-academy');
+      const stages = [
+        ['01', 'First SELECT', 'Read rows, filter, sort, and limit results.', ['SELECT', 'WHERE', 'ORDER BY']],
+        ['02', 'Type Tactics', 'Handle NULL, CASE, text, dates, and casts.', ['NULL', 'CASE', 'Dates']],
+        ['03', 'Build a Schema', 'Create tables, keys, constraints, and safe data changes.', ['DDL', 'Keys', 'Transactions']],
+        ['04', 'Join Junction', 'Connect tables without losing or multiplying meaning.', ['JOINs', 'Grain', 'Anti-joins']],
+        ['05', 'Gym Metrics', 'Turn records into reliable operational reports.', ['GROUP BY', 'HAVING', 'Ratios']],
+        ['06', 'Mystery Cave', 'Use CTEs, subqueries, sets, and views.', ['CTEs', 'EXISTS', 'UNION']],
+        ['07', 'Window Tower', 'Rank, compare, deduplicate, and analyze time.', ['ROW_NUMBER', 'LAG', 'Trends']],
+        ['08', 'Incident HQ', 'Investigate tickets, SLAs, freshness, and anomalies.', ['SLA', 'QA', 'Debugging']],
+        ['09', 'Procedure Lab', 'Execute database routines safely and document them.', ['CALL', 'Safety', 'Rollback']],
+        ['10', 'Performance Pass', 'Read plans and reason about slow queries.', ['EXPLAIN', 'Indexes', 'Grain']],
+        ['11', 'AdTech Safari', 'Analyze delivery, clicks, conversions, and discrepancies.', ['Events', 'Attribution', 'Pacing']],
+        ['12', 'Elite Four', 'Complete the timed interview simulation and final test.', ['Synthesis', 'Communication', 'Speed']]
+      ];
+
+      const quizzes = [
+        {
+          prompt: 'You want every trainer, including trainers with no captures. Which join is the safest starting point?',
+          choices: ['INNER JOIN captures', 'LEFT JOIN captures from trainers', 'CROSS JOIN captures'],
+          answer: 1,
+          good: 'Correct. Start with the complete population, then attach optional records.'
+        },
+        {
+          prompt: 'Which condition correctly finds unresolved support tickets?',
+          choices: ['resolved_at = NULL', 'resolved_at IS NULL', 'resolved_at == NULL'],
+          answer: 1,
+          good: 'Correct. NULL represents an unknown or missing value and needs IS NULL.'
+        },
+        {
+          prompt: 'You need the most recent status for each campaign. Which tool is most natural?',
+          choices: ['ROW_NUMBER() OVER (PARTITION BY campaign_id ORDER BY event_at DESC)', 'COUNT(*) with no GROUP BY', 'CROSS JOIN with campaigns'],
+          answer: 0,
+          good: 'Correct. Partition by campaign and order newest first, then keep row_number = 1.'
+        },
+        {
+          prompt: 'A join doubles rows and inflates SUM(cost). What should you inspect first?',
+          choices: ['Whether the join is many-to-many at the chosen grain', 'Whether ORDER BY is ascending', 'Whether the table has a primary key named id'],
+          answer: 0,
+          good: 'Correct. Verify relationship cardinality and the intended grain before trusting aggregates.'
+        },
+        {
+          prompt: 'Which clause filters groups after aggregation?',
+          choices: ['WHERE', 'HAVING', 'ORDER BY'],
+          answer: 1,
+          good: 'Correct. WHERE filters rows before grouping; HAVING filters grouped results.'
+        }
+      ];
+
+      const storageKey = 'pokysql-academy-progress-v1';
+      let state;
+      try {
+        state = JSON.parse(localStorage.getItem(storageKey) || '{}');
+      } catch (error) {
+        state = {};
+      }
+      state.done = Array.isArray(state.done) ? state.done : [];
+      state.xp = Number.isFinite(state.xp) ? state.xp : 0;
+      state.active = Number.isInteger(state.active) ? state.active : 0;
+      state.quizIndex = Number.isInteger(state.quizIndex) ? state.quizIndex : 0;
+
+      const $ = (selector) =&gt; root.querySelector(selector);
+      const save = () =&gt; {
+        try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (error) {}
+      };
+
+      const renderProgress = () =&gt; {
+        const completed = state.done.length;
+        const pct = Math.round((completed / stages.length) * 100);
+        $('#pk-progress-text').textContent = `${completed} / ${stages.length} badges`;
+        $('#pk-xp').textContent = `${state.xp} XP`;
+        $('#pk-progress-bar').style.width = `${pct}%`;
+        const rank = state.xp &gt;= 900 ? 'SQL Champion' : state.xp &gt;= 500 ? 'Query Ace' : state.xp &gt;= 200 ? 'Badge Collector' : 'SQL Trainer';
+        $('#pk-rank').textContent = rank;
+      };
+
+      const renderMap = () =&gt; {
+        const map = $('#pk-map');
+        map.innerHTML = '';
+        stages.forEach((stage, index) =&gt; {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'pk-stage';
+          if (index === state.active) button.classList.add('is-active');
+          if (state.done.includes(index)) button.classList.add('is-done');
+          button.innerHTML = `&lt;span class=&quot;pk-stage-num&quot;&gt;BADGE ${stage[0]}&lt;/span&gt;&lt;span class=&quot;pk-stage-name&quot;&gt;${stage[1]}&lt;/span&gt;&lt;span class=&quot;pk-stage-state&quot;&gt;${state.done.includes(index) ? 'Complete · revisit' : 'Open quest'}&lt;/span&gt;`;
+          button.addEventListener('click', () =&gt; { state.active = index; renderAll(); });
+          map.appendChild(button);
+        });
+      };
+
+      const renderDetail = () =&gt; {
+        const stage = stages[state.active];
+        const done = state.done.includes(state.active);
+        $('#pk-detail').innerHTML = `&lt;div class=&quot;pk-detail-title&quot;&gt;Badge ${stage[0]} · ${stage[1]}&lt;/div&gt;&lt;div class=&quot;pk-detail-copy&quot;&gt;${stage[2]}&lt;/div&gt;&lt;div class=&quot;pk-tags&quot;&gt;${stage[3].map((tag) =&gt; `&lt;span class=&quot;pk-tag&quot;&gt;${tag}&lt;/span&gt;`).join('')}&lt;/div&gt;&lt;div class=&quot;pk-actions&quot;&gt;&lt;button id=&quot;pk-complete&quot; class=&quot;pk-button pk-primary&quot; type=&quot;button&quot;&gt;${done ? 'Badge complete' : 'Mark badge complete'}&lt;/button&gt;&lt;/div&gt;`;
+        $('#pk-complete').disabled = done;
+        $('#pk-complete').addEventListener('click', () =&gt; {
+          if (!state.done.includes(state.active)) {
+            state.done.push(state.active);
+            state.xp += 100;
+            save();
+            renderAll();
+          }
+        });
+      };
+
+      const renderQuiz = () =&gt; {
+        const quiz = quizzes[state.quizIndex % quizzes.length];
+        $('#pk-quiz-count').textContent = `Encounter ${(state.quizIndex % quizzes.length) + 1} / ${quizzes.length}`;
+        $('#pk-quiz-prompt').textContent = quiz.prompt;
+        const choices = $('#pk-choices');
+        choices.innerHTML = '';
+        $('#pk-feedback').textContent = '';
+        $('#pk-feedback').className = 'pk-feedback';
+        quiz.choices.forEach((choice, index) =&gt; {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'pk-choice';
+          button.textContent = choice;
+          button.addEventListener('click', () =&gt; {
+            Array.from(choices.children).forEach((item) =&gt; { item.disabled = true; });
+            if (index === quiz.answer) {
+              button.classList.add('is-correct');
+              $('#pk-feedback').textContent = quiz.good;
+              $('#pk-feedback').className = 'pk-feedback is-good';
+              state.xp += 10;
+              save();
+              renderProgress();
+            } else {
+              button.classList.add('is-wrong');
+              const correct = choices.children[quiz.answer];
+              if (correct) correct.classList.add('is-correct');
+              $('#pk-feedback').textContent = 'Not quite. Inspect the highlighted answer, then write the rule in your error log.';
+              $('#pk-feedback').className = 'pk-feedback is-bad';
+            }
+          });
+          choices.appendChild(button);
+        });
+      };
+
+      const renderAll = () =&gt; {
+        renderProgress();
+        renderMap();
+        renderDetail();
+        renderQuiz();
+        save();
+      };
+
+      $('#pk-next').addEventListener('click', () =&gt; { state.quizIndex += 1; renderQuiz(); });
+      $('#pk-reset').addEventListener('click', () =&gt; {
+        state = { done: [], xp: 0, active: 0, quizIndex: 0 };
+        save();
+        renderAll();
+      });
+      renderAll();
+    })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+
+&lt;style id=&quot;codex-visualization-document-scrollbar&quot;&gt;html,body{scrollbar-width:none!important}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}&lt;/style&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+<script>(() => {
+  const frame = document.getElementById("codex-visualization");
+  if (!(frame instanceof HTMLIFrameElement)) {
+    return;
+  }
+  let viewportHeight = globalThis.innerHeight;
+
+  const channel = new MessageChannel();
+  channel.port1.addEventListener("message", (event) => {
+    const data = event.data;
+    if (typeof data !== "object" || data == null) {
+      return;
+    }
+    if (data.type === "height") {
+      const height = data.height;
+      if (
+        typeof height === "number" &&
+        Number.isFinite(height) &&
+        height >= 0 &&
+        height <= 10_000
+      ) {
+        frame.style.height = Math.ceil(height) + "px";
+      }
+      return;
+    }
+    if (data.type === "scroll-to") {
+      const top = data.top;
+      if (
+        typeof top === "number" &&
+        Number.isFinite(top) &&
+        top >= 0 &&
+        globalThis.navigator.userActivation?.isActive === true
+      ) {
+        globalThis.scrollTo({
+          top: Math.ceil(
+            globalThis.scrollY + frame.getBoundingClientRect().top + top,
+          ),
+        });
+      }
+      return;
+    }
+    if (data.type === "open-external") {
+      const rawHref = data.href;
+      if (typeof rawHref !== "string") {
+        return;
+      }
+      let href;
+      try {
+        const url = new URL(rawHref, document.baseURI);
+        if (url.protocol !== "https:") {
+          return;
+        }
+        href = url.href;
+      } catch {
+        return;
+      }
+      if (globalThis.navigator.userActivation?.isActive === true) {
+        const anchor = document.createElement("a");
+        anchor.href = href;
+        anchor.rel = "noopener noreferrer";
+        anchor.target = "_blank";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+      }
+      return;
+    }
+    if (data.type === "follow-up") {
+      const prompt = data.prompt;
+      if (
+        typeof prompt !== "string" ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      const title = data.title;
+      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
+    }
+  });
+  channel.port1.start();
+  const srcdoc = frame.dataset.srcdoc;
+  if (srcdoc == null) {
+    return;
+  }
+  globalThis.addEventListener("resize", () => {
+    const height = Number.parseFloat(frame.style.height);
+    if (!Number.isFinite(height) || height <= viewportHeight) {
+      frame.style.removeProperty("height");
+    }
+    viewportHeight = globalThis.innerHeight;
+    channel.port1.postMessage({ type: "measure" });
+  });
+  frame.addEventListener(
+    "load",
+    () => {
+      frame.contentWindow?.postMessage(
+        { type: "codex-visualization-initialize" },
+        "*",
+        [channel.port2],
+      );
+    },
+    { once: true },
+  );
+  frame.srcdoc = srcdoc;
+  delete frame.dataset.srcdoc;
+})();
+</script>
+</body>
+</html>
