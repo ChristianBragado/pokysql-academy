@@ -1,91 +1,92 @@
 import assert from "node:assert/strict";
-import { access, readFile, readdir } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-const templateRoot = new URL("../", import.meta.url);
-const previewRoot = new URL("../app/_sites-preview/", import.meta.url);
+const projectRoot = new URL("../", import.meta.url);
+const publicHtml = new URL("../public/pokysql-academy.html", import.meta.url);
+const sourceFragment = new URL(
+  "../visualization/pokysql-academy.html",
+  import.meta.url,
+);
 
-async function render() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
+test("preserves the sandboxed visualization wrapper and CSP", async () => {
+  const html = await readFile(publicHtml, "utf8");
 
-  return worker.fetch(
-    new Request("http://localhost/", {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
-}
-
-test("server-renders the starter loading skeleton", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
-  const html = await response.text();
-  assert.match(html, developmentPreviewMeta);
-  assert.match(html, /<title>Your site is taking shape<\/title>/i);
-  assert.match(html, /Building your site/);
-  assert.match(html, /Your site is taking shape/);
-  assert.match(
-    html,
-    /Your first version will appear here automatically when it’s ready\./,
-  );
-  assert.doesNotMatch(html, /Codex/);
-  assert.match(html, /react-loading-skeleton/);
-  assert.match(html, /role="status"/);
+  assert.match(html, /Content-Security-Policy/);
+  assert.match(html, /script-src[^\"]*https:\/\/cdn\.jsdelivr\.net/);
+  assert.match(html, /<iframe sandbox="allow-scripts"/);
+  assert.doesNotMatch(html, /sandbox="[^"]*allow-same-origin/);
+  assert.match(html, /referrerpolicy="no-referrer"/);
+  assert.match(html, /PokéSQL Academy/);
+  assert.match(html, /og-pokysql-academy\.png/);
 });
 
-test("keeps the loading skeleton scoped and disposable", async () => {
-  const [preview, css, page, layout, packageJson, files] = await Promise.all([
-    readFile(new URL("SkeletonPreview.tsx", previewRoot), "utf8"),
-    readFile(new URL("preview.css", previewRoot), "utf8"),
-    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readdir(previewRoot),
+test("ships the progressive course, live SQL engine, and final arena", async () => {
+  const fragment = await readFile(sourceFragment, "utf8");
+
+  assert.match(fragment, /const modules = \[/);
+  assert.equal((fragment.match(/name: '/g) ?? []).length >= 12, true);
+  assert.match(fragment, /alasql@4\.17\.3/);
+  assert.match(fragment, /const labChallenges = \[/);
+  assert.match(fragment, /queryIsReadOnly/);
+  assert.match(fragment, /RunSQL AdTech Interview Arena/);
+  assert.match(fragment, /Unlocks after 12 badges/);
+  assert.match(fragment, /generation-i\/red-blue/);
+  assert.match(fragment, /generation-ii\/crystal/);
+  assert.match(fragment, /generation-iii\/emerald/);
+});
+
+test("includes the complete RunSQL capstone kit", async () => {
+  const files = [
+    "README.md",
+    "ttd-adtech-schema.dbml",
+    "advertisers.csv",
+    "campaigns.csv",
+    "campaign_status_history.csv",
+    "ad_events_daily.csv",
+    "offline_conversions.csv",
+    "support_tickets.csv",
+    "incidents.csv",
+  ];
+
+  await Promise.all(
+    files.map((file) =>
+      access(new URL(`../public/capstone/${file}`, import.meta.url)),
+    ),
+  );
+
+  const schema = await readFile(
+    new URL("../public/capstone/ttd-adtech-schema.dbml", import.meta.url),
+    "utf8",
+  );
+  const exam = await readFile(
+    new URL("../public/capstone/README.md", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(schema, /Table ad_events_daily/);
+  assert.match(schema, /Table support_tickets/);
+  assert.match(schema, /Ref: campaigns\.advertiser_id > advertisers\.advertiser_id/);
+  assert.match(exam, /Final test: 100 points/);
+  assert.match(exam, /Automatic fail conditions/);
+});
+
+test("copies every learner-facing asset into the production build", async () => {
+  await Promise.all([
+    access(new URL("../dist/client/pokysql-academy.html", import.meta.url)),
+    access(new URL("../dist/client/og-pokysql-academy.png", import.meta.url)),
+    access(
+      new URL(
+        "../dist/client/capstone/ttd-adtech-schema.dbml",
+        import.meta.url,
+      ),
+    ),
   ]);
 
-  assert.deepEqual(files.sort(), ["SkeletonPreview.tsx", "preview.css"]);
-  assert.match(preview, /from "react-loading-skeleton"/);
-  assert.match(preview, /baseColor="#eceae7"/);
-  assert.match(preview, /highlightColor="#f9f8f6"/);
-  assert.match(preview, /duration=\{2\.8\}/);
-  assert.match(preview, /sites-skeleton-search-placeholder/);
-  assert.match(packageJson, /"react-loading-skeleton": "3\.5\.0"/);
-
-  const shellIndex = preview.indexOf('className="sites-skeleton-shell"');
-  const statusIndex = preview.indexOf('className="sites-skeleton-status"');
-  assert.ok(shellIndex >= 0 && statusIndex > shellIndex);
-  assert.match(css, /position:\s*fixed/);
-  assert.match(css, /inset:\s*0/);
-  assert.match(css, /opacity:\s*0\.52/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.doesNotMatch(css, /#020617|canvas|pets|progress/i);
-  assert.doesNotMatch(
-    preview,
-    /loading-spinner|status-mark|status-progress|canvas|cookie|random/i,
+  const packageJson = await readFile(
+    new URL("../package.json", import.meta.url),
+    "utf8",
   );
-
-  assert.match(page, /export const metadata:\s*Metadata/);
-  assert.match(page, /"codex-preview": "development"/);
-  assert.match(page, /<SkeletonPreview \/>/);
-  assert.match(layout, /title:\s*"Starter Project"/);
-  assert.doesNotMatch(layout, /codex-preview|_sites-preview|themeColor|\bViewport\b/);
-  assert.doesNotMatch(css, /(^|\s)(html|body)\s*\{/m);
-
-  await assert.rejects(
-    access(new URL("public/_sites-preview", templateRoot)),
-  );
+  assert.match(packageJson, /"build":/);
+  assert.equal(projectRoot.protocol, "file:");
 });

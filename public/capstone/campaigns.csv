@@ -1,0 +1,9 @@
+campaign_id,advertiser_id,name,status,objective,daily_budget,start_date,end_date
+2001,101,Trail Gear Prospecting,active,conversions,1200.00,2026-07-20,
+2002,101,Backpack Retargeting,active,conversions,650.00,2026-07-25,
+2003,102,Wellness Awareness,active,reach,900.00,2026-07-15,2026-08-31
+2004,103,Autumn Routes,paused,clicks,1500.00,2026-07-10,2026-10-15
+2005,103,Weekend Escape,active,conversions,800.00,2026-07-28,
+2006,104,Premiere Launch,active,video_completions,2200.00,2026-07-30,2026-08-15
+2007,104,Lapsed Viewer Winback,draft,conversions,500.00,2026-08-05,
+2008,105,Trainer Scholarship,ended,applications,300.00,2026-06-01,2026-07-31

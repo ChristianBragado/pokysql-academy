@@ -321,19 +321,226 @@
     #pokysql-course-v2 .pa-controls-right { display: flex; gap: 8px; }
     #pokysql-course-v2 .pa-reset { color: var(--pa-muted-fg); background: transparent; border: 0; padding: 6px; cursor: pointer; font-size: 11px; }
 
+    #pokysql-course-v2 .pa-top,
+    #pokysql-course-v2 .pa-lab,
+    #pokysql-course-v2 .pa-arena,
+    #pokysql-course-v2 .pa-source-note {
+      background: var(--pa-card);
+      color: var(--pa-card-fg);
+      border: 1px solid var(--pa-border);
+      border-radius: 18px;
+    }
+
+    #pokysql-course-v2 .pa-top {
+      position: relative;
+      overflow: hidden;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
+      padding: 24px;
+      background:
+        linear-gradient(120deg, color-mix(in srgb, var(--pa-primary) 14%, var(--pa-card)), transparent 56%),
+        var(--pa-card);
+    }
+
+    #pokysql-course-v2 .pa-top::after {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -62px;
+      top: -72px;
+      border: 1px solid color-mix(in srgb, var(--pa-primary) 25%, transparent);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    #pokysql-course-v2 .pa-brand-title {
+      margin: 4px 0 6px;
+      font-size: clamp(28px, 5vw, 54px);
+      line-height: .98;
+      letter-spacing: -.045em;
+      font-weight: 500;
+      max-width: 760px;
+    }
+
+    #pokysql-course-v2 .pa-brand-title span { color: var(--pa-primary); }
+    #pokysql-course-v2 .pa-goal { font-size: 14px; }
+    #pokysql-course-v2 .pa-top-side { position: relative; z-index: 1; display: grid; gap: 14px; }
+    #pokysql-course-v2 .pa-sprite-ribbon { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    #pokysql-course-v2 .pa-region-card {
+      min-width: 0;
+      border: 1px solid var(--pa-border);
+      border-radius: 13px;
+      padding: 9px;
+      background: color-mix(in srgb, var(--pa-bg) 46%, var(--pa-card));
+      text-align: center;
+    }
+    #pokysql-course-v2 .pa-region-card img {
+      display: block;
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 2px;
+      object-fit: contain;
+      image-rendering: pixelated;
+    }
+    #pokysql-course-v2 .pa-region-card strong { display: block; font-size: 11px; font-weight: 500; }
+    #pokysql-course-v2 .pa-region-card span { color: var(--pa-muted-fg); font-size: 10px; }
+
+    #pokysql-course-v2 .pa-layout { grid-template-columns: 1fr; }
+    #pokysql-course-v2 .pa-path { overflow: hidden; }
+    #pokysql-course-v2 .pa-modules {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+    }
+    #pokysql-course-v2 .pa-module { min-width: 196px; }
+    #pokysql-course-v2 .pa-module-sprite {
+      width: 27px;
+      height: 27px;
+      object-fit: contain;
+      image-rendering: pixelated;
+    }
+
+    #pokysql-course-v2 .pa-stage {
+      grid-template-columns: minmax(0, 1fr) minmax(210px, 270px);
+      gap: 18px;
+    }
+    #pokysql-course-v2 .pa-stage-main { display: grid; align-content: start; gap: 14px; min-width: 0; }
+    #pokysql-course-v2 .pa-mentor {
+      position: sticky;
+      top: 10px;
+      border-left: 1px solid var(--pa-border);
+      padding-left: 18px;
+      align-self: start;
+    }
+    #pokysql-course-v2 .pa-mentor-visual {
+      min-height: 170px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--pa-border);
+      border-radius: 15px;
+      background:
+        linear-gradient(var(--pa-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--pa-border) 1px, transparent 1px),
+        var(--pa-primary-soft);
+      background-size: 18px 18px;
+    }
+    #pokysql-course-v2 .pa-mentor-sprite {
+      width: 138px;
+      height: 138px;
+      object-fit: contain;
+      image-rendering: pixelated;
+      filter: drop-shadow(0 12px 9px color-mix(in srgb, var(--pa-fg) 20%, transparent));
+    }
+    #pokysql-course-v2 .pa-mentor-name { margin-top: 10px; font-size: 18px; font-weight: 500; }
+    #pokysql-course-v2 .pa-mentor-meta { color: var(--pa-muted-fg); font-size: 11px; }
+    #pokysql-course-v2 .pa-type-row { display: flex; flex-wrap: wrap; gap: 5px; margin: 9px 0; }
+    #pokysql-course-v2 .pa-type {
+      border-radius: 999px;
+      border: 1px solid var(--pa-border);
+      background: var(--pa-accent-soft);
+      padding: 3px 7px;
+      text-transform: capitalize;
+      font-size: 10px;
+    }
+    #pokysql-course-v2 .pa-dex-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+    #pokysql-course-v2 .pa-dex-stat { border-top: 1px solid var(--pa-border); padding-top: 6px; }
+    #pokysql-course-v2 .pa-dex-stat span { display: block; color: var(--pa-muted-fg); font-size: 10px; }
+    #pokysql-course-v2 .pa-dex-stat strong { font-weight: 500; font-size: 12px; }
+
+    #pokysql-course-v2 .pa-lab { overflow: hidden; }
+    #pokysql-course-v2 .pa-lab-head,
+    #pokysql-course-v2 .pa-arena-head {
+      padding: 16px 18px 13px;
+      border-bottom: 1px solid var(--pa-border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    #pokysql-course-v2 .pa-lab-title,
+    #pokysql-course-v2 .pa-arena-title { margin-top: 3px; font-size: 18px; font-weight: 500; }
+    #pokysql-course-v2 .pa-lab-status {
+      flex: 0 0 auto;
+      border: 1px solid var(--pa-border);
+      border-radius: 999px;
+      padding: 5px 9px;
+      color: var(--pa-muted-fg);
+      font-size: 11px;
+    }
+    #pokysql-course-v2 .pa-lab-body { padding: 18px; display: grid; gap: 14px; }
+    #pokysql-course-v2 .pa-lab-grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 14px; }
+    #pokysql-course-v2 .pa-lab-panel {
+      border: 1px solid var(--pa-border);
+      border-radius: 14px;
+      padding: 13px;
+      min-width: 0;
+      background: color-mix(in srgb, var(--pa-bg) 46%, var(--pa-card));
+    }
+    #pokysql-course-v2 .pa-lab-panel h3 { margin: 0 0 6px; font-size: 13px; font-weight: 500; }
+    #pokysql-course-v2 .pa-lab-copy { color: var(--pa-muted-fg); font-size: 12px; }
+    #pokysql-course-v2 .pa-schema-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+    #pokysql-course-v2 .pa-schema-chip { border: 1px solid var(--pa-border); border-radius: 8px; padding: 4px 7px; font: 10px/1.4 ui-monospace, monospace; }
+    #pokysql-course-v2 .pa-editor {
+      width: 100%;
+      min-height: 148px;
+      resize: vertical;
+      border: 1px solid var(--pa-border);
+      border-radius: 11px;
+      padding: 12px;
+      background: light-dark(#172033, #090d13);
+      color: #eef4ff;
+      font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    #pokysql-course-v2 .pa-lab-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 9px; }
+    #pokysql-course-v2 .pa-lab-results { margin-top: 10px; max-height: 330px; overflow: auto; }
+    #pokysql-course-v2 .pa-hint { display: none; margin-top: 9px; color: var(--pa-muted-fg); font-size: 11px; }
+    #pokysql-course-v2 .pa-hint.is-visible { display: block; }
+
+    #pokysql-course-v2 .pa-arena-body { padding: 18px; display: grid; gap: 14px; }
+    #pokysql-course-v2 .pa-arena-lock {
+      border: 1px dashed var(--pa-border);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      color: var(--pa-muted-fg);
+    }
+    #pokysql-course-v2 .pa-arena-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 14px; }
+    #pokysql-course-v2 .pa-scenario-list { display: grid; gap: 8px; }
+    #pokysql-course-v2 .pa-scenario {
+      border: 1px solid var(--pa-border);
+      border-radius: 12px;
+      padding: 11px;
+      background: color-mix(in srgb, var(--pa-bg) 46%, var(--pa-card));
+    }
+    #pokysql-course-v2 .pa-scenario strong { display: block; font-weight: 500; }
+    #pokysql-course-v2 .pa-scenario span { color: var(--pa-muted-fg); font-size: 11px; }
+    #pokysql-course-v2 .pa-downloads { display: flex; flex-wrap: wrap; gap: 7px; }
+    #pokysql-course-v2 .pa-downloads a { text-decoration: none; }
+    #pokysql-course-v2 .pa-source-note { padding: 12px 16px; color: var(--pa-muted-fg); font-size: 11px; }
+    #pokysql-course-v2 .pa-source-note a { color: var(--pa-fg); }
+
     @media (max-width: 760px) {
       #pokysql-course-v2 .pa-top { grid-template-columns: 1fr; }
       #pokysql-course-v2 .pa-layout { grid-template-columns: 1fr; }
-      #pokysql-course-v2 .pa-modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #pokysql-course-v2 .pa-stage { grid-template-columns: 1fr; }
+      #pokysql-course-v2 .pa-mentor { position: static; border-left: 0; border-top: 1px solid var(--pa-border); padding: 16px 0 0; }
+      #pokysql-course-v2 .pa-mentor-visual { min-height: 140px; }
+      #pokysql-course-v2 .pa-lab-grid,
+      #pokysql-course-v2 .pa-arena-grid { grid-template-columns: 1fr; }
       #pokysql-course-v2 .pa-stage { min-height: 0; }
     }
 
     @media (max-width: 480px) {
-      #pokysql-course-v2 .pa-modules,
       #pokysql-course-v2 .pa-anatomy,
       #pokysql-course-v2 .pa-joins,
       #pokysql-course-v2 .pa-flow { grid-template-columns: 1fr; }
+      #pokysql-course-v2 .pa-sprite-ribbon { grid-template-columns: repeat(3, minmax(78px, 1fr)); overflow-x: auto; }
+      #pokysql-course-v2 .pa-region-card img { width: 48px; height: 48px; }
       #pokysql-course-v2 .pa-lesson-head { flex-direction: column; }
+      #pokysql-course-v2 .pa-lab-head,
+      #pokysql-course-v2 .pa-arena-head { flex-direction: column; }
       #pokysql-course-v2 .pa-controls { align-items: stretch; }
       #pokysql-course-v2 .pa-controls-right { margin-left: auto; }
     }
@@ -342,11 +549,17 @@
   <div class="pa-shell">
     <section class="pa-top" aria-label="Learning goal and progress">
       <div>
-        <div class="pa-eyebrow">From first principles to production support</div>
-        <div class="pa-goal">Goal: Platform Support Analyst I at The Trade Desk</div>
-        <div class="pa-subgoal">Every challenge appears only after its prerequisite lesson.</div>
+        <div class="pa-eyebrow">SQL League · from first principles to production support</div>
+        <h1 class="pa-brand-title">PokéSQL <span>Academy</span></h1>
+        <div class="pa-goal">Your mission: become interview-ready for Platform Support Analyst I at The Trade Desk.</div>
+        <div class="pa-subgoal">Learn → predict → query → troubleshoot → explain. Every challenge unlocks only after its prerequisite.</div>
       </div>
-      <div>
+      <div class="pa-top-side">
+        <div class="pa-sprite-ribbon" aria-label="Your regional SQL mentors">
+          <div class="pa-region-card"><img src="https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/versions/generation-i/red-blue/25.png" alt="Generation I Pikachu sprite"><strong>Kanto</strong><span>Foundations</span></div>
+          <div class="pa-region-card"><img src="https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/versions/generation-ii/crystal/152.png" alt="Generation II Chikorita sprite"><strong>Johto</strong><span>Relationships</span></div>
+          <div class="pa-region-card"><img src="https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/versions/generation-iii/emerald/376.png" alt="Generation III Metagross sprite"><strong>Hoenn</strong><span>AdTech mastery</span></div>
+        </div>
         <div class="pa-progress-label"><span id="pa-progress-copy">0 of 12 badges</span><span id="pa-rank">New Trainer · 0 XP</span></div>
         <div class="pa-progress"><span id="pa-progress-bar"></span></div>
       </div>
@@ -377,23 +590,79 @@
         </footer>
       </main>
     </div>
+
+    <section class="pa-lab" aria-labelledby="pa-lab-title">
+      <header class="pa-lab-head">
+        <div>
+          <div class="pa-eyebrow">Professor Oak's query terminal</div>
+          <div id="pa-lab-title" class="pa-lab-title">Live SQL Lab</div>
+          <div class="pa-subgoal">Run real read-only SQL in your browser. The lab follows the lesson you currently have unlocked.</div>
+        </div>
+        <div id="pa-lab-status" class="pa-lab-status">Loading practice database…</div>
+      </header>
+      <div id="pa-lab-body" class="pa-lab-body"></div>
+    </section>
+
+    <section class="pa-arena" aria-labelledby="pa-arena-title">
+      <header class="pa-arena-head">
+        <div>
+          <div class="pa-eyebrow">Friend-informed final mission</div>
+          <div id="pa-arena-title" class="pa-arena-title">RunSQL AdTech Interview Arena</div>
+          <div class="pa-subgoal">A realistic schema, CSV data, troubleshooting cases, and a 100-point final test.</div>
+        </div>
+        <div class="pa-lab-status">Unlocks after 12 badges</div>
+      </header>
+      <div id="pa-arena-body" class="pa-arena-body"></div>
+    </section>
+
+    <footer class="pa-source-note">
+      Pokémon facts and version-specific sprites are drawn from PokeAPI's open dataset and sprite repository, cross-checked against Serebii and the official Pokémon Pokédex. The final PostgreSQL workflow is designed for RunSQL. Pokémon names and imagery belong to their respective rights holders; this is a personal educational project.
+    </footer>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/alasql@4.17.3/dist/alasql.min.js"></script>
   <script>
     (() => {
       const root = document.getElementById('pokysql-course-v2');
       const $ = (selector) => root.querySelector(selector);
 
-      const pokemonRows = [
-        ['25', 'Pikachu', 'Electric', '112'],
-        ['1', 'Bulbasaur', 'Grass', '64'],
-        ['4', 'Charmander', 'Fire', '62'],
-        ['7', 'Squirtle', 'Water', '63']
+      const escapeHtml = (value) => String(value ?? 'NULL')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+
+      const spriteUrl = (generation, id) => {
+        const version = generation === 1 ? 'generation-i/red-blue' : generation === 2 ? 'generation-ii/crystal' : 'generation-iii/emerald';
+        return `https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/versions/${version}/${id}.png`;
+      };
+
+      const pokemonDex = [
+        { pokemon_id: 1, name: 'Bulbasaur', generation: 1, region: 'Kanto', primary_type: 'Grass', secondary_type: 'Poison', ability: 'Overgrow', base_experience: 64, height_m: 0.7, weight_kg: 6.9, hp: 45, attack: 49, defense: 49, special_attack: 65, special_defense: 65, speed: 45 },
+        { pokemon_id: 25, name: 'Pikachu', generation: 1, region: 'Kanto', primary_type: 'Electric', secondary_type: null, ability: 'Static', base_experience: 112, height_m: 0.4, weight_kg: 6.0, hp: 35, attack: 55, defense: 40, special_attack: 50, special_defense: 50, speed: 90 },
+        { pokemon_id: 94, name: 'Gengar', generation: 1, region: 'Kanto', primary_type: 'Ghost', secondary_type: 'Poison', ability: 'Cursed Body', base_experience: 225, height_m: 1.5, weight_kg: 40.5, hp: 60, attack: 65, defense: 60, special_attack: 130, special_defense: 75, speed: 110 },
+        { pokemon_id: 133, name: 'Eevee', generation: 1, region: 'Kanto', primary_type: 'Normal', secondary_type: null, ability: 'Run Away', base_experience: 65, height_m: 0.3, weight_kg: 6.5, hp: 55, attack: 55, defense: 50, special_attack: 45, special_defense: 65, speed: 55 },
+        { pokemon_id: 152, name: 'Chikorita', generation: 2, region: 'Johto', primary_type: 'Grass', secondary_type: null, ability: 'Overgrow', base_experience: 64, height_m: 0.9, weight_kg: 6.4, hp: 45, attack: 49, defense: 65, special_attack: 49, special_defense: 65, speed: 45 },
+        { pokemon_id: 155, name: 'Cyndaquil', generation: 2, region: 'Johto', primary_type: 'Fire', secondary_type: null, ability: 'Blaze', base_experience: 62, height_m: 0.5, weight_kg: 7.9, hp: 39, attack: 52, defense: 43, special_attack: 60, special_defense: 50, speed: 65 },
+        { pokemon_id: 158, name: 'Totodile', generation: 2, region: 'Johto', primary_type: 'Water', secondary_type: null, ability: 'Torrent', base_experience: 63, height_m: 0.6, weight_kg: 9.5, hp: 50, attack: 65, defense: 64, special_attack: 44, special_defense: 48, speed: 43 },
+        { pokemon_id: 197, name: 'Umbreon', generation: 2, region: 'Johto', primary_type: 'Dark', secondary_type: null, ability: 'Synchronize', base_experience: 184, height_m: 1.0, weight_kg: 27.0, hp: 95, attack: 65, defense: 110, special_attack: 60, special_defense: 130, speed: 65 },
+        { pokemon_id: 252, name: 'Treecko', generation: 3, region: 'Hoenn', primary_type: 'Grass', secondary_type: null, ability: 'Overgrow', base_experience: 62, height_m: 0.5, weight_kg: 5.0, hp: 40, attack: 45, defense: 35, special_attack: 65, special_defense: 55, speed: 70 },
+        { pokemon_id: 255, name: 'Torchic', generation: 3, region: 'Hoenn', primary_type: 'Fire', secondary_type: null, ability: 'Blaze', base_experience: 62, height_m: 0.4, weight_kg: 2.5, hp: 45, attack: 60, defense: 40, special_attack: 70, special_defense: 50, speed: 45 },
+        { pokemon_id: 258, name: 'Mudkip', generation: 3, region: 'Hoenn', primary_type: 'Water', secondary_type: null, ability: 'Torrent', base_experience: 62, height_m: 0.4, weight_kg: 7.6, hp: 50, attack: 70, defense: 50, special_attack: 50, special_defense: 50, speed: 40 },
+        { pokemon_id: 376, name: 'Metagross', generation: 3, region: 'Hoenn', primary_type: 'Steel', secondary_type: 'Psychic', ability: 'Clear Body', base_experience: 270, height_m: 1.6, weight_kg: 550.0, hp: 80, attack: 135, defense: 130, special_attack: 95, special_defense: 90, speed: 70 }
       ];
 
+      pokemonDex.forEach((pokemon) => {
+        pokemon.sprite = spriteUrl(pokemon.generation, pokemon.pokemon_id);
+        pokemon.base_stat_total = pokemon.hp + pokemon.attack + pokemon.defense + pokemon.special_attack + pokemon.special_defense + pokemon.speed;
+      });
+
+      const pokemonRows = pokemonDex.slice(0, 4).map((pokemon) => [pokemon.pokemon_id, pokemon.name, pokemon.primary_type, pokemon.base_experience]);
+
       const tableHtml = (headers, rows, highlightRow = -1) => `
-        <div class="pa-table-wrap"><table><thead><tr>${headers.map((h) => `<th>${h}</th>`).join('')}</tr></thead>
-        <tbody>${rows.map((row, index) => `<tr class="${index === highlightRow ? 'pa-highlight-row' : ''}">${row.map((cell) => `<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+        <div class="pa-table-wrap"><table><thead><tr>${headers.map((h) => `<th>${escapeHtml(h)}</th>`).join('')}</tr></thead>
+        <tbody>${rows.map((row, index) => `<tr class="${index === highlightRow ? 'pa-highlight-row' : ''}">${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 
       const modules = [
         {
@@ -772,15 +1041,211 @@
         }
       ];
 
-      const storageKey = 'pokysql-course-progress-v2';
+      const mentorIds = [1, 25, 133, 94, 152, 158, 155, 197, 252, 255, 258, 376];
+      modules.forEach((module, index) => { module.mentorId = mentorIds[index]; });
+
+      const trainers = [
+        { trainer_id: 1, name: 'Ash', region: 'Kanto', trainer_rank: 'Ace' },
+        { trainer_id: 2, name: 'Misty', region: 'Kanto', trainer_rank: 'Gym Leader' },
+        { trainer_id: 3, name: 'Brock', region: 'Kanto', trainer_rank: 'Gym Leader' },
+        { trainer_id: 4, name: 'Kris', region: 'Johto', trainer_rank: 'Trainer' },
+        { trainer_id: 5, name: 'May', region: 'Hoenn', trainer_rank: 'Coordinator' }
+      ];
+
+      const captures = [
+        { capture_id: 101, trainer_id: 1, pokemon_id: 25, nickname: 'Sparky', caught_at: '2026-01-03' },
+        { capture_id: 102, trainer_id: 1, pokemon_id: 1, nickname: null, caught_at: '2026-01-08' },
+        { capture_id: 103, trainer_id: 2, pokemon_id: 158, nickname: 'Chomps', caught_at: '2026-02-12' },
+        { capture_id: 104, trainer_id: 4, pokemon_id: 152, nickname: null, caught_at: '2026-03-01' },
+        { capture_id: 105, trainer_id: 5, pokemon_id: 252, nickname: 'Twig', caught_at: '2026-03-18' },
+        { capture_id: 106, trainer_id: 5, pokemon_id: 255, nickname: null, caught_at: '2026-03-21' }
+      ];
+
+      const advertisers = [
+        { advertiser_id: 101, name: 'Kanto Outdoor Co', vertical: 'Retail', timezone: 'America/Los_Angeles' },
+        { advertiser_id: 102, name: 'Johto Health Labs', vertical: 'Healthcare', timezone: 'America/Chicago' },
+        { advertiser_id: 103, name: 'Hoenn Air', vertical: 'Travel', timezone: 'America/New_York' }
+      ];
+
+      const campaigns = [
+        { campaign_id: 2001, advertiser_id: 101, name: 'Trail Gear Prospecting', status: 'active', daily_budget: 1200 },
+        { campaign_id: 2002, advertiser_id: 101, name: 'Backpack Retargeting', status: 'active', daily_budget: 650 },
+        { campaign_id: 2003, advertiser_id: 102, name: 'Wellness Awareness', status: 'active', daily_budget: 900 },
+        { campaign_id: 2004, advertiser_id: 103, name: 'Autumn Routes', status: 'paused', daily_budget: 1500 },
+        { campaign_id: 2005, advertiser_id: 103, name: 'Weekend Escape', status: 'active', daily_budget: 800 }
+      ];
+
+      const adEvents = [
+        { event_date: '2026-08-01', campaign_id: 2001, exchange_name: 'OpenX', impressions: 125000, clicks: 1430, conversions: 62, spend_usd: 711.45 },
+        { event_date: '2026-08-01', campaign_id: 2001, exchange_name: 'PubMatic', impressions: 83000, clicks: 804, conversions: 31, spend_usd: 421.18 },
+        { event_date: '2026-08-01', campaign_id: 2002, exchange_name: 'OpenX', impressions: 61000, clicks: 1098, conversions: 84, spend_usd: 389.22 },
+        { event_date: '2026-08-01', campaign_id: 2003, exchange_name: 'Index Exchange', impressions: 210000, clicks: 1260, conversions: 9, spend_usd: 873.64 },
+        { event_date: '2026-08-01', campaign_id: 2004, exchange_name: 'PubMatic', impressions: 145000, clicks: 1870, conversions: 44, spend_usd: 1124.20 },
+        { event_date: '2026-08-02', campaign_id: 2005, exchange_name: 'OpenX', impressions: 0, clicks: 0, conversions: 0, spend_usd: 0 },
+        { event_date: '2026-08-03', campaign_id: 2005, exchange_name: 'OpenX', impressions: 11000, clicks: 98, conversions: 1, spend_usd: 72.18 }
+      ];
+
+      const supportTickets = [
+        { ticket_id: 5001, advertiser_id: 103, campaign_id: 2005, priority: 'P1', category: 'campaign_delivery', opened_at: '2026-08-02 08:05', resolved_at: '2026-08-02 10:40' },
+        { ticket_id: 5002, advertiser_id: 102, campaign_id: 2003, priority: 'P2', category: 'reporting_discrepancy', opened_at: '2026-08-03 07:42', resolved_at: null },
+        { ticket_id: 5003, advertiser_id: 101, campaign_id: 2001, priority: 'P2', category: 'offline_attribution', opened_at: '2026-08-03 09:15', resolved_at: null },
+        { ticket_id: 5004, advertiser_id: 101, campaign_id: 2002, priority: 'P3', category: 'pixel_validation', opened_at: '2026-08-01 15:25', resolved_at: '2026-08-02 11:10' },
+        { ticket_id: 5005, advertiser_id: 103, campaign_id: 2005, priority: 'P2', category: 'creative_review', opened_at: '2026-08-04 08:10', resolved_at: null },
+        { ticket_id: 5006, advertiser_id: 103, campaign_id: 2004, priority: 'P3', category: 'access', opened_at: '2026-08-02 12:00', resolved_at: '2026-08-02 16:30' }
+      ];
+
+      const procedureAudit = [
+        { audit_id: 1, procedure_name: 'refresh_campaign_report', environment: 'staging', result: 'success', executed_at: '2026-08-01 10:00' },
+        { audit_id: 2, procedure_name: 'reprocess_offline_conversions', environment: 'production', result: 'success', executed_at: '2026-08-02 06:30' },
+        { audit_id: 3, procedure_name: 'refresh_campaign_report', environment: 'staging', result: 'failed', executed_at: '2026-08-03 11:15' }
+      ];
+
+      const getValue = (row, key) => {
+        const match = Object.keys(row || {}).find((candidate) => candidate.toLowerCase() === key.toLowerCase());
+        return match ? row[match] : undefined;
+      };
+
+      const labChallenges = [
+        {
+          title: 'Open the Pokédex table',
+          prompt: 'Return every column and every Pokémon row. Before running it, predict the table grain.',
+          starter: 'SELECT *\nFROM pokemon;',
+          hint: 'SELECT * means every column. FROM names the table.',
+          schema: ['pokemon · one row per Pokémon'],
+          validate: (rows) => rows.length === 12 && getValue(rows[0], 'pokemon_id') !== undefined
+        },
+        {
+          title: 'Choose two columns',
+          prompt: 'Return only name and primary_type for all 12 Pokémon.',
+          starter: 'SELECT name, primary_type\nFROM pokemon;',
+          hint: 'Place both column names after SELECT, separated by a comma.',
+          schema: ['pokemon(name, primary_type)'],
+          validate: (rows) => rows.length === 12 && getValue(rows[0], 'name') !== undefined && getValue(rows[0], 'primary_type') !== undefined
+        },
+        {
+          title: 'Filter to Generation I',
+          prompt: 'Return name and generation for only Kanto’s Generation I Pokémon.',
+          starter: 'SELECT name, generation\nFROM pokemon\nWHERE generation = 1;',
+          hint: 'WHERE keeps rows that satisfy a condition.',
+          schema: ['pokemon(generation)'],
+          validate: (rows) => rows.length === 4 && rows.every((row) => Number(getValue(row, 'generation')) === 1)
+        },
+        {
+          title: 'Find the XP leaders',
+          prompt: 'Return the three Pokémon with the highest base_experience, highest first.',
+          starter: 'SELECT name, base_experience\nFROM pokemon\nORDER BY base_experience DESC\nLIMIT 3;',
+          hint: 'Sort descending before limiting the result.',
+          schema: ['pokemon(base_experience)'],
+          validate: (rows) => rows.length === 3 && String(getValue(rows[0], 'name')).toLowerCase() === 'metagross'
+        },
+        {
+          title: 'Inspect relationship keys',
+          prompt: 'Return each capture_id with its trainer_id and pokemon_id foreign keys.',
+          starter: 'SELECT capture_id, trainer_id, pokemon_id\nFROM captures;',
+          hint: 'No join is needed yet. You are inspecting the keys that will connect tables.',
+          schema: ['captures · one row per capture', 'trainer_id FK', 'pokemon_id FK'],
+          validate: (rows) => rows.length === 6 && getValue(rows[0], 'trainer_id') !== undefined && getValue(rows[0], 'pokemon_id') !== undefined
+        },
+        {
+          title: 'Keep every trainer',
+          prompt: 'Return every trainer and any captured pokemon_id. Brock must remain even though he has no captures.',
+          starter: 'SELECT t.name, c.pokemon_id\nFROM trainers AS t\nLEFT JOIN captures AS c\n  ON t.trainer_id = c.trainer_id\nORDER BY t.trainer_id;',
+          hint: 'The words “every trainer” point to trainers as the left table and a LEFT JOIN.',
+          schema: ['trainers · one row per trainer', 'captures · one row per capture'],
+          validate: (rows) => rows.length === 7 && rows.some((row) => String(getValue(row, 'name')).toLowerCase() === 'brock' && getValue(row, 'pokemon_id') == null)
+        },
+        {
+          title: 'Count each generation',
+          prompt: 'Return generation and pokemon_count. The result should have one row per generation.',
+          starter: 'SELECT generation, COUNT(*) AS pokemon_count\nFROM pokemon\nGROUP BY generation\nORDER BY generation;',
+          hint: 'GROUP BY defines the output grain; COUNT(*) measures each group.',
+          schema: ['pokemon · four rows in each generation'],
+          validate: (rows) => rows.length === 3 && rows.every((row) => Number(getValue(row, 'pokemon_count')) === 4)
+        },
+        {
+          title: 'Query above-average XP',
+          prompt: 'Return Pokémon whose base_experience is greater than the table average, highest first.',
+          starter: 'SELECT name, base_experience\nFROM pokemon\nWHERE base_experience > (\n  SELECT AVG(base_experience) FROM pokemon\n)\nORDER BY base_experience DESC;',
+          hint: 'The inner query calculates one average; the outer query compares each row to it.',
+          schema: ['pokemon(base_experience)'],
+          validate: (rows) => rows.length === 4 && ['metagross', 'gengar', 'umbreon', 'pikachu'].every((name) => rows.some((row) => String(getValue(row, 'name')).toLowerCase() === name))
+        },
+        {
+          title: 'Triage unresolved support tickets',
+          prompt: 'Return ticket_id, priority, and category for unresolved tickets, oldest first.',
+          starter: 'SELECT ticket_id, priority, category\nFROM support_tickets\nWHERE resolved_at IS NULL\nORDER BY opened_at;',
+          hint: 'Missing timestamps require IS NULL, not = NULL.',
+          schema: ['support_tickets · one row per ticket'],
+          validate: (rows) => rows.length === 3 && Number(getValue(rows[0], 'ticket_id')) === 5002
+        },
+        {
+          title: 'Verify a safe staging outcome',
+          prompt: 'Return successful procedure_name, environment, and result rows from staging only.',
+          starter: "SELECT procedure_name, environment, result\nFROM procedure_audit\nWHERE environment = 'staging'\n  AND result = 'success';",
+          hint: 'This audit query is read-only. Never invent a production CALL or EXEC statement.',
+          schema: ['procedure_audit · one row per execution'],
+          validate: (rows) => rows.length === 1 && String(getValue(rows[0], 'environment')).toLowerCase() === 'staging' && String(getValue(rows[0], 'result')).toLowerCase() === 'success'
+        },
+        {
+          title: 'Build campaign delivery metrics',
+          prompt: 'Return one row per campaign with impressions, clicks, spend, and CTR percentage. Protect division by zero.',
+          starter: 'SELECT campaign_id,\n       SUM(impressions) AS impressions,\n       SUM(clicks) AS clicks,\n       ROUND(100.0 * SUM(clicks) / NULLIF(SUM(impressions), 0), 2) AS ctr_pct,\n       ROUND(SUM(spend_usd), 2) AS spend_usd\nFROM ad_events_daily\nGROUP BY campaign_id\nORDER BY campaign_id;',
+          hint: 'Aggregate to campaign grain first. NULLIF makes a zero denominator become NULL.',
+          schema: ['ad_events_daily · one row per date × campaign × exchange'],
+          validate: (rows) => rows.length === 5 && rows.some((row) => Number(getValue(row, 'campaign_id')) === 2005 && getValue(row, 'ctr_pct') !== Infinity)
+        },
+        {
+          title: 'Final browser investigation',
+          prompt: 'Return every campaign with its count of unresolved tickets, including campaigns with zero.',
+          starter: 'SELECT c.campaign_id, c.name,\n       COUNT(t.ticket_id) AS open_ticket_count\nFROM campaigns AS c\nLEFT JOIN support_tickets AS t\n  ON c.campaign_id = t.campaign_id\n AND t.resolved_at IS NULL\nGROUP BY c.campaign_id, c.name\nORDER BY c.campaign_id;',
+          hint: 'Filter unresolved rows inside the ON clause so campaigns with no open tickets stay in the LEFT JOIN result.',
+          schema: ['campaigns · one row per campaign', 'support_tickets · one row per ticket'],
+          validate: (rows) => rows.length === 5 && rows.some((row) => Number(getValue(row, 'campaign_id')) === 2004 && Number(getValue(row, 'open_ticket_count')) === 0)
+        }
+      ];
+
+      let labReady = false;
+      let labError = '';
+
+      const initializeLab = () => {
+        if (typeof window.alasql !== 'function') {
+          labError = 'The SQL engine could not load. Check your connection and reload the page.';
+          return;
+        }
+        try {
+          const tables = {
+            pokemon: pokemonDex.map(({ sprite, base_stat_total, ...pokemon }) => pokemon),
+            trainers,
+            captures,
+            advertisers,
+            campaigns,
+            ad_events_daily: adEvents,
+            support_tickets: supportTickets,
+            procedure_audit: procedureAudit
+          };
+          Object.entries(tables).forEach(([name, rows]) => {
+            window.alasql(`CREATE TABLE ${name}`);
+            window.alasql.tables[name].data = rows.map((row) => ({ ...row }));
+          });
+          labReady = true;
+        } catch (error) {
+          labError = `The practice database could not start: ${error.message}`;
+        }
+      };
+
+      const storageKey = 'pokysql-course-progress-v3';
+      const previousStorageKey = 'pokysql-course-progress-v2';
       let state;
       try {
-        state = JSON.parse(localStorage.getItem(storageKey) || '{}');
+        state = JSON.parse(localStorage.getItem(storageKey) || localStorage.getItem(previousStorageKey) || '{}');
       } catch (error) {
         state = {};
       }
       state.completed = Array.isArray(state.completed) ? state.completed : [];
       state.passed = Array.isArray(state.passed) ? state.passed : [];
+      state.labCompleted = Array.isArray(state.labCompleted) ? state.labCompleted : [];
+      state.labDrafts = state.labDrafts && typeof state.labDrafts === 'object' ? state.labDrafts : {};
+      state.labAttempts = state.labAttempts && typeof state.labAttempts === 'object' ? state.labAttempts : {};
       state.module = Number.isInteger(state.module) ? Math.min(state.module, modules.length - 1) : 0;
       state.step = Number.isInteger(state.step) ? state.step : 0;
       state.xp = Number.isFinite(state.xp) ? state.xp : state.completed.length * 100;
@@ -794,7 +1259,7 @@
       const renderProgress = () => {
         const complete = state.completed.length;
         const pct = Math.round((complete / modules.length) * 100);
-        $('#pa-progress-copy').textContent = `${complete} of ${modules.length} badges`;
+        $('#pa-progress-copy').textContent = `${complete}/${modules.length} badges · ${state.labCompleted.length}/${labChallenges.length} labs`;
         $('#pa-progress-bar').style.width = `${pct}%`;
         const rank = complete === modules.length ? 'SQL League Champion' : complete >= 9 ? 'Support Ace' : complete >= 5 ? 'Query Trainer' : complete >= 1 ? 'Rising Trainer' : 'New Trainer';
         $('#pa-rank').textContent = `${rank} · ${state.xp} XP`;
@@ -811,7 +1276,8 @@
           button.className = `pa-module${index === state.module ? ' is-active' : ''}${isDone ? ' is-done' : ''}`;
           button.disabled = !isUnlocked;
           button.setAttribute('aria-label', `${module.name}: ${isDone ? 'complete' : isUnlocked ? 'available' : 'locked'}`);
-          button.innerHTML = `<span class="pa-module-num">${isDone ? '✓' : String(index + 1).padStart(2, '0')}</span><span class="pa-module-name">${module.name}</span><span class="pa-module-state">${isDone ? 'done' : isUnlocked ? 'open' : '🔒'}</span>`;
+          const mentor = pokemonDex.find((pokemon) => pokemon.pokemon_id === module.mentorId);
+          button.innerHTML = `<span class="pa-module-num">${isDone ? '✓' : `<img class="pa-module-sprite" src="${mentor.sprite}" alt="">`}</span><span class="pa-module-name">${String(index + 1).padStart(2, '0')} · ${module.name}</span><span class="pa-module-state">${isDone ? 'done' : isUnlocked ? 'open' : '🔒'}</span>`;
           button.addEventListener('click', () => {
             state.module = index;
             state.step = 0;
@@ -843,6 +1309,173 @@
         <div class="pa-choices">${check.choices.map((choice, index) => `<button class="pa-choice" type="button" data-choice="${index}">${choice}</button>`).join('')}</div>
         <div class="pa-feedback" id="pa-feedback"></div>
         <div id="pa-claim-wrap"></div>`;
+
+      const renderMentor = () => {
+        const module = modules[state.module];
+        const mentor = pokemonDex.find((pokemon) => pokemon.pokemon_id === module.mentorId);
+        const types = [mentor.primary_type, mentor.secondary_type].filter(Boolean);
+        return `
+          <aside class="pa-mentor" aria-label="${escapeHtml(mentor.name)} Pokédex mentor card">
+            <div class="pa-mentor-visual"><img class="pa-mentor-sprite" src="${mentor.sprite}" alt="${escapeHtml(mentor.name)} sprite from Generation ${mentor.generation}"></div>
+            <div class="pa-mentor-name">#${String(mentor.pokemon_id).padStart(3, '0')} · ${escapeHtml(mentor.name)}</div>
+            <div class="pa-mentor-meta">${mentor.region} · Generation ${mentor.generation} · ${mentor.ability}</div>
+            <div class="pa-type-row">${types.map((type) => `<span class="pa-type">${escapeHtml(type)}</span>`).join('')}</div>
+            <div class="pa-dex-stats">
+              <div class="pa-dex-stat"><span>Base XP</span><strong>${mentor.base_experience}</strong></div>
+              <div class="pa-dex-stat"><span>Base stat total</span><strong>${mentor.base_stat_total}</strong></div>
+              <div class="pa-dex-stat"><span>Height</span><strong>${mentor.height_m} m</strong></div>
+              <div class="pa-dex-stat"><span>Weight</span><strong>${mentor.weight_kg} kg</strong></div>
+            </div>
+          </aside>`;
+      };
+
+      const renderResultRows = (rows) => {
+        if (!Array.isArray(rows)) return '<div class="pa-feedback is-bad">The engine did not return a result set.</div>';
+        if (rows.length === 0) return '<div class="pa-feedback">Query ran successfully and returned 0 rows.</div>';
+        const headers = Object.keys(rows[0]);
+        return tableHtml(headers, rows.slice(0, 50).map((row) => headers.map((header) => row[header])));
+      };
+
+      const queryIsReadOnly = (query) => {
+        const trimmed = query.trim();
+        const statements = trimmed.split(';').map((statement) => statement.trim()).filter(Boolean);
+        if (statements.length !== 1 || !/^(SELECT|WITH)\b/i.test(statements[0])) return false;
+        return !/\b(INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|TRUNCATE|REPLACE|CALL|EXEC|MERGE|GRANT|REVOKE)\b/i.test(statements[0]);
+      };
+
+      const renderLab = () => {
+        const challenge = labChallenges[state.module];
+        const complete = state.labCompleted.includes(state.module);
+        $('#pa-lab-status').textContent = labReady ? `${complete ? 'Trial cleared' : 'Trial open'} · ${state.labCompleted.length}/${labChallenges.length}` : 'Practice engine offline';
+
+        if (!labReady) {
+          $('#pa-lab-body').innerHTML = `<div class="pa-arena-lock">${escapeHtml(labError || 'The practice engine is unavailable.')}</div>`;
+          return;
+        }
+
+        const draft = state.labDrafts[state.module] || challenge.starter;
+        $('#pa-lab-body').innerHTML = `
+          <div class="pa-lab-grid">
+            <section class="pa-lab-panel">
+              <div class="pa-step-kicker">Badge ${String(state.module + 1).padStart(2, '0')} lab · ${complete ? 'cleared ✓' : '40 XP'}</div>
+              <h3>${escapeHtml(challenge.title)}</h3>
+              <div class="pa-lab-copy">${escapeHtml(challenge.prompt)}</div>
+              <div class="pa-schema-chips">${challenge.schema.map((item) => `<span class="pa-schema-chip">${escapeHtml(item)}</span>`).join('')}</div>
+              <div class="pa-hint" id="pa-lab-hint">Professor hint: ${escapeHtml(challenge.hint)}</div>
+            </section>
+            <section class="pa-lab-panel">
+              <label class="pa-step-kicker" for="pa-sql-editor">Portable SQL practice</label>
+              <textarea id="pa-sql-editor" class="pa-editor" spellcheck="false" aria-label="SQL query editor">${escapeHtml(draft)}</textarea>
+              <div class="pa-lab-actions">
+                <button id="pa-lab-run" class="pa-button is-primary" type="button">Run SQL</button>
+                <button id="pa-lab-reset" class="pa-button" type="button">Restore starter</button>
+                <button id="pa-lab-hint-button" class="pa-button" type="button">Show hint</button>
+                <span id="pa-lab-feedback" class="pa-feedback">SELECT and WITH queries only · browser SQL</span>
+              </div>
+              <div id="pa-lab-results" class="pa-lab-results"></div>
+            </section>
+          </div>
+          <div class="pa-job-link"><strong>Dialect note:</strong> This instant lab emphasizes portable query logic. Your final arena runs as PostgreSQL in RunSQL, where you will use production-style CTEs and window functions.</div>`;
+
+        const editor = $('#pa-sql-editor');
+        editor.addEventListener('input', () => {
+          state.labDrafts[state.module] = editor.value;
+          save();
+        });
+
+        $('#pa-lab-hint-button').addEventListener('click', () => {
+          $('#pa-lab-hint').classList.add('is-visible');
+        });
+
+        $('#pa-lab-reset').addEventListener('click', () => {
+          editor.value = challenge.starter;
+          state.labDrafts[state.module] = challenge.starter;
+          $('#pa-lab-results').innerHTML = '';
+          $('#pa-lab-feedback').textContent = 'Starter restored. Predict the result before you run it.';
+          $('#pa-lab-feedback').className = 'pa-feedback';
+          save();
+        });
+
+        $('#pa-lab-run').addEventListener('click', () => {
+          const query = editor.value;
+          const feedback = $('#pa-lab-feedback');
+          const results = $('#pa-lab-results');
+          state.labAttempts[state.module] = Number(state.labAttempts[state.module] || 0) + 1;
+          if (!queryIsReadOnly(query)) {
+            results.innerHTML = '';
+            feedback.textContent = 'Safety lock: use one read-only SELECT or WITH query. Data-changing and procedure statements are blocked.';
+            feedback.className = 'pa-feedback is-bad';
+            $('#pa-lab-hint').classList.add('is-visible');
+            save();
+            return;
+          }
+          try {
+            const rows = window.alasql(query);
+            results.innerHTML = renderResultRows(rows);
+            if (challenge.validate(rows)) {
+              const firstClear = !state.labCompleted.includes(state.module);
+              if (firstClear) {
+                state.labCompleted.push(state.module);
+                state.xp += 40;
+              }
+              feedback.textContent = firstClear ? 'Trial cleared! Result shape and values match the mission. +40 XP' : 'Trial cleared again. Repetition strengthens recall.';
+              feedback.className = 'pa-feedback is-good';
+              $('#pa-lab-status').textContent = `Trial cleared · ${state.labCompleted.length}/${labChallenges.length}`;
+              renderProgress();
+            } else {
+              feedback.textContent = 'The query ran, but the result does not yet match the mission. Check columns, filters, grain, and ordering.';
+              feedback.className = 'pa-feedback is-bad';
+              $('#pa-lab-hint').classList.add('is-visible');
+            }
+          } catch (error) {
+            results.innerHTML = '';
+            feedback.textContent = `SQL error: ${error.message}`;
+            feedback.className = 'pa-feedback is-bad';
+            $('#pa-lab-hint').classList.add('is-visible');
+          }
+          save();
+        });
+      };
+
+      const renderArena = () => {
+        const host = $('#pa-arena-body');
+        if (state.completed.length < modules.length) {
+          host.innerHTML = `<div class="pa-arena-lock"><strong>Earn all 12 badges to enter.</strong><br>${modules.length - state.completed.length} badge${modules.length - state.completed.length === 1 ? '' : 's'} remain. Your browser lab progress is ${state.labCompleted.length}/${labChallenges.length}; clearing all trials is strongly recommended.</div>`;
+          return;
+        }
+        host.innerHTML = `
+          <div class="pa-arena-grid">
+            <section class="pa-lab-panel">
+              <div class="pa-step-kicker">Six realistic investigation stations</div>
+              <div class="pa-scenario-list">
+                <div class="pa-scenario"><strong>Reporting delay</strong><span>Separate campaign serving from dashboard freshness and correlate tickets to incidents.</span></div>
+                <div class="pa-scenario"><strong>Pixel and HTML5 validation</strong><span>Gather reproducible evidence before escalating tags, parameters, or click-tag failures.</span></div>
+                <div class="pa-scenario"><strong>Offline attribution</strong><span>Find duplicates, upload lag, rejected orders, and mismatched attribution windows.</span></div>
+                <div class="pa-scenario"><strong>Campaign underdelivery</strong><span>Inspect status, zero-impression intervals, targeting edits, and exchange-level delivery.</span></div>
+                <div class="pa-scenario"><strong>Spend discrepancy</strong><span>Aggregate to campaign-day grain before comparing spend to budget.</span></div>
+                <div class="pa-scenario"><strong>SLA triage and de-escalation</strong><span>Prioritize evidence, customer impact, workaround, ownership, and the next update time.</span></div>
+              </div>
+            </section>
+            <section class="pa-lab-panel">
+              <div class="pa-step-kicker">100-point final test · suggested time 90 minutes</div>
+              <h3>Build the database in RunSQL</h3>
+              <div class="pa-lab-copy">This implements the exact hands-on workflow your friend recommended: create the schema, load realistic data, answer unseen SQL questions, diagnose incidents, and explain your decisions aloud. The behavioral section also turns your own experiences into STAR stories; no private stories were assumed.</div>
+              <div class="pa-downloads" style="margin-top: 12px">
+                <a class="pa-button is-primary" href="/capstone/README.md">Open test & setup</a>
+                <a class="pa-button" href="/capstone/ttd-adtech-schema.dbml">DBML schema</a>
+                <a class="pa-button" href="/capstone/advertisers.csv">Advertisers CSV</a>
+                <a class="pa-button" href="/capstone/campaigns.csv">Campaigns CSV</a>
+                <a class="pa-button" href="/capstone/campaign_status_history.csv">Status history CSV</a>
+                <a class="pa-button" href="/capstone/ad_events_daily.csv">Ad events CSV</a>
+                <a class="pa-button" href="/capstone/offline_conversions.csv">Conversions CSV</a>
+                <a class="pa-button" href="/capstone/support_tickets.csv">Tickets CSV</a>
+                <a class="pa-button" href="/capstone/incidents.csv">Incidents CSV</a>
+              </div>
+              <div class="pa-job-link" style="margin-top: 12px"><strong>Passing standard:</strong> 90/100, no unsafe production action, no inflated spend from incorrect grain, and no discrepancy diagnosis before definitions and time boundaries are aligned.</div>
+            </section>
+          </div>
+          <div class="pa-job-link"><strong>Interview story workshop:</strong> prepare five concise STAR stories—deep troubleshooting, client de-escalation, SLA prioritization, cross-functional escalation, and a knowledge-base or process improvement. Attach a measurable result and one lesson learned to each.</div>`;
+      };
 
       const bindStageInteractions = (step) => {
         const run = $('.pa-run');
@@ -912,7 +1545,7 @@
         if (step.query) body += renderQuery(step.query);
         if (step.check) body += renderCheck(step.check);
         body += `<div class="pa-job-link"><strong>Why this matters at The Trade Desk:</strong> ${module.job}</div>`;
-        $('#pa-stage').innerHTML = body;
+        $('#pa-stage').innerHTML = `<div class="pa-stage-main">${body}</div>${renderMentor()}`;
 
         $('#pa-back').disabled = state.step === 0;
         $('#pa-next').style.display = step.check ? 'none' : '';
@@ -924,6 +1557,8 @@
         renderProgress();
         renderModules();
         renderLesson();
+        renderLab();
+        renderArena();
         save();
       };
 
@@ -943,7 +1578,7 @@
       });
 
       $('#pa-reset').addEventListener('click', () => {
-        state = { completed: [], passed: [], module: 0, step: 0, xp: 0 };
+        state = { completed: [], passed: [], labCompleted: [], labDrafts: {}, labAttempts: {}, module: 0, step: 0, xp: 0 };
         save();
         renderAll();
       });
@@ -952,6 +1587,7 @@
         state.module = 0;
         state.step = 0;
       }
+      initializeLab();
       renderAll();
     })();
   </script>

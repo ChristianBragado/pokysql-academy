@@ -1,0 +1,4 @@
+incident_id,service_name,severity,started_at,resolved_at,customer_impact,root_cause
+6001,reporting_ingestion,SEV2,2026-08-03 02:50:00,2026-08-03 09:30:00,Reporting data was delayed while campaigns continued serving,A queue partition became saturated after a traffic spike
+6002,creative_scanner,SEV3,2026-08-04 07:55:00,,Some HTML5 creatives receive delayed validation results,
+6003,offline_attribution,SEV3,2026-08-03 05:40:00,2026-08-03 07:05:00,A subset of uploaded orders was processed twice,Retry handling did not preserve an idempotency key
