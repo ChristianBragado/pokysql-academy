@@ -1,0 +1,15 @@
+status_event_id,campaign_id,status,changed_at,changed_by
+30001,2001,draft,2026-07-18 09:00:00,ash@kanto.example
+30002,2001,active,2026-07-20 00:00:00,ash@kanto.example
+30003,2002,draft,2026-07-23 12:00:00,misty@kanto.example
+30004,2002,active,2026-07-25 00:00:00,misty@kanto.example
+30005,2003,active,2026-07-15 00:00:00,casey@johto.example
+30006,2004,active,2026-07-10 00:00:00,wallace@hoenn.example
+30007,2004,paused,2026-08-01 14:22:00,wallace@hoenn.example
+30008,2005,draft,2026-07-26 10:10:00,may@hoenn.example
+30009,2005,active,2026-07-28 00:00:00,may@hoenn.example
+30010,2006,draft,2026-07-27 15:00:00,red@silph.example
+30011,2006,active,2026-07-30 00:00:00,red@silph.example
+30012,2007,draft,2026-08-01 09:30:00,blue@silph.example
+30013,2008,active,2026-06-01 00:00:00,oak@research.example
+30014,2008,ended,2026-08-01 00:02:00,system

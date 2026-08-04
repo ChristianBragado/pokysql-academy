@@ -1,0 +1,9 @@
+ticket_id,advertiser_id,campaign_id,priority,category,opened_at,first_response_at,resolved_at,status,summary
+5001,103,2005,P1,campaign_delivery,2026-08-02 08:05:00,2026-08-02 08:14:00,2026-08-02 10:40:00,resolved,Active campaign stopped serving after a targeting edit
+5002,102,2003,P2,reporting_discrepancy,2026-08-03 07:42:00,2026-08-03 08:20:00,,engineering_escalated,Dashboard totals are lower than the client report
+5003,101,2001,P2,offline_attribution,2026-08-03 09:15:00,2026-08-03 09:51:00,,investigating,Uploaded orders include one duplicate conversion
+5004,104,2006,P1,reporting_freshness,2026-08-03 10:02:00,2026-08-03 10:09:00,2026-08-03 13:35:00,resolved,Video reporting is several hours behind delivery
+5005,101,2002,P3,pixel_validation,2026-08-01 15:25:00,2026-08-01 17:05:00,2026-08-02 11:10:00,resolved,Checkout pixel sends an unexpected parameter name
+5006,104,2006,P2,budget_pacing,2026-08-04 06:30:00,2026-08-04 07:01:00,,open,Campaign spend exceeded the configured daily budget
+5007,105,,P3,access,2026-08-02 12:00:00,2026-08-02 14:45:00,2026-08-02 16:30:00,resolved,New analyst cannot view advertiser reports
+5008,103,2005,P2,creative_review,2026-08-04 08:10:00,,,open,HTML5 creative is rejected with a click-tag validation error

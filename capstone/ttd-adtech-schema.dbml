@@ -1,0 +1,87 @@
+Project ttd_adtech_capstone {
+  database_type: 'PostgreSQL'
+  Note: 'A realistic, fictional AdTech support sandbox for PokéSQL Academy.'
+}
+
+Table advertisers {
+  advertiser_id int [pk, not null]
+  name varchar(120) [not null]
+  vertical varchar(80) [not null]
+  timezone varchar(60) [not null]
+  created_at timestamp [not null]
+}
+
+Table campaigns {
+  campaign_id int [pk, not null]
+  advertiser_id int [not null]
+  name varchar(140) [not null]
+  status varchar(30) [not null]
+  objective varchar(50) [not null]
+  daily_budget numeric(12,2) [not null]
+  start_date date [not null]
+  end_date date
+}
+
+Table campaign_status_history {
+  status_event_id int [pk, not null]
+  campaign_id int [not null]
+  status varchar(30) [not null]
+  changed_at timestamp [not null]
+  changed_by varchar(80) [not null]
+}
+
+Table ad_events_daily {
+  event_date date [not null]
+  campaign_id int [not null]
+  exchange_name varchar(60) [not null]
+  device_type varchar(30) [not null]
+  impressions int [not null]
+  clicks int [not null]
+  conversions int [not null]
+  spend_usd numeric(12,2) [not null]
+  ingested_at timestamp [not null]
+
+  indexes {
+    (event_date, campaign_id, exchange_name, device_type) [pk]
+  }
+}
+
+Table offline_conversions {
+  conversion_id int [pk, not null]
+  campaign_id int [not null]
+  event_at timestamp [not null]
+  uploaded_at timestamp [not null]
+  order_id varchar(80) [not null]
+  value_usd numeric(12,2) [not null]
+  attribution_status varchar(30) [not null]
+}
+
+Table support_tickets {
+  ticket_id int [pk, not null]
+  advertiser_id int [not null]
+  campaign_id int
+  priority varchar(10) [not null]
+  category varchar(60) [not null]
+  opened_at timestamp [not null]
+  first_response_at timestamp
+  resolved_at timestamp
+  status varchar(30) [not null]
+  summary varchar(240) [not null]
+}
+
+Table incidents {
+  incident_id int [pk, not null]
+  service_name varchar(80) [not null]
+  severity varchar(10) [not null]
+  started_at timestamp [not null]
+  resolved_at timestamp
+  customer_impact varchar(220) [not null]
+  root_cause varchar(220)
+}
+
+Ref: campaigns.advertiser_id > advertisers.advertiser_id
+Ref: campaign_status_history.campaign_id > campaigns.campaign_id
+Ref: ad_events_daily.campaign_id > campaigns.campaign_id
+Ref: offline_conversions.campaign_id > campaigns.campaign_id
+Ref: support_tickets.advertiser_id > advertisers.advertiser_id
+Ref: support_tickets.campaign_id > campaigns.campaign_id
