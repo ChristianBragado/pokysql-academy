@@ -1,0 +1,958 @@
+<div id="pokysql-course-v2">
+  <style>
+    #pokysql-course-v2 {
+      --pa-bg: var(--background, light-dark(#f6f8fc, #0d1118));
+      --pa-fg: var(--foreground, light-dark(#182033, #edf2ff));
+      --pa-card: var(--card, light-dark(#ffffff, #151c28));
+      --pa-card-fg: var(--card-foreground, light-dark(#182033, #edf2ff));
+      --pa-muted: var(--muted, light-dark(#edf1f7, #202a39));
+      --pa-muted-fg: var(--muted-foreground, light-dark(#5f6b7d, #aeb8c9));
+      --pa-border: var(--border, light-dark(#dce3ed, #2d394b));
+      --pa-primary: var(--primary, light-dark(#b25f00, #f2b94b));
+      --pa-primary-fg: var(--primary-foreground, light-dark(#ffffff, #211703));
+      --pa-accent: var(--viz-series-1, light-dark(#087f73, #6dd7c9));
+      --pa-accent-soft: color-mix(in srgb, var(--pa-accent) 12%, var(--pa-card));
+      --pa-primary-soft: color-mix(in srgb, var(--pa-primary) 12%, var(--pa-card));
+      --pa-danger: var(--destructive, light-dark(#b42318, #ff8d86));
+      color-scheme: light dark;
+      color: var(--pa-fg);
+      background:
+        radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--pa-primary) 9%, transparent), transparent 30%),
+        radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--pa-accent) 9%, transparent), transparent 34%),
+        var(--pa-bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      padding: 8px 0 18px;
+    }
+
+    #pokysql-course-v2 * { box-sizing: border-box; }
+    #pokysql-course-v2 button { font: inherit; }
+
+    #pokysql-course-v2 .pa-shell {
+      display: grid;
+      gap: 14px;
+    }
+
+    #pokysql-course-v2 .pa-top,
+    #pokysql-course-v2 .pa-path,
+    #pokysql-course-v2 .pa-lesson {
+      background: var(--pa-card);
+      color: var(--pa-card-fg);
+      border: 1px solid var(--pa-border);
+      border-radius: 18px;
+    }
+
+    #pokysql-course-v2 .pa-top {
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
+      align-items: center;
+      gap: 18px;
+    }
+
+    #pokysql-course-v2 .pa-eyebrow {
+      color: var(--pa-primary);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    #pokysql-course-v2 .pa-goal {
+      margin-top: 4px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    #pokysql-course-v2 .pa-subgoal {
+      color: var(--pa-muted-fg);
+      margin-top: 2px;
+      font-size: 12px;
+    }
+
+    #pokysql-course-v2 .pa-progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--pa-muted-fg);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    #pokysql-course-v2 .pa-progress {
+      height: 9px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--pa-muted);
+    }
+
+    #pokysql-course-v2 .pa-progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--pa-accent), var(--pa-primary));
+      transition: width .25s ease;
+    }
+
+    #pokysql-course-v2 .pa-layout {
+      display: grid;
+      grid-template-columns: minmax(210px, .36fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    #pokysql-course-v2 .pa-path { padding: 12px; }
+
+    #pokysql-course-v2 .pa-path-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 2px 3px 10px;
+      color: var(--pa-muted-fg);
+      font-size: 12px;
+    }
+
+    #pokysql-course-v2 .pa-modules { display: grid; gap: 6px; }
+
+    #pokysql-course-v2 .pa-module {
+      appearance: none;
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      background: transparent;
+      color: var(--pa-fg);
+      text-align: left;
+      padding: 9px;
+      display: grid;
+      grid-template-columns: 27px minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    #pokysql-course-v2 .pa-module:hover:not(:disabled),
+    #pokysql-course-v2 .pa-module:focus-visible:not(:disabled) {
+      border-color: var(--pa-primary);
+      outline: none;
+    }
+
+    #pokysql-course-v2 .pa-module.is-active {
+      background: var(--pa-primary-soft);
+      border-color: color-mix(in srgb, var(--pa-primary) 40%, var(--pa-border));
+    }
+
+    #pokysql-course-v2 .pa-module:disabled {
+      cursor: not-allowed;
+      color: var(--pa-muted-fg);
+      opacity: .66;
+    }
+
+    #pokysql-course-v2 .pa-module-num {
+      width: 27px;
+      height: 27px;
+      border: 1px solid var(--pa-border);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      color: var(--pa-muted-fg);
+    }
+
+    #pokysql-course-v2 .pa-module.is-done .pa-module-num {
+      border-color: var(--pa-accent);
+      background: var(--pa-accent-soft);
+      color: var(--pa-fg);
+    }
+
+    #pokysql-course-v2 .pa-module-name { font-size: 12px; font-weight: 500; }
+    #pokysql-course-v2 .pa-module-state { color: var(--pa-muted-fg); font-size: 11px; }
+
+    #pokysql-course-v2 .pa-lesson { overflow: hidden; }
+
+    #pokysql-course-v2 .pa-lesson-head {
+      padding: 16px 18px 13px;
+      border-bottom: 1px solid var(--pa-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    #pokysql-course-v2 .pa-lesson-title { margin-top: 3px; font-size: 18px; font-weight: 500; }
+    #pokysql-course-v2 .pa-lesson-outcome { color: var(--pa-muted-fg); margin-top: 3px; font-size: 12px; }
+
+    #pokysql-course-v2 .pa-step-dots { display: flex; gap: 5px; padding-top: 3px; }
+    #pokysql-course-v2 .pa-step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pa-muted); }
+    #pokysql-course-v2 .pa-step-dot.is-current { background: var(--pa-primary); }
+    #pokysql-course-v2 .pa-step-dot.is-past { background: var(--pa-accent); }
+
+    #pokysql-course-v2 .pa-stage {
+      min-height: 395px;
+      padding: 18px;
+      display: grid;
+      align-content: start;
+      gap: 14px;
+    }
+
+    #pokysql-course-v2 .pa-step-kicker { color: var(--pa-accent); font-size: 12px; font-weight: 500; }
+    #pokysql-course-v2 .pa-step-title { font-size: 22px; line-height: 1.25; font-weight: 500; max-width: 660px; }
+    #pokysql-course-v2 .pa-step-copy { color: var(--pa-muted-fg); max-width: 700px; }
+    #pokysql-course-v2 .pa-step-copy strong { color: var(--pa-fg); font-weight: 500; }
+
+    #pokysql-course-v2 .pa-demo {
+      border: 1px solid var(--pa-border);
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--pa-bg) 58%, var(--pa-card));
+      padding: 13px;
+      overflow: hidden;
+    }
+
+    #pokysql-course-v2 .pa-table-wrap { overflow-x: auto; }
+    #pokysql-course-v2 table { width: 100%; border-collapse: collapse; min-width: 420px; }
+    #pokysql-course-v2 th,
+    #pokysql-course-v2 td { padding: 8px 10px; border-bottom: 1px solid var(--pa-border); text-align: left; }
+    #pokysql-course-v2 th { color: var(--pa-primary); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+    #pokysql-course-v2 tr:last-child td { border-bottom: 0; }
+    #pokysql-course-v2 .pa-highlight-row td { background: var(--pa-accent-soft); }
+    #pokysql-course-v2 .pa-highlight-cell { box-shadow: inset 0 0 0 2px var(--pa-primary); }
+
+    #pokysql-course-v2 .pa-anatomy {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    #pokysql-course-v2 .pa-anatomy-item,
+    #pokysql-course-v2 .pa-term,
+    #pokysql-course-v2 .pa-join-card,
+    #pokysql-course-v2 .pa-flow-item {
+      border: 1px solid var(--pa-border);
+      border-radius: 10px;
+      padding: 9px;
+      background: var(--pa-card);
+    }
+
+    #pokysql-course-v2 .pa-anatomy-item strong,
+    #pokysql-course-v2 .pa-join-card strong,
+    #pokysql-course-v2 .pa-flow-item strong { display: block; font-weight: 500; }
+    #pokysql-course-v2 .pa-anatomy-item span,
+    #pokysql-course-v2 .pa-join-card span,
+    #pokysql-course-v2 .pa-flow-item span { color: var(--pa-muted-fg); font-size: 11px; }
+
+    #pokysql-course-v2 pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      border-radius: 11px;
+      padding: 12px;
+      background: light-dark(#172033, #090d13);
+      color: #eef4ff;
+      font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    #pokysql-course-v2 .pa-code-keyword { color: #73d6c9; }
+    #pokysql-course-v2 .pa-code-name { color: #f5c56b; }
+    #pokysql-course-v2 .pa-code-value { color: #c6a8ff; }
+
+    #pokysql-course-v2 .pa-run-row { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+    #pokysql-course-v2 .pa-button,
+    #pokysql-course-v2 .pa-choice {
+      appearance: none;
+      border: 1px solid var(--pa-border);
+      border-radius: 9px;
+      background: var(--pa-muted);
+      color: var(--pa-fg);
+      padding: 8px 11px;
+      cursor: pointer;
+    }
+
+    #pokysql-course-v2 .pa-button:hover,
+    #pokysql-course-v2 .pa-button:focus-visible,
+    #pokysql-course-v2 .pa-choice:hover,
+    #pokysql-course-v2 .pa-choice:focus-visible { border-color: var(--pa-primary); outline: none; }
+
+    #pokysql-course-v2 .pa-button.is-primary { background: var(--pa-primary); border-color: var(--pa-primary); color: var(--pa-primary-fg); }
+    #pokysql-course-v2 .pa-button:disabled { cursor: not-allowed; opacity: .5; }
+
+    #pokysql-course-v2 .pa-output { display: none; margin-top: 10px; }
+    #pokysql-course-v2 .pa-output.is-visible { display: block; }
+
+    #pokysql-course-v2 .pa-terms { display: flex; gap: 6px; flex-wrap: wrap; }
+    #pokysql-course-v2 .pa-term { padding: 4px 8px; color: var(--pa-muted-fg); font-size: 11px; border-radius: 999px; }
+
+    #pokysql-course-v2 .pa-joins,
+    #pokysql-course-v2 .pa-flow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+
+    #pokysql-course-v2 .pa-join-card.is-focus { border-color: var(--pa-accent); background: var(--pa-accent-soft); }
+
+    #pokysql-course-v2 .pa-choices { display: grid; gap: 8px; max-width: 720px; }
+    #pokysql-course-v2 .pa-choice { text-align: left; background: var(--pa-card); }
+    #pokysql-course-v2 .pa-choice.is-correct { border-color: var(--pa-accent); background: var(--pa-accent-soft); }
+    #pokysql-course-v2 .pa-choice.is-wrong { border-color: var(--pa-danger); }
+    #pokysql-course-v2 .pa-feedback { min-height: 22px; color: var(--pa-muted-fg); font-size: 12px; }
+    #pokysql-course-v2 .pa-feedback.is-good { color: var(--pa-accent); }
+    #pokysql-course-v2 .pa-feedback.is-bad { color: var(--pa-danger); }
+
+    #pokysql-course-v2 .pa-job-link {
+      border-left: 3px solid var(--pa-primary);
+      background: var(--pa-primary-soft);
+      padding: 9px 11px;
+      border-radius: 0 10px 10px 0;
+      color: var(--pa-muted-fg);
+      font-size: 12px;
+    }
+
+    #pokysql-course-v2 .pa-job-link strong { color: var(--pa-fg); font-weight: 500; }
+
+    #pokysql-course-v2 .pa-controls {
+      border-top: 1px solid var(--pa-border);
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    #pokysql-course-v2 .pa-controls-right { display: flex; gap: 8px; }
+    #pokysql-course-v2 .pa-reset { color: var(--pa-muted-fg); background: transparent; border: 0; padding: 6px; cursor: pointer; font-size: 11px; }
+
+    @media (max-width: 760px) {
+      #pokysql-course-v2 .pa-top { grid-template-columns: 1fr; }
+      #pokysql-course-v2 .pa-layout { grid-template-columns: 1fr; }
+      #pokysql-course-v2 .pa-modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #pokysql-course-v2 .pa-stage { min-height: 0; }
+    }
+
+    @media (max-width: 480px) {
+      #pokysql-course-v2 .pa-modules,
+      #pokysql-course-v2 .pa-anatomy,
+      #pokysql-course-v2 .pa-joins,
+      #pokysql-course-v2 .pa-flow { grid-template-columns: 1fr; }
+      #pokysql-course-v2 .pa-lesson-head { flex-direction: column; }
+      #pokysql-course-v2 .pa-controls { align-items: stretch; }
+      #pokysql-course-v2 .pa-controls-right { margin-left: auto; }
+    }
+  </style>
+
+  <div class="pa-shell">
+    <section class="pa-top" aria-label="Learning goal and progress">
+      <div>
+        <div class="pa-eyebrow">From first principles to production support</div>
+        <div class="pa-goal">Goal: Platform Support Analyst I at The Trade Desk</div>
+        <div class="pa-subgoal">Every challenge appears only after its prerequisite lesson.</div>
+      </div>
+      <div>
+        <div class="pa-progress-label"><span id="pa-progress-copy">0 of 12 badges</span><span id="pa-rank">New Trainer · 0 XP</span></div>
+        <div class="pa-progress"><span id="pa-progress-bar"></span></div>
+      </div>
+    </section>
+
+    <div class="pa-layout">
+      <nav class="pa-path" aria-label="Course modules">
+        <div class="pa-path-label"><span>Learning path</span><span>🔒 prerequisites</span></div>
+        <div id="pa-modules" class="pa-modules"></div>
+      </nav>
+
+      <main class="pa-lesson" aria-live="polite">
+        <header class="pa-lesson-head">
+          <div>
+            <div id="pa-module-eyebrow" class="pa-eyebrow"></div>
+            <div id="pa-module-title" class="pa-lesson-title"></div>
+            <div id="pa-module-outcome" class="pa-lesson-outcome"></div>
+          </div>
+          <div id="pa-step-dots" class="pa-step-dots" aria-label="Lesson progress"></div>
+        </header>
+        <section id="pa-stage" class="pa-stage"></section>
+        <footer class="pa-controls">
+          <button id="pa-reset" class="pa-reset" type="button">Restart course</button>
+          <div class="pa-controls-right">
+            <button id="pa-back" class="pa-button" type="button">Back</button>
+            <button id="pa-next" class="pa-button is-primary" type="button">Next</button>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const root = document.getElementById('pokysql-course-v2');
+      const $ = (selector) => root.querySelector(selector);
+
+      const pokemonRows = [
+        ['25', 'Pikachu', 'Electric', '112'],
+        ['1', 'Bulbasaur', 'Grass', '64'],
+        ['4', 'Charmander', 'Fire', '62'],
+        ['7', 'Squirtle', 'Water', '63']
+      ];
+
+      const tableHtml = (headers, rows, highlightRow = -1) => `
+        <div class="pa-table-wrap"><table><thead><tr>${headers.map((h) => `<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>${rows.map((row, index) => `<tr class="${index === highlightRow ? 'pa-highlight-row' : ''}">${row.map((cell) => `<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+
+      const modules = [
+        {
+          name: 'Pokédex Basics',
+          outcome: 'Understand databases, tables, rows, columns, and values.',
+          job: 'Support analysts must know what a record represents before trusting a query.',
+          steps: [
+            {
+              kicker: 'Begin here · no prior knowledge required',
+              title: 'A database is an organized collection of facts',
+              copy: 'Imagine a digital Pokédex. Instead of storing everything in one paragraph, it organizes facts so a computer can find them reliably. A <strong>database</strong> holds related collections of data; each collection is usually a <strong>table</strong>.',
+              demo: `<div class="pa-flow"><div class="pa-flow-item"><strong>Database</strong><span>Pokémon League records</span></div><div class="pa-flow-item"><strong>Table</strong><span>One organized collection, such as pokemon</span></div></div>`
+            },
+            {
+              kicker: 'See the structure',
+              title: 'Tables are made of rows and columns',
+              copy: 'A <strong>row</strong> is one thing—in this table, one Pokémon. A <strong>column</strong> is one kind of fact, such as name or type. A <strong>cell</strong> is one value at the intersection.',
+              demo: `${tableHtml(['pokemon_id', 'name', 'type', 'base_xp'], pokemonRows, 0)}<div class="pa-anatomy"><div class="pa-anatomy-item"><strong>Row</strong><span>Pikachu and all its facts</span></div><div class="pa-anatomy-item"><strong>Column</strong><span>type for every Pokémon</span></div><div class="pa-anatomy-item"><strong>Cell</strong><span>Electric is Pikachu's type</span></div></div>`
+            },
+            {
+              kicker: 'Mastery check · everything was just taught',
+              title: 'In the Pokémon table, what does one row represent?',
+              copy: 'Choose the answer that matches the table you just explored.',
+              check: {
+                choices: ['One Pokémon and its facts', 'One column name', 'The entire database'],
+                answer: 0,
+                explanation: 'Exactly. The table’s grain is one row per Pokémon.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'Your First Query',
+          outcome: 'Read a simple SELECT ... FROM query in plain English.',
+          job: 'Most support investigations begin by retrieving a small, relevant set of columns.',
+          steps: [
+            {
+              kicker: 'New tool · SELECT',
+              title: 'A query is a question you ask the database',
+              copy: '<strong>SELECT</strong> says which columns you want. <strong>FROM</strong> says which table contains them. SQL keywords are often capitalized for readability, but meaning matters more than capitalization.',
+              demo: `<pre><span class="pa-code-keyword">SELECT</span> <span class="pa-code-name">name, type</span>\n<span class="pa-code-keyword">FROM</span> <span class="pa-code-name">pokemon</span>;</pre><div class="pa-anatomy"><div class="pa-anatomy-item"><strong>SELECT name, type</strong><span>Show these two columns</span></div><div class="pa-anatomy-item"><strong>FROM pokemon</strong><span>Read the pokemon table</span></div><div class="pa-anatomy-item"><strong>;</strong><span>End the statement</span></div></div>`
+            },
+            {
+              kicker: 'Run before you are tested',
+              title: 'Watch your first query return a result set',
+              copy: 'A <strong>result set</strong> is the temporary table returned by a query. This query does not change the database—it only reads it.',
+              query: {
+                code: `<span class="pa-code-keyword">SELECT</span> <span class="pa-code-name">name, type</span>\n<span class="pa-code-keyword">FROM</span> <span class="pa-code-name">pokemon</span>;`,
+                headers: ['name', 'type'],
+                rows: pokemonRows.map((r) => [r[1], r[2]])
+              }
+            },
+            {
+              kicker: 'Mastery check',
+              title: 'What does SELECT name, type mean?',
+              copy: 'Translate the SQL into plain English.',
+              check: {
+                choices: ['Return the name and type columns', 'Delete the name and type columns', 'Sort every Pokémon by type'],
+                answer: 0,
+                explanation: 'Correct. SELECT chooses the columns returned by the query.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'Filter the Pokédex',
+          outcome: 'Use WHERE, comparison operators, and NULL safely.',
+          job: 'A support query should isolate the affected client, campaign, ticket, or time window.',
+          steps: [
+            {
+              kicker: 'New tool · WHERE',
+              title: 'WHERE keeps only rows that meet a condition',
+              copy: 'First SQL chooses columns with SELECT. Then it reads a table with FROM. <strong>WHERE</strong> narrows the rows. Text values use quotes.',
+              demo: `<pre><span class="pa-code-keyword">SELECT</span> <span class="pa-code-name">name, type</span>\n<span class="pa-code-keyword">FROM</span> <span class="pa-code-name">pokemon</span>\n<span class="pa-code-keyword">WHERE</span> <span class="pa-code-name">type</span> = <span class="pa-code-value">'Electric'</span>;</pre>`
+            },
+            {
+              kicker: 'Important edge case',
+              title: 'NULL means missing or unknown—not an empty string',
+              copy: 'Use <strong>IS NULL</strong> and <strong>IS NOT NULL</strong>. The expression = NULL does not work because SQL cannot prove equality to an unknown value.',
+              demo: `<pre><span class="pa-code-keyword">SELECT</span> <span class="pa-code-name">ticket_id</span>\n<span class="pa-code-keyword">FROM</span> <span class="pa-code-name">support_tickets</span>\n<span class="pa-code-keyword">WHERE</span> <span class="pa-code-name">resolved_at</span> <span class="pa-code-keyword">IS NULL</span>;</pre>`
+            },
+            {
+              kicker: 'Run the filtered query',
+              title: 'Ask for Electric Pokémon only',
+              copy: 'The result keeps the same selected columns but returns fewer rows.',
+              query: {
+                code: `<span class="pa-code-keyword">SELECT</span> <span class="pa-code-name">name, type</span>\n<span class="pa-code-keyword">FROM</span> <span class="pa-code-name">pokemon</span>\n<span class="pa-code-keyword">WHERE</span> <span class="pa-code-name">type</span> = <span class="pa-code-value">'Electric'</span>;`,
+                headers: ['name', 'type'],
+                rows: [['Pikachu', 'Electric']]
+              }
+            },
+            {
+              kicker: 'Mastery check',
+              title: 'Which condition finds unresolved tickets?',
+              copy: 'You have learned that unresolved tickets have no resolved_at value.',
+              check: {
+                choices: ['resolved_at = NULL', 'resolved_at IS NULL', 'resolved_at = 0'],
+                answer: 1,
+                explanation: 'Correct. IS NULL is the SQL-safe test for a missing value.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'Sort & Shape',
+          outcome: 'Use ORDER BY, LIMIT, DISTINCT, aliases, and CASE.',
+          job: 'Triage often means finding the newest, highest-priority, or most expensive records first.',
+          steps: [
+            {
+              kicker: 'New tools · ORDER BY and LIMIT',
+              title: 'Sort the rows, then choose how many to return',
+              copy: '<strong>ORDER BY base_xp DESC</strong> puts the highest XP first. <strong>LIMIT 2</strong> keeps the first two rows after sorting.',
+              demo: `<pre><span class="pa-code-keyword">SELECT</span> <span class="pa-code-name">name, base_xp</span>\n<span class="pa-code-keyword">FROM</span> <span class="pa-code-name">pokemon</span>\n<span class="pa-code-keyword">ORDER BY</span> <span class="pa-code-name">base_xp</span> <span class="pa-code-keyword">DESC</span>\n<span class="pa-code-keyword">LIMIT</span> <span class="pa-code-value">2</span>;</pre>`
+            },
+            {
+              kicker: 'Shape readable results',
+              title: 'DISTINCT removes duplicates; aliases rename output; CASE labels conditions',
+              copy: 'These tools make results easier to interpret without changing the underlying records.',
+              demo: `<pre><span class="pa-code-keyword">SELECT DISTINCT</span> <span class="pa-code-name">type</span>\n<span class="pa-code-keyword">FROM</span> <span class="pa-code-name">pokemon</span>\n<span class="pa-code-keyword">ORDER BY</span> <span class="pa-code-name">type</span>;</pre>`
+            },
+            {
+              kicker: 'Mastery check',
+              title: 'Which clause puts newest tickets first?',
+              copy: 'Assume opened_at stores the time each ticket was created.',
+              check: {
+                choices: ['ORDER BY opened_at DESC', 'WHERE opened_at DESC', 'LIMIT opened_at'],
+                answer: 0,
+                explanation: 'Correct. ORDER BY sorts, and DESC places the newest timestamps first.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'Relationships & Keys',
+          outcome: 'Understand primary keys, foreign keys, and table grain.',
+          job: 'Keys and grain prevent duplicated metrics and incorrect incident conclusions.',
+          steps: [
+            {
+              kicker: 'Before joins, learn why tables connect',
+              title: 'A primary key identifies one row uniquely',
+              copy: 'pokemon_id is the Pokémon table’s <strong>primary key</strong>. No two Pokémon rows should share it. A <strong>foreign key</strong> stores another table’s primary key so records can be related.',
+              demo: `<div class="pa-joins"><div class="pa-join-card is-focus"><strong>pokemon</strong><span>pokemon_id PK · name · type</span></div><div class="pa-join-card"><strong>captures</strong><span>capture_id PK · pokemon_id FK · trainer_id FK</span></div></div>`
+            },
+            {
+              kicker: 'The hidden question behind every query',
+              title: 'Grain means what one row represents',
+              copy: 'The pokemon table has one row per Pokémon. The captures table has one row per capture. Joining them can create several rows for one Pokémon if it was captured by several trainers.',
+              demo: `<div class="pa-flow"><div class="pa-flow-item"><strong>pokemon grain</strong><span>one row per Pokémon</span></div><div class="pa-flow-item"><strong>captures grain</strong><span>one row per capture event</span></div></div>`
+            },
+            {
+              kicker: 'Mastery check',
+              title: 'What does one captures row represent?',
+              copy: 'Use the grain stated in the lesson.',
+              check: {
+                choices: ['One Pokémon species', 'One capture event', 'One database'],
+                answer: 1,
+                explanation: 'Correct. Grain tells you what each row means before you combine or aggregate data.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'Join Tables',
+          outcome: 'Learn INNER JOIN and LEFT JOIN before choosing between them.',
+          job: 'Platform support constantly combines accounts, campaigns, tickets, and event tables.',
+          steps: [
+            {
+              kicker: 'New tool · JOIN',
+              title: 'A join combines related rows using matching keys',
+              copy: 'The ON clause states the relationship. Here, captures.trainer_id matches trainers.trainer_id. The join type decides what happens when no matching row exists.',
+              demo: `<pre><span class="pa-code-keyword">SELECT</span> <span class="pa-code-name">trainers.name, captures.pokemon_id</span>\n<span class="pa-code-keyword">FROM</span> <span class="pa-code-name">trainers</span>\n<span class="pa-code-keyword">JOIN</span> <span class="pa-code-name">captures</span>\n  <span class="pa-code-keyword">ON</span> <span class="pa-code-name">trainers.trainer_id = captures.trainer_id</span>;</pre>`
+            },
+            {
+              kicker: 'Join type 1 · INNER JOIN',
+              title: 'INNER JOIN keeps only matching rows',
+              copy: 'If Misty has a capture, she appears. If Brock has no capture, he is omitted. Use this when the question requires a match on both sides.',
+              demo: `<div class="pa-joins"><div class="pa-join-card is-focus"><strong>Kept</strong><span>Ash → Pikachu · Misty → Squirtle</span></div><div class="pa-join-card"><strong>Omitted</strong><span>Brock → no matching capture</span></div></div>`
+            },
+            {
+              kicker: 'Join type 2 · LEFT JOIN',
+              title: 'LEFT JOIN keeps every row from the left table',
+              copy: 'Starting FROM trainers means every trainer remains. Trainers without a capture receive NULL values for capture columns. Use this for questions containing “every,” “including zero,” or “even if none.”',
+              demo: `<div class="pa-joins"><div class="pa-join-card is-focus"><strong>Kept with match</strong><span>Ash → Pikachu · Misty → Squirtle</span></div><div class="pa-join-card is-focus"><strong>Kept without match</strong><span>Brock → NULL</span></div></div>`
+            },
+            {
+              kicker: 'Trade Desk translation',
+              title: 'The business question chooses the join',
+              copy: '“Tickets that have an account” can use INNER JOIN. “Every client, including clients with zero tickets” needs LEFT JOIN from clients to tickets.',
+              demo: `<div class="pa-joins"><div class="pa-join-card"><strong>INNER JOIN</strong><span>Only entities with matches</span></div><div class="pa-join-card is-focus"><strong>LEFT JOIN</strong><span>All left-side entities, even with no match</span></div></div>`
+            },
+            {
+              kicker: 'Mastery check · now the terms are familiar',
+              title: 'You need every trainer, including trainers with no captures. Which join should you start with?',
+              copy: 'Start FROM trainers and choose the join whose behavior matches “every trainer.”',
+              check: {
+                choices: ['INNER JOIN captures', 'LEFT JOIN captures', 'CROSS JOIN captures'],
+                answer: 1,
+                explanation: 'Correct. LEFT JOIN preserves every trainer and uses NULL when no capture matches.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'Summarize Data',
+          outcome: 'Use aggregates, GROUP BY, HAVING, and safe ratios.',
+          job: 'Support teams need ticket volume, SLA compliance, failure rate, and client-impact metrics.',
+          steps: [
+            {
+              kicker: 'New tools · aggregates',
+              title: 'Aggregate functions turn many rows into measurements',
+              copy: 'COUNT counts rows, SUM adds values, AVG finds a mean, and MIN/MAX find extremes. GROUP BY chooses the category for each measurement.',
+              demo: `<pre><span class="pa-code-keyword">SELECT</span> <span class="pa-code-name">type, COUNT(*) AS pokemon_count</span>\n<span class="pa-code-keyword">FROM</span> <span class="pa-code-name">pokemon</span>\n<span class="pa-code-keyword">GROUP BY</span> <span class="pa-code-name">type</span>;</pre>`
+            },
+            {
+              kicker: 'Rows versus groups',
+              title: 'WHERE filters rows; HAVING filters completed groups',
+              copy: 'Use WHERE before grouping. Use HAVING when the condition depends on an aggregate such as COUNT(*) or SUM(cost).',
+              demo: `<pre><span class="pa-code-keyword">HAVING</span> <span class="pa-code-name">COUNT(*)</span> &gt; <span class="pa-code-value">5</span></pre>`
+            },
+            {
+              kicker: 'Mastery check',
+              title: 'Which clause keeps only priorities with more than five tickets?',
+              copy: 'The condition depends on COUNT(*), so it applies after grouping.',
+              check: {
+                choices: ['WHERE COUNT(*) > 5', 'HAVING COUNT(*) > 5', 'ORDER BY COUNT(*) > 5'],
+                answer: 1,
+                explanation: 'Correct. HAVING filters the grouped result after COUNT is calculated.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'Advanced Patterns',
+          outcome: 'Use CTEs and window functions for readable investigations.',
+          job: 'Latest status, deduplication, rankings, and time comparisons are common support patterns.',
+          steps: [
+            {
+              kicker: 'New tool · CTE',
+              title: 'A CTE gives one step of a complex query a name',
+              copy: 'WITH creates a temporary named result used by the query that follows. It improves readability and makes investigation logic easier to validate.',
+              demo: `<pre><span class="pa-code-keyword">WITH</span> <span class="pa-code-name">open_tickets</span> <span class="pa-code-keyword">AS</span> (\n  <span class="pa-code-keyword">SELECT</span> * <span class="pa-code-keyword">FROM</span> support_tickets\n  <span class="pa-code-keyword">WHERE</span> resolved_at <span class="pa-code-keyword">IS NULL</span>\n)\n<span class="pa-code-keyword">SELECT</span> * <span class="pa-code-keyword">FROM</span> open_tickets;</pre>`
+            },
+            {
+              kicker: 'New tool · window function',
+              title: 'ROW_NUMBER can identify the latest row per entity',
+              copy: 'PARTITION BY restarts numbering for each campaign. ORDER BY event_at DESC numbers the newest event as 1.',
+              demo: `<pre><span class="pa-code-keyword">ROW_NUMBER()</span> <span class="pa-code-keyword">OVER</span> (\n  <span class="pa-code-keyword">PARTITION BY</span> campaign_id\n  <span class="pa-code-keyword">ORDER BY</span> event_at <span class="pa-code-keyword">DESC</span>\n)</pre>`
+            },
+            {
+              kicker: 'Mastery check',
+              title: 'Which value identifies the newest event after numbering newest-first?',
+              copy: 'ROW_NUMBER starts at 1 inside each campaign.',
+              check: {
+                choices: ['row_number = 0', 'row_number = 1', 'row_number IS NULL'],
+                answer: 1,
+                explanation: 'Correct. The newest row receives row_number 1 in each campaign partition.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'Support Investigations',
+          outcome: 'Validate data, calculate SLAs, and debug incorrect results.',
+          job: 'This is the core operating loop for platform incidents and client escalations.',
+          steps: [
+            {
+              kicker: 'Investigation loop',
+              title: 'Define the grain, scope, and expected result before querying',
+              copy: 'Write down the affected entity, exact time window, timezone, expected behavior, and comparison source. Then query the smallest useful slice.',
+              demo: `<div class="pa-flow"><div class="pa-flow-item"><strong>1 · Scope</strong><span>client · campaign · time · timezone</span></div><div class="pa-flow-item"><strong>2 · Query</strong><span>smallest relevant data slice</span></div><div class="pa-flow-item"><strong>3 · Validate</strong><span>counts · duplicates · freshness · grain</span></div><div class="pa-flow-item"><strong>4 · Communicate</strong><span>finding · impact · next action</span></div></div>`
+            },
+            {
+              kicker: 'Common failure mode',
+              title: 'A join can inflate metrics without producing an error',
+              copy: 'If both sides contain several rows per join key, one row can match many rows. Compare row counts before and after joins and aggregate each table to the needed grain first.',
+              demo: `<div class="pa-joins"><div class="pa-join-card"><strong>Before join</strong><span>10 campaigns</span></div><div class="pa-join-card is-focus"><strong>After join</strong><span>40 event rows—correct only if that grain is intended</span></div></div>`
+            },
+            {
+              kicker: 'Mastery check',
+              title: 'A join unexpectedly doubles SUM(cost). What should you inspect first?',
+              copy: 'The query runs, but the metric may be wrong.',
+              check: {
+                choices: ['Join cardinality and table grain', 'Whether keywords are uppercase', 'The result font size'],
+                answer: 0,
+                explanation: 'Correct. Validate grain and one-to-many or many-to-many relationships before trusting the sum.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'Procedures & Dialects',
+          outcome: 'Execute stored procedures safely and recognize SQL dialect differences.',
+          job: 'The role explicitly includes executing stored procedures; Vertica and SSMS are listed as useful experience.',
+          steps: [
+            {
+              kicker: 'Stored procedures',
+              title: 'A stored procedure is a named database routine',
+              copy: 'It can read or change data. Before execution, verify the environment, procedure name, parameters, permissions, expected side effects, validation query, and rollback or escalation path.',
+              demo: `<div class="pa-flow"><div class="pa-flow-item"><strong>Before</strong><span>scope · parameters · current state</span></div><div class="pa-flow-item"><strong>During</strong><span>CALL or EXEC · capture outcome</span></div><div class="pa-flow-item"><strong>After</strong><span>validate · document · escalate if needed</span></div><div class="pa-flow-item"><strong>Safety</strong><span>never guess production parameters</span></div></div>`
+            },
+            {
+              kicker: 'Dialect awareness',
+              title: 'The idea stays stable while syntax can change',
+              copy: 'PostgreSQL often uses LIMIT; SQL Server commonly uses TOP; Vertica is optimized for large analytical workloads. Learn portable SQL first, then verify dialect-specific syntax.',
+              demo: `<div class="pa-anatomy"><div class="pa-anatomy-item"><strong>PostgreSQL</strong><span>LIMIT · ILIKE · DATE_TRUNC</span></div><div class="pa-anatomy-item"><strong>SQL Server</strong><span>TOP · EXEC · DATEADD</span></div><div class="pa-anatomy-item"><strong>Vertica</strong><span>analytical SQL · CALL · projections</span></div></div>`
+            },
+            {
+              kicker: 'Mastery check',
+              title: 'What should happen before a production procedure is executed?',
+              copy: 'Choose the operationally safe answer.',
+              check: {
+                choices: ['Verify environment, parameters, effects, and validation plan', 'Run it first and inspect later', 'Guess missing parameters from memory'],
+                answer: 0,
+                explanation: 'Correct. Safe execution starts with verified scope, parameters, impact, and a way to confirm success.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'AdTech Data',
+          outcome: 'Reason about campaigns, impressions, clicks, conversions, spend, and attribution.',
+          job: 'The posting expects AdTech fluency alongside SQL and troubleshooting.',
+          steps: [
+            {
+              kicker: 'Event data has a grain',
+              title: 'One ad event is not the same as one campaign',
+              copy: 'A campaign can generate millions of impression rows. Always identify whether a table is one row per campaign, per event, per user, or per reporting interval before joining.',
+              demo: `<div class="pa-flow"><div class="pa-flow-item"><strong>Campaign</strong><span>budget and targeting configuration</span></div><div class="pa-flow-item"><strong>Impression</strong><span>an ad was served</span></div><div class="pa-flow-item"><strong>Click</strong><span>a user interacted</span></div><div class="pa-flow-item"><strong>Conversion</strong><span>a measured outcome occurred</span></div></div>`
+            },
+            {
+              kicker: 'Discrepancy thinking',
+              title: 'Differences can come from time, definitions, identity, or data freshness',
+              copy: 'Before declaring a platform defect, compare timezone, attribution window, event deduplication, filters, report freshness, and metric definitions.',
+              demo: `<div class="pa-terms"><span class="pa-term">timezone</span><span class="pa-term">attribution window</span><span class="pa-term">deduplication</span><span class="pa-term">filters</span><span class="pa-term">freshness</span><span class="pa-term">metric definition</span></div>`
+            },
+            {
+              kicker: 'Mastery check',
+              title: 'A client reports fewer conversions than your dashboard. What should you compare first?',
+              copy: 'Choose the answer that establishes whether both sides measure the same thing.',
+              check: {
+                choices: ['Definitions, time window, timezone, filters, and attribution window', 'Only the campaign name', 'Only whether SQL keywords are uppercase'],
+                answer: 0,
+                explanation: 'Correct. Align scope and definitions before treating a discrepancy as a defect.'
+              }
+            }
+          ]
+        },
+        {
+          name: 'Trade Desk Simulation',
+          outcome: 'Combine SQL, troubleshooting, safety, and client communication under time pressure.',
+          job: 'The final badge mirrors the role: investigate accurately, act safely, and explain clearly.',
+          steps: [
+            {
+              kicker: 'Interview framework',
+              title: 'Say your assumptions before writing SQL',
+              copy: 'Clarify table grain, keys, NULL behavior, time boundaries, timezone, and whether the task is read-only. Interviewers can then follow your reasoning even before the query is complete.',
+              demo: `<div class="pa-flow"><div class="pa-flow-item"><strong>Clarify</strong><span>what exactly are we measuring?</span></div><div class="pa-flow-item"><strong>Plan</strong><span>tables · keys · grain · filters</span></div><div class="pa-flow-item"><strong>Query</strong><span>build and validate in steps</span></div><div class="pa-flow-item"><strong>Explain</strong><span>finding · confidence · next action</span></div></div>`
+            },
+            {
+              kicker: 'Final communication pattern',
+              title: 'Translate the query into impact and action',
+              copy: 'A strong update states what happened, who or what is affected, the evidence, any uncertainty, the immediate remedy, and the owner of the next step.',
+              demo: `<div class="pa-job-link"><strong>Example:</strong> Delivery continued, but reporting events arrived approximately three hours late. The issue affects dashboard freshness, not campaign serving. Engineering is investigating ingestion latency; the next update is scheduled for 2:00 PM PT.</div>`
+            },
+            {
+              kicker: 'Readiness gate',
+              title: 'What is the strongest first response to a spend discrepancy?',
+              copy: 'Use the complete investigation framework you have built.',
+              check: {
+                choices: ['Clarify scope and definitions, inspect grain and freshness, then query and validate', 'Immediately execute a production procedure', 'Assume the dashboard is wrong'],
+                answer: 0,
+                explanation: 'Correct. That sequence combines analytical rigor, operational safety, and clear support judgment.'
+              }
+            }
+          ]
+        }
+      ];
+
+      const storageKey = 'pokysql-course-progress-v2';
+      let state;
+      try {
+        state = JSON.parse(localStorage.getItem(storageKey) || '{}');
+      } catch (error) {
+        state = {};
+      }
+      state.completed = Array.isArray(state.completed) ? state.completed : [];
+      state.passed = Array.isArray(state.passed) ? state.passed : [];
+      state.module = Number.isInteger(state.module) ? Math.min(state.module, modules.length - 1) : 0;
+      state.step = Number.isInteger(state.step) ? state.step : 0;
+      state.xp = Number.isFinite(state.xp) ? state.xp : state.completed.length * 100;
+
+      const save = () => {
+        try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (error) {}
+      };
+
+      const unlocked = (index) => index === 0 || state.completed.includes(index - 1);
+
+      const renderProgress = () => {
+        const complete = state.completed.length;
+        const pct = Math.round((complete / modules.length) * 100);
+        $('#pa-progress-copy').textContent = `${complete} of ${modules.length} badges`;
+        $('#pa-progress-bar').style.width = `${pct}%`;
+        const rank = complete === modules.length ? 'SQL League Champion' : complete >= 9 ? 'Support Ace' : complete >= 5 ? 'Query Trainer' : complete >= 1 ? 'Rising Trainer' : 'New Trainer';
+        $('#pa-rank').textContent = `${rank} · ${state.xp} XP`;
+      };
+
+      const renderModules = () => {
+        const host = $('#pa-modules');
+        host.innerHTML = '';
+        modules.forEach((module, index) => {
+          const button = document.createElement('button');
+          const isDone = state.completed.includes(index);
+          const isUnlocked = unlocked(index);
+          button.type = 'button';
+          button.className = `pa-module${index === state.module ? ' is-active' : ''}${isDone ? ' is-done' : ''}`;
+          button.disabled = !isUnlocked;
+          button.setAttribute('aria-label', `${module.name}: ${isDone ? 'complete' : isUnlocked ? 'available' : 'locked'}`);
+          button.innerHTML = `<span class="pa-module-num">${isDone ? '✓' : String(index + 1).padStart(2, '0')}</span><span class="pa-module-name">${module.name}</span><span class="pa-module-state">${isDone ? 'done' : isUnlocked ? 'open' : '🔒'}</span>`;
+          button.addEventListener('click', () => {
+            state.module = index;
+            state.step = 0;
+            save();
+            renderAll();
+          });
+          host.appendChild(button);
+        });
+      };
+
+      const renderDots = () => {
+        const host = $('#pa-step-dots');
+        host.innerHTML = '';
+        modules[state.module].steps.forEach((step, index) => {
+          const dot = document.createElement('span');
+          dot.className = `pa-step-dot${index === state.step ? ' is-current' : index < state.step ? ' is-past' : ''}`;
+          host.appendChild(dot);
+        });
+      };
+
+      const renderQuery = (query) => `
+        <div class="pa-demo">
+          <pre>${query.code}</pre>
+          <div class="pa-run-row"><button class="pa-button is-primary pa-run" type="button">Run query</button><span class="pa-feedback">Read-only practice query</span></div>
+          <div class="pa-output">${tableHtml(query.headers, query.rows)}</div>
+        </div>`;
+
+      const renderCheck = (check) => `
+        <div class="pa-choices">${check.choices.map((choice, index) => `<button class="pa-choice" type="button" data-choice="${index}">${choice}</button>`).join('')}</div>
+        <div class="pa-feedback" id="pa-feedback"></div>
+        <div id="pa-claim-wrap"></div>`;
+
+      const bindStageInteractions = (step) => {
+        const run = $('.pa-run');
+        if (run) {
+          run.addEventListener('click', () => {
+            const output = $('.pa-output');
+            output.classList.add('is-visible');
+            run.textContent = 'Query ran ✓';
+            run.disabled = true;
+          });
+        }
+
+        if (step.check) {
+          root.querySelectorAll('.pa-choice').forEach((button) => {
+            button.addEventListener('click', () => {
+              const selected = Number(button.dataset.choice);
+              const feedback = $('#pa-feedback');
+              root.querySelectorAll('.pa-choice').forEach((choiceButton) => {
+                choiceButton.disabled = true;
+              });
+              if (selected === step.check.answer) {
+                button.classList.add('is-correct');
+                feedback.textContent = step.check.explanation;
+                feedback.className = 'pa-feedback is-good';
+                if (!state.passed.includes(state.module)) state.passed.push(state.module);
+                const isDone = state.completed.includes(state.module);
+                $('#pa-claim-wrap').innerHTML = isDone ? '<span class="pa-feedback is-good">Badge already earned. Revisit anytime.</span>' : '<button id="pa-claim" class="pa-button is-primary" type="button">Claim badge and unlock next lesson</button>';
+                const claim = $('#pa-claim');
+                if (claim) {
+                  claim.addEventListener('click', () => {
+                    if (!state.completed.includes(state.module)) {
+                      state.completed.push(state.module);
+                      state.xp += 100;
+                    }
+                    if (state.module < modules.length - 1) {
+                      state.module += 1;
+                      state.step = 0;
+                    }
+                    save();
+                    renderAll();
+                  });
+                }
+                save();
+              } else {
+                button.classList.add('is-wrong');
+                const correct = root.querySelector(`.pa-choice[data-choice="${step.check.answer}"]`);
+                if (correct) correct.classList.add('is-correct');
+                feedback.textContent = 'Not yet. Review the highlighted answer, then go Back through the lesson before retrying.';
+                feedback.className = 'pa-feedback is-bad';
+              }
+            });
+          });
+        }
+      };
+
+      const renderLesson = () => {
+        const module = modules[state.module];
+        state.step = Math.min(state.step, module.steps.length - 1);
+        const step = module.steps[state.step];
+        $('#pa-module-eyebrow').textContent = `Badge ${String(state.module + 1).padStart(2, '0')} · Step ${state.step + 1} of ${module.steps.length}`;
+        $('#pa-module-title').textContent = module.name;
+        $('#pa-module-outcome').textContent = module.outcome;
+        renderDots();
+
+        let body = `<div class="pa-step-kicker">${step.kicker}</div><div class="pa-step-title">${step.title}</div><div class="pa-step-copy">${step.copy}</div>`;
+        if (step.demo) body += `<div class="pa-demo">${step.demo}</div>`;
+        if (step.query) body += renderQuery(step.query);
+        if (step.check) body += renderCheck(step.check);
+        body += `<div class="pa-job-link"><strong>Why this matters at The Trade Desk:</strong> ${module.job}</div>`;
+        $('#pa-stage').innerHTML = body;
+
+        $('#pa-back').disabled = state.step === 0;
+        $('#pa-next').style.display = step.check ? 'none' : '';
+        $('#pa-next').disabled = state.step >= module.steps.length - 1;
+        bindStageInteractions(step);
+      };
+
+      const renderAll = () => {
+        renderProgress();
+        renderModules();
+        renderLesson();
+        save();
+      };
+
+      $('#pa-back').addEventListener('click', () => {
+        if (state.step > 0) {
+          state.step -= 1;
+          renderAll();
+        }
+      });
+
+      $('#pa-next').addEventListener('click', () => {
+        const steps = modules[state.module].steps;
+        if (state.step < steps.length - 1) {
+          state.step += 1;
+          renderAll();
+        }
+      });
+
+      $('#pa-reset').addEventListener('click', () => {
+        state = { completed: [], passed: [], module: 0, step: 0, xp: 0 };
+        save();
+        renderAll();
+      });
+
+      if (!unlocked(state.module)) {
+        state.module = 0;
+        state.step = 0;
+      }
+      renderAll();
+    })();
+  </script>
+</div>

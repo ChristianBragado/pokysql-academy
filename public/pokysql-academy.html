@@ -1,180 +1,22 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>pokysql-academy.html</title>
-<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+<title>Pokysql Course V2</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe id="codex-visualization" sandbox="allow-scripts" scrolling="no" referrerpolicy="no-referrer" title="pokysql-academy.html" data-srcdoc="&lt;!doctype html&gt;
-&lt;html lang=&quot;en-US&quot;&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Pokysql Course V2" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
-&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'&quot;&gt;
-&lt;title&gt;pokysql-academy.html&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;script&gt;(() =&gt; {
-  const root = document.documentElement;
-  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
-  const apply = Reflect.apply;
-  const isArray = Array.isArray;
-  const parentWindow = globalThis.parent;
-  /**
-   * @param {object} prototype
-   * @param {string} property
-   */
-  const getPrototypeGetter = (prototype, property) =&gt; {
-    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
-    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
-    if (getter == null) {
-      throw new Error(`Missing ${property} getter`);
-    }
-    return getter;
-  };
-  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
-  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
-  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
-  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
-  const addHostMessageListener = MessagePort.prototype.addEventListener;
-  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
-  const postHostMessage = MessagePort.prototype.postMessage;
-  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
-  const startHostPort = MessagePort.prototype.start;
-  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
-  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
-  /** @type {MessagePort | null} */
-  let hostPort = null;
-  const postToHost = (type, payload) =&gt; {
-    if (hostPort != null) {
-      apply(postHostMessage, hostPort, [{ type, ...payload }]);
-    }
-  };
-  const openExternal = ({ href }) =&gt; {
-    if (globalThis.navigator.userActivation?.isActive === true) {
-      postToHost(&quot;open-external&quot;, { href });
-    }
-  };
-  const sendFollowUpMessage = ({ context, prompt, title }) =&gt; {
-    if (globalThis.navigator.userActivation?.isActive === true) {
-      postToHost(&quot;follow-up&quot;, { context, prompt, title });
-    }
-    return Promise.resolve();
-  };
-  const syncTheme = () =&gt; {
-    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
-    root.dataset.theme = theme;
-    globalThis.openai = {
-      ...globalThis.openai,
-      openExternal,
-      sendFollowUpMessage,
-      theme,
-      visualizationStyleVariables: {},
-      visualizationTheme: theme,
-    };
-    globalThis.dispatchEvent(
-      new CustomEvent(&quot;openai:set_globals&quot;, {
-        detail: { globals: globalThis.openai },
-      }),
-    );
-  };
-  const sendHeight = () =&gt; {
-    postToHost(&quot;height&quot;, {
-      height: Math.ceil(
-        Math.max(
-          document.body.scrollHeight,
-          document.body.getBoundingClientRect().height,
-        ),
-      ),
-    });
-  };
-
-  globalThis.addEventListener(
-    &quot;message&quot;,
-    (event) =&gt; {
-      const data = apply(getMessageData, event, []);
-      const ports = apply(getMessagePorts, event, []);
-      const source = apply(getMessageSource, event, []);
-      if (
-        source !== parentWindow ||
-        typeof data !== &quot;object&quot; ||
-        data == null ||
-        data.type !== &quot;codex-visualization-initialize&quot; ||
-        !isArray(ports) ||
-        ports.length !== 1
-      ) {
-        return;
-      }
-      apply(stopMessagePropagation, event, []);
-      const nextHostPort = ports[0];
-      try {
-        apply(addHostMessageListener, nextHostPort, [
-          &quot;message&quot;,
-          (event) =&gt; {
-            const data = apply(getMessageData, event, []);
-            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
-              sendHeight();
-            }
-          },
-        ]);
-        apply(startHostPort, nextHostPort, []);
-      } catch {
-        return;
-      }
-      hostPort = nextHostPort;
-      sendHeight();
-    },
-    { capture: true },
-  );
-  document.currentScript?.remove();
-  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
-  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
-    if (event.defaultPrevented) {
-      return;
-    }
-    let element = null;
-    if (event.target instanceof globalThis.Element) {
-      element = event.target;
-    } else if (event.target instanceof globalThis.Node) {
-      element = event.target.parentElement;
-    }
-    const link = element?.closest(&quot;a[href]&quot;);
-    const href = link?.getAttribute(&quot;href&quot;);
-    if (href == null) {
-      return;
-    }
-    if (href.startsWith(&quot;#&quot;)) {
-      let id;
-      try {
-        id = decodeURIComponent(href.slice(1));
-      } catch {
-        return;
-      }
-      const target = id.length === 0 ? root : document.getElementById(id);
-      if (
-        target == null ||
-        globalThis.navigator.userActivation?.isActive !== true
-      ) {
-        return;
-      }
-      event.preventDefault();
-      postToHost(&quot;scroll-to&quot;, {
-        top: target.getBoundingClientRect().top + globalThis.scrollY,
-      });
-      return;
-    }
-    event.preventDefault();
-    openExternal({ href });
-  });
-  new ResizeObserver(sendHeight).observe(document.body);
-  syncTheme();
-})();
-&lt;/script&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Pokysql Course V2&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(
@@ -285,7 +127,7 @@
   --radius-2xl: calc(var(--radius) * 1.6);
   --radius-full: 9999px;
   --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
-  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E&quot;);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
 
   /* Legacy aliases; not part of the current agent contract. */
   --viz-bg: transparent;
@@ -1040,553 +882,966 @@ svg.lucide {
 }
 
 html&gt;body{padding:0}&lt;/style&gt;
-&lt;script&gt;
-(() =&gt; {
-  const root = document.documentElement;
-  const initialGlobals =
-    globalThis.__codexVisualizationInitialGlobals ?? globalThis.openai;
-  delete globalThis.__codexVisualizationInitialGlobals;
-  let appliedProperties = [];
-
-  const applyHostStyleVariables = (styleVariables) =&gt; {
-    if (styleVariables == null || typeof styleVariables !== &quot;object&quot;) {
-      return;
-    }
-    for (const property of appliedProperties) {
-      root.style.removeProperty(property);
-    }
-    appliedProperties = [];
-    for (const [property, value] of Object.entries(styleVariables)) {
-      if (property.startsWith(&quot;--&quot;) &amp;&amp; typeof value === &quot;string&quot;) {
-        root.style.setProperty(property, value);
-        appliedProperties.push(property);
-      }
-    }
-  };
-
-  const syncHostStyles = (globals) =&gt; {
-    applyHostStyleVariables(globals?.visualizationStyleVariables);
-  };
-
-  syncHostStyles(initialGlobals);
-  globalThis.addEventListener(&quot;openai:set_globals&quot;, (event) =&gt; {
-    syncHostStyles(event.detail?.globals);
-  });
-})();
-&lt;/script&gt;
-
-&lt;div id=&quot;pokysql-academy&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;pokysql-course-v2&quot;&gt;
   &lt;style&gt;
-    #pokysql-academy {
-      --pk-background: var(--background, #0d1117);
-      --pk-foreground: var(--foreground, #f3f6fb);
-      --pk-card: var(--card, #151b25);
-      --pk-card-foreground: var(--card-foreground, #f3f6fb);
-      --pk-muted: var(--muted, #202937);
-      --pk-muted-foreground: var(--muted-foreground, #aab5c7);
-      --pk-border: var(--border, #2b3647);
-      --pk-primary: var(--primary, #f3b63f);
-      --pk-primary-foreground: var(--primary-foreground, #17120a);
-      --pk-accent: var(--accent, #65d6c7);
-      --pk-danger: var(--destructive, #ef7b79);
-      --pk-series-1: var(--viz-series-1, #65d6c7);
-      --pk-series-2: var(--viz-series-2, #f3b63f);
-      --pk-series-3: var(--viz-series-3, #b38cff);
-      --pk-series-4: var(--viz-series-4, #78a9ff);
-      color: var(--pk-foreground);
-      background: var(--pk-background);
+    #pokysql-course-v2 {
+      --pa-bg: var(--background, light-dark(#f6f8fc, #0d1118));
+      --pa-fg: var(--foreground, light-dark(#182033, #edf2ff));
+      --pa-card: var(--card, light-dark(#ffffff, #151c28));
+      --pa-card-fg: var(--card-foreground, light-dark(#182033, #edf2ff));
+      --pa-muted: var(--muted, light-dark(#edf1f7, #202a39));
+      --pa-muted-fg: var(--muted-foreground, light-dark(#5f6b7d, #aeb8c9));
+      --pa-border: var(--border, light-dark(#dce3ed, #2d394b));
+      --pa-primary: var(--primary, light-dark(#b25f00, #f2b94b));
+      --pa-primary-fg: var(--primary-foreground, light-dark(#ffffff, #211703));
+      --pa-accent: var(--viz-series-1, light-dark(#087f73, #6dd7c9));
+      --pa-accent-soft: color-mix(in srgb, var(--pa-accent) 12%, var(--pa-card));
+      --pa-primary-soft: color-mix(in srgb, var(--pa-primary) 12%, var(--pa-card));
+      --pa-danger: var(--destructive, light-dark(#b42318, #ff8d86));
+      color-scheme: light dark;
+      color: var(--pa-fg);
+      background:
+        radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--pa-primary) 9%, transparent), transparent 30%),
+        radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--pa-accent) 9%, transparent), transparent 34%),
+        var(--pa-bg);
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;
       font-size: 14px;
-      line-height: 1.45;
-      padding: 4px 0 8px;
+      line-height: 1.5;
+      padding: 8px 0 18px;
     }
 
-    #pokysql-academy * { box-sizing: border-box; }
+    #pokysql-course-v2 * { box-sizing: border-box; }
+    #pokysql-course-v2 button { font: inherit; }
 
-    #pokysql-academy .pk-shell {
+    #pokysql-course-v2 .pa-shell {
       display: grid;
       gap: 14px;
     }
 
-    #pokysql-academy .pk-topbar,
-    #pokysql-academy .pk-panel {
-      background: var(--pk-card);
-      border: 1px solid var(--pk-border);
-      border-radius: 16px;
+    #pokysql-course-v2 .pa-top,
+    #pokysql-course-v2 .pa-path,
+    #pokysql-course-v2 .pa-lesson {
+      background: var(--pa-card);
+      color: var(--pa-card-fg);
+      border: 1px solid var(--pa-border);
+      border-radius: 18px;
     }
 
-    #pokysql-academy .pk-topbar {
-      padding: 15px 18px;
-      display: flex;
-      justify-content: space-between;
+    #pokysql-course-v2 .pa-top {
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
       align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      gap: 18px;
     }
 
-    #pokysql-academy .pk-kicker {
-      color: var(--pk-primary);
+    #pokysql-course-v2 .pa-eyebrow {
+      color: var(--pa-primary);
+      font-size: 11px;
       letter-spacing: .12em;
       text-transform: uppercase;
-      font-size: 11px;
       font-weight: 500;
     }
 
-    #pokysql-academy .pk-level {
-      color: var(--pk-muted-foreground);
-      font-size: 13px;
+    #pokysql-course-v2 .pa-goal {
+      margin-top: 4px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    #pokysql-course-v2 .pa-subgoal {
+      color: var(--pa-muted-fg);
       margin-top: 2px;
+      font-size: 12px;
     }
 
-    #pokysql-academy .pk-level strong { color: var(--pk-foreground); }
-
-    #pokysql-academy .pk-progress-wrap {
-      min-width: 220px;
-      flex: 1;
-      max-width: 420px;
-    }
-
-    #pokysql-academy .pk-progress-label {
+    #pokysql-course-v2 .pa-progress-label {
       display: flex;
       justify-content: space-between;
-      color: var(--pk-muted-foreground);
+      gap: 10px;
+      color: var(--pa-muted-fg);
       font-size: 12px;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
-    #pokysql-academy .pk-progress {
-      height: 8px;
-      background: var(--pk-muted);
-      border-radius: 999px;
+    #pokysql-course-v2 .pa-progress {
+      height: 9px;
       overflow: hidden;
+      border-radius: 999px;
+      background: var(--pa-muted);
     }
 
-    #pokysql-academy .pk-progress &gt; span {
+    #pokysql-course-v2 .pa-progress span {
       display: block;
-      height: 100%;
       width: 0;
-      background: linear-gradient(90deg, var(--pk-accent), var(--pk-primary));
+      height: 100%;
       border-radius: inherit;
+      background: linear-gradient(90deg, var(--pa-accent), var(--pa-primary));
       transition: width .25s ease;
     }
 
-    #pokysql-academy .pk-grid {
+    #pokysql-course-v2 .pa-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      grid-template-columns: minmax(210px, .36fr) minmax(0, 1fr);
       gap: 14px;
+      align-items: start;
     }
 
-    #pokysql-academy .pk-panel { padding: 16px; }
+    #pokysql-course-v2 .pa-path { padding: 12px; }
 
-    #pokysql-academy .pk-panel-head {
+    #pokysql-course-v2 .pa-path-label {
       display: flex;
-      align-items: flex-start;
       justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    #pokysql-academy .pk-panel-head strong { font-weight: 500; }
-
-    #pokysql-academy .pk-panel-head span {
-      color: var(--pk-muted-foreground);
+      align-items: center;
+      gap: 8px;
+      padding: 2px 3px 10px;
+      color: var(--pa-muted-fg);
       font-size: 12px;
     }
 
-    #pokysql-academy .pk-map {
+    #pokysql-course-v2 .pa-modules { display: grid; gap: 6px; }
+
+    #pokysql-course-v2 .pa-module {
+      appearance: none;
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      background: transparent;
+      color: var(--pa-fg);
+      text-align: left;
+      padding: 9px;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: 27px minmax(0, 1fr) auto;
       gap: 8px;
-    }
-
-    #pokysql-academy .pk-stage {
-      appearance: none;
-      border: 1px solid var(--pk-border);
-      border-radius: 12px;
-      background: var(--pk-background);
-      color: var(--pk-foreground);
-      text-align: left;
-      padding: 10px;
-      min-height: 84px;
+      align-items: center;
       cursor: pointer;
-      transition: transform .16s ease, border-color .16s ease, background .16s ease;
     }
 
-    #pokysql-academy .pk-stage:hover,
-    #pokysql-academy .pk-stage:focus-visible {
-      transform: translateY(-2px);
-      border-color: var(--pk-primary);
+    #pokysql-course-v2 .pa-module:hover:not(:disabled),
+    #pokysql-course-v2 .pa-module:focus-visible:not(:disabled) {
+      border-color: var(--pa-primary);
       outline: none;
     }
 
-    #pokysql-academy .pk-stage.is-active {
-      border-color: var(--pk-accent);
-      background: color-mix(in srgb, var(--pk-accent) 10%, var(--pk-background));
+    #pokysql-course-v2 .pa-module.is-active {
+      background: var(--pa-primary-soft);
+      border-color: color-mix(in srgb, var(--pa-primary) 40%, var(--pa-border));
     }
 
-    #pokysql-academy .pk-stage.is-done { border-color: var(--pk-primary); }
-
-    #pokysql-academy .pk-stage .pk-stage-num {
-      color: var(--pk-primary);
-      font-size: 11px;
-      font-weight: 500;
+    #pokysql-course-v2 .pa-module:disabled {
+      cursor: not-allowed;
+      color: var(--pa-muted-fg);
+      opacity: .66;
     }
 
-    #pokysql-academy .pk-stage .pk-stage-name {
-      display: block;
-      margin-top: 3px;
-      font-weight: 500;
-    }
-
-    #pokysql-academy .pk-stage .pk-stage-state {
-      display: block;
-      color: var(--pk-muted-foreground);
-      font-size: 11px;
-      margin-top: 5px;
-    }
-
-    #pokysql-academy .pk-detail {
-      border-top: 1px solid var(--pk-border);
-      margin-top: 14px;
-      padding-top: 14px;
+    #pokysql-course-v2 .pa-module-num {
+      width: 27px;
+      height: 27px;
+      border: 1px solid var(--pa-border);
+      border-radius: 50%;
       display: grid;
-      gap: 10px;
-    }
-
-    #pokysql-academy .pk-detail-title { font-size: 16px; font-weight: 500; }
-
-    #pokysql-academy .pk-detail-copy { color: var(--pk-muted-foreground); }
-
-    #pokysql-academy .pk-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-    #pokysql-academy .pk-tag {
-      border: 1px solid var(--pk-border);
-      border-radius: 999px;
-      color: var(--pk-muted-foreground);
-      padding: 3px 8px;
+      place-items: center;
       font-size: 11px;
+      color: var(--pa-muted-fg);
     }
 
-    #pokysql-academy .pk-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-
-    #pokysql-academy button.pk-button {
-      appearance: none;
-      border: 1px solid var(--pk-border);
-      border-radius: 9px;
-      background: var(--pk-muted);
-      color: var(--pk-foreground);
-      padding: 8px 11px;
-      font: inherit;
-      cursor: pointer;
+    #pokysql-course-v2 .pa-module.is-done .pa-module-num {
+      border-color: var(--pa-accent);
+      background: var(--pa-accent-soft);
+      color: var(--pa-fg);
     }
 
-    #pokysql-academy button.pk-button:hover,
-    #pokysql-academy button.pk-button:focus-visible {
-      border-color: var(--pk-primary);
-      outline: none;
+    #pokysql-course-v2 .pa-module-name { font-size: 12px; font-weight: 500; }
+    #pokysql-course-v2 .pa-module-state { color: var(--pa-muted-fg); font-size: 11px; }
+
+    #pokysql-course-v2 .pa-lesson { overflow: hidden; }
+
+    #pokysql-course-v2 .pa-lesson-head {
+      padding: 16px 18px 13px;
+      border-bottom: 1px solid var(--pa-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
     }
 
-    #pokysql-academy button.pk-button.pk-primary {
-      background: var(--pk-primary);
-      color: var(--pk-primary-foreground);
-      border-color: var(--pk-primary);
-    }
+    #pokysql-course-v2 .pa-lesson-title { margin-top: 3px; font-size: 18px; font-weight: 500; }
+    #pokysql-course-v2 .pa-lesson-outcome { color: var(--pa-muted-fg); margin-top: 3px; font-size: 12px; }
 
-    #pokysql-academy .pk-quiz {
+    #pokysql-course-v2 .pa-step-dots { display: flex; gap: 5px; padding-top: 3px; }
+    #pokysql-course-v2 .pa-step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pa-muted); }
+    #pokysql-course-v2 .pa-step-dot.is-current { background: var(--pa-primary); }
+    #pokysql-course-v2 .pa-step-dot.is-past { background: var(--pa-accent); }
+
+    #pokysql-course-v2 .pa-stage {
+      min-height: 395px;
+      padding: 18px;
       display: grid;
-      gap: 12px;
+      align-content: start;
+      gap: 14px;
     }
 
-    #pokysql-academy .pk-quiz-prompt { font-size: 15px; }
+    #pokysql-course-v2 .pa-step-kicker { color: var(--pa-accent); font-size: 12px; font-weight: 500; }
+    #pokysql-course-v2 .pa-step-title { font-size: 22px; line-height: 1.25; font-weight: 500; max-width: 660px; }
+    #pokysql-course-v2 .pa-step-copy { color: var(--pa-muted-fg); max-width: 700px; }
+    #pokysql-course-v2 .pa-step-copy strong { color: var(--pa-fg); font-weight: 500; }
 
-    #pokysql-academy .pk-choices { display: grid; gap: 7px; }
-
-    #pokysql-academy .pk-choice {
-      appearance: none;
-      border: 1px solid var(--pk-border);
-      border-radius: 10px;
-      background: var(--pk-background);
-      color: var(--pk-foreground);
-      padding: 9px 10px;
-      text-align: left;
-      cursor: pointer;
-      font: inherit;
+    #pokysql-course-v2 .pa-demo {
+      border: 1px solid var(--pa-border);
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--pa-bg) 58%, var(--pa-card));
+      padding: 13px;
+      overflow: hidden;
     }
 
-    #pokysql-academy .pk-choice:hover,
-    #pokysql-academy .pk-choice:focus-visible { border-color: var(--pk-accent); outline: none; }
+    #pokysql-course-v2 .pa-table-wrap { overflow-x: auto; }
+    #pokysql-course-v2 table { width: 100%; border-collapse: collapse; min-width: 420px; }
+    #pokysql-course-v2 th,
+    #pokysql-course-v2 td { padding: 8px 10px; border-bottom: 1px solid var(--pa-border); text-align: left; }
+    #pokysql-course-v2 th { color: var(--pa-primary); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+    #pokysql-course-v2 tr:last-child td { border-bottom: 0; }
+    #pokysql-course-v2 .pa-highlight-row td { background: var(--pa-accent-soft); }
+    #pokysql-course-v2 .pa-highlight-cell { box-shadow: inset 0 0 0 2px var(--pa-primary); }
 
-    #pokysql-academy .pk-choice.is-correct { border-color: var(--pk-accent); background: color-mix(in srgb, var(--pk-accent) 12%, var(--pk-background)); }
-    #pokysql-academy .pk-choice.is-wrong { border-color: var(--pk-danger); background: color-mix(in srgb, var(--pk-danger) 10%, var(--pk-background)); }
-
-    #pokysql-academy .pk-feedback { min-height: 20px; color: var(--pk-muted-foreground); font-size: 12px; }
-    #pokysql-academy .pk-feedback.is-good { color: var(--pk-accent); }
-    #pokysql-academy .pk-feedback.is-bad { color: var(--pk-danger); }
-
-    #pokysql-academy .pk-schema {
+    #pokysql-course-v2 .pa-anatomy {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px;
-      align-items: stretch;
+      margin-top: 10px;
     }
 
-    #pokysql-academy .pk-table {
-      border: 1px solid var(--pk-border);
+    #pokysql-course-v2 .pa-anatomy-item,
+    #pokysql-course-v2 .pa-term,
+    #pokysql-course-v2 .pa-join-card,
+    #pokysql-course-v2 .pa-flow-item {
+      border: 1px solid var(--pa-border);
       border-radius: 10px;
-      padding: 10px;
-      background: var(--pk-background);
+      padding: 9px;
+      background: var(--pa-card);
     }
 
-    #pokysql-academy .pk-table strong { display: block; color: var(--pk-primary); font-weight: 500; }
-    #pokysql-academy .pk-table span { display: block; color: var(--pk-muted-foreground); font-size: 11px; margin-top: 4px; }
+    #pokysql-course-v2 .pa-anatomy-item strong,
+    #pokysql-course-v2 .pa-join-card strong,
+    #pokysql-course-v2 .pa-flow-item strong { display: block; font-weight: 500; }
+    #pokysql-course-v2 .pa-anatomy-item span,
+    #pokysql-course-v2 .pa-join-card span,
+    #pokysql-course-v2 .pa-flow-item span { color: var(--pa-muted-fg); font-size: 11px; }
 
-    #pokysql-academy .pk-quest {
-      display: grid;
-      gap: 8px;
+    #pokysql-course-v2 pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      border-radius: 11px;
+      padding: 12px;
+      background: light-dark(#172033, #090d13);
+      color: #eef4ff;
+      font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
 
-    #pokysql-academy .pk-quest-line {
+    #pokysql-course-v2 .pa-code-keyword { color: #73d6c9; }
+    #pokysql-course-v2 .pa-code-name { color: #f5c56b; }
+    #pokysql-course-v2 .pa-code-value { color: #c6a8ff; }
+
+    #pokysql-course-v2 .pa-run-row { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+    #pokysql-course-v2 .pa-button,
+    #pokysql-course-v2 .pa-choice {
+      appearance: none;
+      border: 1px solid var(--pa-border);
+      border-radius: 9px;
+      background: var(--pa-muted);
+      color: var(--pa-fg);
+      padding: 8px 11px;
+      cursor: pointer;
+    }
+
+    #pokysql-course-v2 .pa-button:hover,
+    #pokysql-course-v2 .pa-button:focus-visible,
+    #pokysql-course-v2 .pa-choice:hover,
+    #pokysql-course-v2 .pa-choice:focus-visible { border-color: var(--pa-primary); outline: none; }
+
+    #pokysql-course-v2 .pa-button.is-primary { background: var(--pa-primary); border-color: var(--pa-primary); color: var(--pa-primary-fg); }
+    #pokysql-course-v2 .pa-button:disabled { cursor: not-allowed; opacity: .5; }
+
+    #pokysql-course-v2 .pa-output { display: none; margin-top: 10px; }
+    #pokysql-course-v2 .pa-output.is-visible { display: block; }
+
+    #pokysql-course-v2 .pa-terms { display: flex; gap: 6px; flex-wrap: wrap; }
+    #pokysql-course-v2 .pa-term { padding: 4px 8px; color: var(--pa-muted-fg); font-size: 11px; border-radius: 999px; }
+
+    #pokysql-course-v2 .pa-joins,
+    #pokysql-course-v2 .pa-flow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+
+    #pokysql-course-v2 .pa-join-card.is-focus { border-color: var(--pa-accent); background: var(--pa-accent-soft); }
+
+    #pokysql-course-v2 .pa-choices { display: grid; gap: 8px; max-width: 720px; }
+    #pokysql-course-v2 .pa-choice { text-align: left; background: var(--pa-card); }
+    #pokysql-course-v2 .pa-choice.is-correct { border-color: var(--pa-accent); background: var(--pa-accent-soft); }
+    #pokysql-course-v2 .pa-choice.is-wrong { border-color: var(--pa-danger); }
+    #pokysql-course-v2 .pa-feedback { min-height: 22px; color: var(--pa-muted-fg); font-size: 12px; }
+    #pokysql-course-v2 .pa-feedback.is-good { color: var(--pa-accent); }
+    #pokysql-course-v2 .pa-feedback.is-bad { color: var(--pa-danger); }
+
+    #pokysql-course-v2 .pa-job-link {
+      border-left: 3px solid var(--pa-primary);
+      background: var(--pa-primary-soft);
+      padding: 9px 11px;
+      border-radius: 0 10px 10px 0;
+      color: var(--pa-muted-fg);
+      font-size: 12px;
+    }
+
+    #pokysql-course-v2 .pa-job-link strong { color: var(--pa-fg); font-weight: 500; }
+
+    #pokysql-course-v2 .pa-controls {
+      border-top: 1px solid var(--pa-border);
+      padding: 12px 18px;
       display: flex;
       justify-content: space-between;
-      gap: 12px;
-      border-bottom: 1px solid var(--pk-border);
-      padding-bottom: 8px;
+      gap: 10px;
+      align-items: center;
     }
 
-    #pokysql-academy .pk-quest-line:last-child { border-bottom: 0; padding-bottom: 0; }
-    #pokysql-academy .pk-quest-line span { color: var(--pk-muted-foreground); }
+    #pokysql-course-v2 .pa-controls-right { display: flex; gap: 8px; }
+    #pokysql-course-v2 .pa-reset { color: var(--pa-muted-fg); background: transparent; border: 0; padding: 6px; cursor: pointer; font-size: 11px; }
 
-    @media (max-width: 720px) {
-      #pokysql-academy .pk-grid { grid-template-columns: 1fr; }
-      #pokysql-academy .pk-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      #pokysql-academy .pk-schema { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 760px) {
+      #pokysql-course-v2 .pa-top { grid-template-columns: 1fr; }
+      #pokysql-course-v2 .pa-layout { grid-template-columns: 1fr; }
+      #pokysql-course-v2 .pa-modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #pokysql-course-v2 .pa-stage { min-height: 0; }
     }
 
-    @media (max-width: 420px) {
-      #pokysql-academy .pk-map, #pokysql-academy .pk-schema { grid-template-columns: 1fr; }
-      #pokysql-academy .pk-topbar { align-items: stretch; }
-      #pokysql-academy .pk-progress-wrap { min-width: 0; max-width: none; }
+    @media (max-width: 480px) {
+      #pokysql-course-v2 .pa-modules,
+      #pokysql-course-v2 .pa-anatomy,
+      #pokysql-course-v2 .pa-joins,
+      #pokysql-course-v2 .pa-flow { grid-template-columns: 1fr; }
+      #pokysql-course-v2 .pa-lesson-head { flex-direction: column; }
+      #pokysql-course-v2 .pa-controls { align-items: stretch; }
+      #pokysql-course-v2 .pa-controls-right { margin-left: auto; }
     }
   &lt;/style&gt;
 
-  &lt;div class=&quot;pk-shell&quot;&gt;
-    &lt;div class=&quot;pk-topbar&quot;&gt;
+  &lt;div class=&quot;pa-shell&quot;&gt;
+    &lt;section class=&quot;pa-top&quot; aria-label=&quot;Learning goal and progress&quot;&gt;
       &lt;div&gt;
-        &lt;div class=&quot;pk-kicker&quot;&gt;Journey status&lt;/div&gt;
-        &lt;div class=&quot;pk-level&quot;&gt;Your journey: &lt;strong id=&quot;pk-rank&quot;&gt;SQL Trainer&lt;/strong&gt;&lt;/div&gt;
+        &lt;div class=&quot;pa-eyebrow&quot;&gt;From first principles to production support&lt;/div&gt;
+        &lt;div class=&quot;pa-goal&quot;&gt;Goal: Platform Support Analyst I at The Trade Desk&lt;/div&gt;
+        &lt;div class=&quot;pa-subgoal&quot;&gt;Every challenge appears only after its prerequisite lesson.&lt;/div&gt;
       &lt;/div&gt;
-      &lt;div class=&quot;pk-progress-wrap&quot; aria-label=&quot;Course progress&quot;&gt;
-        &lt;div class=&quot;pk-progress-label&quot;&gt;&lt;span id=&quot;pk-progress-text&quot;&gt;0 / 12 badges&lt;/span&gt;&lt;span id=&quot;pk-xp&quot;&gt;0 XP&lt;/span&gt;&lt;/div&gt;
-        &lt;div class=&quot;pk-progress&quot;&gt;&lt;span id=&quot;pk-progress-bar&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class=&quot;pa-progress-label&quot;&gt;&lt;span id=&quot;pa-progress-copy&quot;&gt;0 of 12 badges&lt;/span&gt;&lt;span id=&quot;pa-rank&quot;&gt;New Trainer · 0 XP&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;pa-progress&quot;&gt;&lt;span id=&quot;pa-progress-bar&quot;&gt;&lt;/span&gt;&lt;/div&gt;
       &lt;/div&gt;
-    &lt;/div&gt;
+    &lt;/section&gt;
 
-    &lt;div class=&quot;pk-grid&quot;&gt;
-      &lt;section class=&quot;pk-panel&quot; aria-label=&quot;Course map&quot;&gt;
-        &lt;div class=&quot;pk-panel-head&quot;&gt;&lt;strong&gt;Choose your next badge&lt;/strong&gt;&lt;span&gt;Click a stage to inspect the quest&lt;/span&gt;&lt;/div&gt;
-        &lt;div id=&quot;pk-map&quot; class=&quot;pk-map&quot;&gt;&lt;/div&gt;
-        &lt;div id=&quot;pk-detail&quot; class=&quot;pk-detail&quot;&gt;&lt;/div&gt;
-      &lt;/section&gt;
+    &lt;div class=&quot;pa-layout&quot;&gt;
+      &lt;nav class=&quot;pa-path&quot; aria-label=&quot;Course modules&quot;&gt;
+        &lt;div class=&quot;pa-path-label&quot;&gt;&lt;span&gt;Learning path&lt;/span&gt;&lt;span&gt;🔒 prerequisites&lt;/span&gt;&lt;/div&gt;
+        &lt;div id=&quot;pa-modules&quot; class=&quot;pa-modules&quot;&gt;&lt;/div&gt;
+      &lt;/nav&gt;
 
-      &lt;section class=&quot;pk-panel&quot; aria-label=&quot;Interactive SQL challenge&quot;&gt;
-        &lt;div class=&quot;pk-panel-head&quot;&gt;&lt;strong&gt;Wild SQL encounter&lt;/strong&gt;&lt;span id=&quot;pk-quiz-count&quot;&gt;Encounter 1&lt;/span&gt;&lt;/div&gt;
-        &lt;div class=&quot;pk-quiz&quot;&gt;
-          &lt;div id=&quot;pk-quiz-prompt&quot; class=&quot;pk-quiz-prompt&quot;&gt;&lt;/div&gt;
-          &lt;div id=&quot;pk-choices&quot; class=&quot;pk-choices&quot;&gt;&lt;/div&gt;
-          &lt;div id=&quot;pk-feedback&quot; class=&quot;pk-feedback&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
-          &lt;div class=&quot;pk-actions&quot;&gt;&lt;button id=&quot;pk-next&quot; class=&quot;pk-button pk-primary&quot; type=&quot;button&quot;&gt;Next encounter&lt;/button&gt;&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/section&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;pk-grid&quot;&gt;
-      &lt;section class=&quot;pk-panel&quot; aria-label=&quot;Support database schema&quot;&gt;
-        &lt;div class=&quot;pk-panel-head&quot;&gt;&lt;strong&gt;Field schema&lt;/strong&gt;&lt;span&gt;We will query this together&lt;/span&gt;&lt;/div&gt;
-        &lt;div class=&quot;pk-schema&quot;&gt;
-          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;trainers&lt;/strong&gt;&lt;span&gt;trainer_id · region · joined_at&lt;/span&gt;&lt;/div&gt;
-          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;pokemon&lt;/strong&gt;&lt;span&gt;pokemon_id · name · type · base_xp&lt;/span&gt;&lt;/div&gt;
-          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;captures&lt;/strong&gt;&lt;span&gt;trainer_id · pokemon_id · captured_at&lt;/span&gt;&lt;/div&gt;
-          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;support_tickets&lt;/strong&gt;&lt;span&gt;ticket_id · trainer_id · priority · status&lt;/span&gt;&lt;/div&gt;
-          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;incidents&lt;/strong&gt;&lt;span&gt;incident_id · service · severity · started_at&lt;/span&gt;&lt;/div&gt;
-          &lt;div class=&quot;pk-table&quot;&gt;&lt;strong&gt;ad_events&lt;/strong&gt;&lt;span&gt;event_id · campaign_id · event_type · event_at&lt;/span&gt;&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/section&gt;
-
-      &lt;section class=&quot;pk-panel&quot; aria-label=&quot;Current quest&quot;&gt;
-        &lt;div class=&quot;pk-panel-head&quot;&gt;&lt;strong&gt;Current quest&lt;/strong&gt;&lt;span&gt;Trainer habits&lt;/span&gt;&lt;/div&gt;
-        &lt;div class=&quot;pk-quest&quot;&gt;
-          &lt;div class=&quot;pk-quest-line&quot;&gt;&lt;span&gt;Recall&lt;/span&gt;&lt;strong&gt;5 minutes&lt;/strong&gt;&lt;/div&gt;
-          &lt;div class=&quot;pk-quest-line&quot;&gt;&lt;span&gt;Write&lt;/span&gt;&lt;strong&gt;3 queries&lt;/strong&gt;&lt;/div&gt;
-          &lt;div class=&quot;pk-quest-line&quot;&gt;&lt;span&gt;Explain&lt;/span&gt;&lt;strong&gt;1 finding&lt;/strong&gt;&lt;/div&gt;
-          &lt;div class=&quot;pk-actions&quot;&gt;&lt;button id=&quot;pk-reset&quot; class=&quot;pk-button&quot; type=&quot;button&quot;&gt;Reset local progress&lt;/button&gt;&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/section&gt;
+      &lt;main class=&quot;pa-lesson&quot; aria-live=&quot;polite&quot;&gt;
+        &lt;header class=&quot;pa-lesson-head&quot;&gt;
+          &lt;div&gt;
+            &lt;div id=&quot;pa-module-eyebrow&quot; class=&quot;pa-eyebrow&quot;&gt;&lt;/div&gt;
+            &lt;div id=&quot;pa-module-title&quot; class=&quot;pa-lesson-title&quot;&gt;&lt;/div&gt;
+            &lt;div id=&quot;pa-module-outcome&quot; class=&quot;pa-lesson-outcome&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div id=&quot;pa-step-dots&quot; class=&quot;pa-step-dots&quot; aria-label=&quot;Lesson progress&quot;&gt;&lt;/div&gt;
+        &lt;/header&gt;
+        &lt;section id=&quot;pa-stage&quot; class=&quot;pa-stage&quot;&gt;&lt;/section&gt;
+        &lt;footer class=&quot;pa-controls&quot;&gt;
+          &lt;button id=&quot;pa-reset&quot; class=&quot;pa-reset&quot; type=&quot;button&quot;&gt;Restart course&lt;/button&gt;
+          &lt;div class=&quot;pa-controls-right&quot;&gt;
+            &lt;button id=&quot;pa-back&quot; class=&quot;pa-button&quot; type=&quot;button&quot;&gt;Back&lt;/button&gt;
+            &lt;button id=&quot;pa-next&quot; class=&quot;pa-button is-primary&quot; type=&quot;button&quot;&gt;Next&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/footer&gt;
+      &lt;/main&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
   &lt;script&gt;
     (() =&gt; {
-      const root = document.getElementById('pokysql-academy');
-      const stages = [
-        ['01', 'First SELECT', 'Read rows, filter, sort, and limit results.', ['SELECT', 'WHERE', 'ORDER BY']],
-        ['02', 'Type Tactics', 'Handle NULL, CASE, text, dates, and casts.', ['NULL', 'CASE', 'Dates']],
-        ['03', 'Build a Schema', 'Create tables, keys, constraints, and safe data changes.', ['DDL', 'Keys', 'Transactions']],
-        ['04', 'Join Junction', 'Connect tables without losing or multiplying meaning.', ['JOINs', 'Grain', 'Anti-joins']],
-        ['05', 'Gym Metrics', 'Turn records into reliable operational reports.', ['GROUP BY', 'HAVING', 'Ratios']],
-        ['06', 'Mystery Cave', 'Use CTEs, subqueries, sets, and views.', ['CTEs', 'EXISTS', 'UNION']],
-        ['07', 'Window Tower', 'Rank, compare, deduplicate, and analyze time.', ['ROW_NUMBER', 'LAG', 'Trends']],
-        ['08', 'Incident HQ', 'Investigate tickets, SLAs, freshness, and anomalies.', ['SLA', 'QA', 'Debugging']],
-        ['09', 'Procedure Lab', 'Execute database routines safely and document them.', ['CALL', 'Safety', 'Rollback']],
-        ['10', 'Performance Pass', 'Read plans and reason about slow queries.', ['EXPLAIN', 'Indexes', 'Grain']],
-        ['11', 'AdTech Safari', 'Analyze delivery, clicks, conversions, and discrepancies.', ['Events', 'Attribution', 'Pacing']],
-        ['12', 'Elite Four', 'Complete the timed interview simulation and final test.', ['Synthesis', 'Communication', 'Speed']]
+      const root = document.getElementById(&#x27;pokysql-course-v2&#x27;);
+      const $ = (selector) =&gt; root.querySelector(selector);
+
+      const pokemonRows = [
+        [&#x27;25&#x27;, &#x27;Pikachu&#x27;, &#x27;Electric&#x27;, &#x27;112&#x27;],
+        [&#x27;1&#x27;, &#x27;Bulbasaur&#x27;, &#x27;Grass&#x27;, &#x27;64&#x27;],
+        [&#x27;4&#x27;, &#x27;Charmander&#x27;, &#x27;Fire&#x27;, &#x27;62&#x27;],
+        [&#x27;7&#x27;, &#x27;Squirtle&#x27;, &#x27;Water&#x27;, &#x27;63&#x27;]
       ];
 
-      const quizzes = [
+      const tableHtml = (headers, rows, highlightRow = -1) =&gt; `
+        &lt;div class=&quot;pa-table-wrap&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;${headers.map((h) =&gt; `&lt;th&gt;${h}&lt;/th&gt;`).join(&#x27;&#x27;)}&lt;/tr&gt;&lt;/thead&gt;
+        &lt;tbody&gt;${rows.map((row, index) =&gt; `&lt;tr class=&quot;${index === highlightRow ? &#x27;pa-highlight-row&#x27; : &#x27;&#x27;}&quot;&gt;${row.map((cell) =&gt; `&lt;td&gt;${cell}&lt;/td&gt;`).join(&#x27;&#x27;)}&lt;/tr&gt;`).join(&#x27;&#x27;)}&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;`;
+
+      const modules = [
         {
-          prompt: 'You want every trainer, including trainers with no captures. Which join is the safest starting point?',
-          choices: ['INNER JOIN captures', 'LEFT JOIN captures from trainers', 'CROSS JOIN captures'],
-          answer: 1,
-          good: 'Correct. Start with the complete population, then attach optional records.'
+          name: &#x27;Pokédex Basics&#x27;,
+          outcome: &#x27;Understand databases, tables, rows, columns, and values.&#x27;,
+          job: &#x27;Support analysts must know what a record represents before trusting a query.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;Begin here · no prior knowledge required&#x27;,
+              title: &#x27;A database is an organized collection of facts&#x27;,
+              copy: &#x27;Imagine a digital Pokédex. Instead of storing everything in one paragraph, it organizes facts so a computer can find them reliably. A &lt;strong&gt;database&lt;/strong&gt; holds related collections of data; each collection is usually a &lt;strong&gt;table&lt;/strong&gt;.&#x27;,
+              demo: `&lt;div class=&quot;pa-flow&quot;&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Database&lt;/strong&gt;&lt;span&gt;Pokémon League records&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Table&lt;/strong&gt;&lt;span&gt;One organized collection, such as pokemon&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;See the structure&#x27;,
+              title: &#x27;Tables are made of rows and columns&#x27;,
+              copy: &#x27;A &lt;strong&gt;row&lt;/strong&gt; is one thing—in this table, one Pokémon. A &lt;strong&gt;column&lt;/strong&gt; is one kind of fact, such as name or type. A &lt;strong&gt;cell&lt;/strong&gt; is one value at the intersection.&#x27;,
+              demo: `${tableHtml([&#x27;pokemon_id&#x27;, &#x27;name&#x27;, &#x27;type&#x27;, &#x27;base_xp&#x27;], pokemonRows, 0)}&lt;div class=&quot;pa-anatomy&quot;&gt;&lt;div class=&quot;pa-anatomy-item&quot;&gt;&lt;strong&gt;Row&lt;/strong&gt;&lt;span&gt;Pikachu and all its facts&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-anatomy-item&quot;&gt;&lt;strong&gt;Column&lt;/strong&gt;&lt;span&gt;type for every Pokémon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-anatomy-item&quot;&gt;&lt;strong&gt;Cell&lt;/strong&gt;&lt;span&gt;Electric is Pikachu&#x27;s type&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Mastery check · everything was just taught&#x27;,
+              title: &#x27;In the Pokémon table, what does one row represent?&#x27;,
+              copy: &#x27;Choose the answer that matches the table you just explored.&#x27;,
+              check: {
+                choices: [&#x27;One Pokémon and its facts&#x27;, &#x27;One column name&#x27;, &#x27;The entire database&#x27;],
+                answer: 0,
+                explanation: &#x27;Exactly. The table’s grain is one row per Pokémon.&#x27;
+              }
+            }
+          ]
         },
         {
-          prompt: 'Which condition correctly finds unresolved support tickets?',
-          choices: ['resolved_at = NULL', 'resolved_at IS NULL', 'resolved_at == NULL'],
-          answer: 1,
-          good: 'Correct. NULL represents an unknown or missing value and needs IS NULL.'
+          name: &#x27;Your First Query&#x27;,
+          outcome: &#x27;Read a simple SELECT ... FROM query in plain English.&#x27;,
+          job: &#x27;Most support investigations begin by retrieving a small, relevant set of columns.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;New tool · SELECT&#x27;,
+              title: &#x27;A query is a question you ask the database&#x27;,
+              copy: &#x27;&lt;strong&gt;SELECT&lt;/strong&gt; says which columns you want. &lt;strong&gt;FROM&lt;/strong&gt; says which table contains them. SQL keywords are often capitalized for readability, but meaning matters more than capitalization.&#x27;,
+              demo: `&lt;pre&gt;&lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;name, type&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;pokemon&lt;/span&gt;;&lt;/pre&gt;&lt;div class=&quot;pa-anatomy&quot;&gt;&lt;div class=&quot;pa-anatomy-item&quot;&gt;&lt;strong&gt;SELECT name, type&lt;/strong&gt;&lt;span&gt;Show these two columns&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-anatomy-item&quot;&gt;&lt;strong&gt;FROM pokemon&lt;/strong&gt;&lt;span&gt;Read the pokemon table&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-anatomy-item&quot;&gt;&lt;strong&gt;;&lt;/strong&gt;&lt;span&gt;End the statement&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Run before you are tested&#x27;,
+              title: &#x27;Watch your first query return a result set&#x27;,
+              copy: &#x27;A &lt;strong&gt;result set&lt;/strong&gt; is the temporary table returned by a query. This query does not change the database—it only reads it.&#x27;,
+              query: {
+                code: `&lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;name, type&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;pokemon&lt;/span&gt;;`,
+                headers: [&#x27;name&#x27;, &#x27;type&#x27;],
+                rows: pokemonRows.map((r) =&gt; [r[1], r[2]])
+              }
+            },
+            {
+              kicker: &#x27;Mastery check&#x27;,
+              title: &#x27;What does SELECT name, type mean?&#x27;,
+              copy: &#x27;Translate the SQL into plain English.&#x27;,
+              check: {
+                choices: [&#x27;Return the name and type columns&#x27;, &#x27;Delete the name and type columns&#x27;, &#x27;Sort every Pokémon by type&#x27;],
+                answer: 0,
+                explanation: &#x27;Correct. SELECT chooses the columns returned by the query.&#x27;
+              }
+            }
+          ]
         },
         {
-          prompt: 'You need the most recent status for each campaign. Which tool is most natural?',
-          choices: ['ROW_NUMBER() OVER (PARTITION BY campaign_id ORDER BY event_at DESC)', 'COUNT(*) with no GROUP BY', 'CROSS JOIN with campaigns'],
-          answer: 0,
-          good: 'Correct. Partition by campaign and order newest first, then keep row_number = 1.'
+          name: &#x27;Filter the Pokédex&#x27;,
+          outcome: &#x27;Use WHERE, comparison operators, and NULL safely.&#x27;,
+          job: &#x27;A support query should isolate the affected client, campaign, ticket, or time window.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;New tool · WHERE&#x27;,
+              title: &#x27;WHERE keeps only rows that meet a condition&#x27;,
+              copy: &#x27;First SQL chooses columns with SELECT. Then it reads a table with FROM. &lt;strong&gt;WHERE&lt;/strong&gt; narrows the rows. Text values use quotes.&#x27;,
+              demo: `&lt;pre&gt;&lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;name, type&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;pokemon&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;type&lt;/span&gt; = &lt;span class=&quot;pa-code-value&quot;&gt;&#x27;Electric&#x27;&lt;/span&gt;;&lt;/pre&gt;`
+            },
+            {
+              kicker: &#x27;Important edge case&#x27;,
+              title: &#x27;NULL means missing or unknown—not an empty string&#x27;,
+              copy: &#x27;Use &lt;strong&gt;IS NULL&lt;/strong&gt; and &lt;strong&gt;IS NOT NULL&lt;/strong&gt;. The expression = NULL does not work because SQL cannot prove equality to an unknown value.&#x27;,
+              demo: `&lt;pre&gt;&lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;ticket_id&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;support_tickets&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;resolved_at&lt;/span&gt; &lt;span class=&quot;pa-code-keyword&quot;&gt;IS NULL&lt;/span&gt;;&lt;/pre&gt;`
+            },
+            {
+              kicker: &#x27;Run the filtered query&#x27;,
+              title: &#x27;Ask for Electric Pokémon only&#x27;,
+              copy: &#x27;The result keeps the same selected columns but returns fewer rows.&#x27;,
+              query: {
+                code: `&lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;name, type&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;pokemon&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;type&lt;/span&gt; = &lt;span class=&quot;pa-code-value&quot;&gt;&#x27;Electric&#x27;&lt;/span&gt;;`,
+                headers: [&#x27;name&#x27;, &#x27;type&#x27;],
+                rows: [[&#x27;Pikachu&#x27;, &#x27;Electric&#x27;]]
+              }
+            },
+            {
+              kicker: &#x27;Mastery check&#x27;,
+              title: &#x27;Which condition finds unresolved tickets?&#x27;,
+              copy: &#x27;You have learned that unresolved tickets have no resolved_at value.&#x27;,
+              check: {
+                choices: [&#x27;resolved_at = NULL&#x27;, &#x27;resolved_at IS NULL&#x27;, &#x27;resolved_at = 0&#x27;],
+                answer: 1,
+                explanation: &#x27;Correct. IS NULL is the SQL-safe test for a missing value.&#x27;
+              }
+            }
+          ]
         },
         {
-          prompt: 'A join doubles rows and inflates SUM(cost). What should you inspect first?',
-          choices: ['Whether the join is many-to-many at the chosen grain', 'Whether ORDER BY is ascending', 'Whether the table has a primary key named id'],
-          answer: 0,
-          good: 'Correct. Verify relationship cardinality and the intended grain before trusting aggregates.'
+          name: &#x27;Sort &amp; Shape&#x27;,
+          outcome: &#x27;Use ORDER BY, LIMIT, DISTINCT, aliases, and CASE.&#x27;,
+          job: &#x27;Triage often means finding the newest, highest-priority, or most expensive records first.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;New tools · ORDER BY and LIMIT&#x27;,
+              title: &#x27;Sort the rows, then choose how many to return&#x27;,
+              copy: &#x27;&lt;strong&gt;ORDER BY base_xp DESC&lt;/strong&gt; puts the highest XP first. &lt;strong&gt;LIMIT 2&lt;/strong&gt; keeps the first two rows after sorting.&#x27;,
+              demo: `&lt;pre&gt;&lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;name, base_xp&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;pokemon&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;ORDER BY&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;base_xp&lt;/span&gt; &lt;span class=&quot;pa-code-keyword&quot;&gt;DESC&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;pa-code-value&quot;&gt;2&lt;/span&gt;;&lt;/pre&gt;`
+            },
+            {
+              kicker: &#x27;Shape readable results&#x27;,
+              title: &#x27;DISTINCT removes duplicates; aliases rename output; CASE labels conditions&#x27;,
+              copy: &#x27;These tools make results easier to interpret without changing the underlying records.&#x27;,
+              demo: `&lt;pre&gt;&lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT DISTINCT&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;type&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;pokemon&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;ORDER BY&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;type&lt;/span&gt;;&lt;/pre&gt;`
+            },
+            {
+              kicker: &#x27;Mastery check&#x27;,
+              title: &#x27;Which clause puts newest tickets first?&#x27;,
+              copy: &#x27;Assume opened_at stores the time each ticket was created.&#x27;,
+              check: {
+                choices: [&#x27;ORDER BY opened_at DESC&#x27;, &#x27;WHERE opened_at DESC&#x27;, &#x27;LIMIT opened_at&#x27;],
+                answer: 0,
+                explanation: &#x27;Correct. ORDER BY sorts, and DESC places the newest timestamps first.&#x27;
+              }
+            }
+          ]
         },
         {
-          prompt: 'Which clause filters groups after aggregation?',
-          choices: ['WHERE', 'HAVING', 'ORDER BY'],
-          answer: 1,
-          good: 'Correct. WHERE filters rows before grouping; HAVING filters grouped results.'
+          name: &#x27;Relationships &amp; Keys&#x27;,
+          outcome: &#x27;Understand primary keys, foreign keys, and table grain.&#x27;,
+          job: &#x27;Keys and grain prevent duplicated metrics and incorrect incident conclusions.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;Before joins, learn why tables connect&#x27;,
+              title: &#x27;A primary key identifies one row uniquely&#x27;,
+              copy: &#x27;pokemon_id is the Pokémon table’s &lt;strong&gt;primary key&lt;/strong&gt;. No two Pokémon rows should share it. A &lt;strong&gt;foreign key&lt;/strong&gt; stores another table’s primary key so records can be related.&#x27;,
+              demo: `&lt;div class=&quot;pa-joins&quot;&gt;&lt;div class=&quot;pa-join-card is-focus&quot;&gt;&lt;strong&gt;pokemon&lt;/strong&gt;&lt;span&gt;pokemon_id PK · name · type&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-join-card&quot;&gt;&lt;strong&gt;captures&lt;/strong&gt;&lt;span&gt;capture_id PK · pokemon_id FK · trainer_id FK&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;The hidden question behind every query&#x27;,
+              title: &#x27;Grain means what one row represents&#x27;,
+              copy: &#x27;The pokemon table has one row per Pokémon. The captures table has one row per capture. Joining them can create several rows for one Pokémon if it was captured by several trainers.&#x27;,
+              demo: `&lt;div class=&quot;pa-flow&quot;&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;pokemon grain&lt;/strong&gt;&lt;span&gt;one row per Pokémon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;captures grain&lt;/strong&gt;&lt;span&gt;one row per capture event&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Mastery check&#x27;,
+              title: &#x27;What does one captures row represent?&#x27;,
+              copy: &#x27;Use the grain stated in the lesson.&#x27;,
+              check: {
+                choices: [&#x27;One Pokémon species&#x27;, &#x27;One capture event&#x27;, &#x27;One database&#x27;],
+                answer: 1,
+                explanation: &#x27;Correct. Grain tells you what each row means before you combine or aggregate data.&#x27;
+              }
+            }
+          ]
+        },
+        {
+          name: &#x27;Join Tables&#x27;,
+          outcome: &#x27;Learn INNER JOIN and LEFT JOIN before choosing between them.&#x27;,
+          job: &#x27;Platform support constantly combines accounts, campaigns, tickets, and event tables.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;New tool · JOIN&#x27;,
+              title: &#x27;A join combines related rows using matching keys&#x27;,
+              copy: &#x27;The ON clause states the relationship. Here, captures.trainer_id matches trainers.trainer_id. The join type decides what happens when no matching row exists.&#x27;,
+              demo: `&lt;pre&gt;&lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;trainers.name, captures.pokemon_id&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;trainers&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;captures&lt;/span&gt;\n  &lt;span class=&quot;pa-code-keyword&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;trainers.trainer_id = captures.trainer_id&lt;/span&gt;;&lt;/pre&gt;`
+            },
+            {
+              kicker: &#x27;Join type 1 · INNER JOIN&#x27;,
+              title: &#x27;INNER JOIN keeps only matching rows&#x27;,
+              copy: &#x27;If Misty has a capture, she appears. If Brock has no capture, he is omitted. Use this when the question requires a match on both sides.&#x27;,
+              demo: `&lt;div class=&quot;pa-joins&quot;&gt;&lt;div class=&quot;pa-join-card is-focus&quot;&gt;&lt;strong&gt;Kept&lt;/strong&gt;&lt;span&gt;Ash → Pikachu · Misty → Squirtle&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-join-card&quot;&gt;&lt;strong&gt;Omitted&lt;/strong&gt;&lt;span&gt;Brock → no matching capture&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Join type 2 · LEFT JOIN&#x27;,
+              title: &#x27;LEFT JOIN keeps every row from the left table&#x27;,
+              copy: &#x27;Starting FROM trainers means every trainer remains. Trainers without a capture receive NULL values for capture columns. Use this for questions containing “every,” “including zero,” or “even if none.”&#x27;,
+              demo: `&lt;div class=&quot;pa-joins&quot;&gt;&lt;div class=&quot;pa-join-card is-focus&quot;&gt;&lt;strong&gt;Kept with match&lt;/strong&gt;&lt;span&gt;Ash → Pikachu · Misty → Squirtle&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-join-card is-focus&quot;&gt;&lt;strong&gt;Kept without match&lt;/strong&gt;&lt;span&gt;Brock → NULL&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Trade Desk translation&#x27;,
+              title: &#x27;The business question chooses the join&#x27;,
+              copy: &#x27;“Tickets that have an account” can use INNER JOIN. “Every client, including clients with zero tickets” needs LEFT JOIN from clients to tickets.&#x27;,
+              demo: `&lt;div class=&quot;pa-joins&quot;&gt;&lt;div class=&quot;pa-join-card&quot;&gt;&lt;strong&gt;INNER JOIN&lt;/strong&gt;&lt;span&gt;Only entities with matches&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-join-card is-focus&quot;&gt;&lt;strong&gt;LEFT JOIN&lt;/strong&gt;&lt;span&gt;All left-side entities, even with no match&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Mastery check · now the terms are familiar&#x27;,
+              title: &#x27;You need every trainer, including trainers with no captures. Which join should you start with?&#x27;,
+              copy: &#x27;Start FROM trainers and choose the join whose behavior matches “every trainer.”&#x27;,
+              check: {
+                choices: [&#x27;INNER JOIN captures&#x27;, &#x27;LEFT JOIN captures&#x27;, &#x27;CROSS JOIN captures&#x27;],
+                answer: 1,
+                explanation: &#x27;Correct. LEFT JOIN preserves every trainer and uses NULL when no capture matches.&#x27;
+              }
+            }
+          ]
+        },
+        {
+          name: &#x27;Summarize Data&#x27;,
+          outcome: &#x27;Use aggregates, GROUP BY, HAVING, and safe ratios.&#x27;,
+          job: &#x27;Support teams need ticket volume, SLA compliance, failure rate, and client-impact metrics.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;New tools · aggregates&#x27;,
+              title: &#x27;Aggregate functions turn many rows into measurements&#x27;,
+              copy: &#x27;COUNT counts rows, SUM adds values, AVG finds a mean, and MIN/MAX find extremes. GROUP BY chooses the category for each measurement.&#x27;,
+              demo: `&lt;pre&gt;&lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;type, COUNT(*) AS pokemon_count&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;pokemon&lt;/span&gt;\n&lt;span class=&quot;pa-code-keyword&quot;&gt;GROUP BY&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;type&lt;/span&gt;;&lt;/pre&gt;`
+            },
+            {
+              kicker: &#x27;Rows versus groups&#x27;,
+              title: &#x27;WHERE filters rows; HAVING filters completed groups&#x27;,
+              copy: &#x27;Use WHERE before grouping. Use HAVING when the condition depends on an aggregate such as COUNT(*) or SUM(cost).&#x27;,
+              demo: `&lt;pre&gt;&lt;span class=&quot;pa-code-keyword&quot;&gt;HAVING&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;COUNT(*)&lt;/span&gt; &amp;gt; &lt;span class=&quot;pa-code-value&quot;&gt;5&lt;/span&gt;&lt;/pre&gt;`
+            },
+            {
+              kicker: &#x27;Mastery check&#x27;,
+              title: &#x27;Which clause keeps only priorities with more than five tickets?&#x27;,
+              copy: &#x27;The condition depends on COUNT(*), so it applies after grouping.&#x27;,
+              check: {
+                choices: [&#x27;WHERE COUNT(*) &gt; 5&#x27;, &#x27;HAVING COUNT(*) &gt; 5&#x27;, &#x27;ORDER BY COUNT(*) &gt; 5&#x27;],
+                answer: 1,
+                explanation: &#x27;Correct. HAVING filters the grouped result after COUNT is calculated.&#x27;
+              }
+            }
+          ]
+        },
+        {
+          name: &#x27;Advanced Patterns&#x27;,
+          outcome: &#x27;Use CTEs and window functions for readable investigations.&#x27;,
+          job: &#x27;Latest status, deduplication, rankings, and time comparisons are common support patterns.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;New tool · CTE&#x27;,
+              title: &#x27;A CTE gives one step of a complex query a name&#x27;,
+              copy: &#x27;WITH creates a temporary named result used by the query that follows. It improves readability and makes investigation logic easier to validate.&#x27;,
+              demo: `&lt;pre&gt;&lt;span class=&quot;pa-code-keyword&quot;&gt;WITH&lt;/span&gt; &lt;span class=&quot;pa-code-name&quot;&gt;open_tickets&lt;/span&gt; &lt;span class=&quot;pa-code-keyword&quot;&gt;AS&lt;/span&gt; (\n  &lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT&lt;/span&gt; * &lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; support_tickets\n  &lt;span class=&quot;pa-code-keyword&quot;&gt;WHERE&lt;/span&gt; resolved_at &lt;span class=&quot;pa-code-keyword&quot;&gt;IS NULL&lt;/span&gt;\n)\n&lt;span class=&quot;pa-code-keyword&quot;&gt;SELECT&lt;/span&gt; * &lt;span class=&quot;pa-code-keyword&quot;&gt;FROM&lt;/span&gt; open_tickets;&lt;/pre&gt;`
+            },
+            {
+              kicker: &#x27;New tool · window function&#x27;,
+              title: &#x27;ROW_NUMBER can identify the latest row per entity&#x27;,
+              copy: &#x27;PARTITION BY restarts numbering for each campaign. ORDER BY event_at DESC numbers the newest event as 1.&#x27;,
+              demo: `&lt;pre&gt;&lt;span class=&quot;pa-code-keyword&quot;&gt;ROW_NUMBER()&lt;/span&gt; &lt;span class=&quot;pa-code-keyword&quot;&gt;OVER&lt;/span&gt; (\n  &lt;span class=&quot;pa-code-keyword&quot;&gt;PARTITION BY&lt;/span&gt; campaign_id\n  &lt;span class=&quot;pa-code-keyword&quot;&gt;ORDER BY&lt;/span&gt; event_at &lt;span class=&quot;pa-code-keyword&quot;&gt;DESC&lt;/span&gt;\n)&lt;/pre&gt;`
+            },
+            {
+              kicker: &#x27;Mastery check&#x27;,
+              title: &#x27;Which value identifies the newest event after numbering newest-first?&#x27;,
+              copy: &#x27;ROW_NUMBER starts at 1 inside each campaign.&#x27;,
+              check: {
+                choices: [&#x27;row_number = 0&#x27;, &#x27;row_number = 1&#x27;, &#x27;row_number IS NULL&#x27;],
+                answer: 1,
+                explanation: &#x27;Correct. The newest row receives row_number 1 in each campaign partition.&#x27;
+              }
+            }
+          ]
+        },
+        {
+          name: &#x27;Support Investigations&#x27;,
+          outcome: &#x27;Validate data, calculate SLAs, and debug incorrect results.&#x27;,
+          job: &#x27;This is the core operating loop for platform incidents and client escalations.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;Investigation loop&#x27;,
+              title: &#x27;Define the grain, scope, and expected result before querying&#x27;,
+              copy: &#x27;Write down the affected entity, exact time window, timezone, expected behavior, and comparison source. Then query the smallest useful slice.&#x27;,
+              demo: `&lt;div class=&quot;pa-flow&quot;&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;1 · Scope&lt;/strong&gt;&lt;span&gt;client · campaign · time · timezone&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;2 · Query&lt;/strong&gt;&lt;span&gt;smallest relevant data slice&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;3 · Validate&lt;/strong&gt;&lt;span&gt;counts · duplicates · freshness · grain&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;4 · Communicate&lt;/strong&gt;&lt;span&gt;finding · impact · next action&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Common failure mode&#x27;,
+              title: &#x27;A join can inflate metrics without producing an error&#x27;,
+              copy: &#x27;If both sides contain several rows per join key, one row can match many rows. Compare row counts before and after joins and aggregate each table to the needed grain first.&#x27;,
+              demo: `&lt;div class=&quot;pa-joins&quot;&gt;&lt;div class=&quot;pa-join-card&quot;&gt;&lt;strong&gt;Before join&lt;/strong&gt;&lt;span&gt;10 campaigns&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-join-card is-focus&quot;&gt;&lt;strong&gt;After join&lt;/strong&gt;&lt;span&gt;40 event rows—correct only if that grain is intended&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Mastery check&#x27;,
+              title: &#x27;A join unexpectedly doubles SUM(cost). What should you inspect first?&#x27;,
+              copy: &#x27;The query runs, but the metric may be wrong.&#x27;,
+              check: {
+                choices: [&#x27;Join cardinality and table grain&#x27;, &#x27;Whether keywords are uppercase&#x27;, &#x27;The result font size&#x27;],
+                answer: 0,
+                explanation: &#x27;Correct. Validate grain and one-to-many or many-to-many relationships before trusting the sum.&#x27;
+              }
+            }
+          ]
+        },
+        {
+          name: &#x27;Procedures &amp; Dialects&#x27;,
+          outcome: &#x27;Execute stored procedures safely and recognize SQL dialect differences.&#x27;,
+          job: &#x27;The role explicitly includes executing stored procedures; Vertica and SSMS are listed as useful experience.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;Stored procedures&#x27;,
+              title: &#x27;A stored procedure is a named database routine&#x27;,
+              copy: &#x27;It can read or change data. Before execution, verify the environment, procedure name, parameters, permissions, expected side effects, validation query, and rollback or escalation path.&#x27;,
+              demo: `&lt;div class=&quot;pa-flow&quot;&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Before&lt;/strong&gt;&lt;span&gt;scope · parameters · current state&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;During&lt;/strong&gt;&lt;span&gt;CALL or EXEC · capture outcome&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;After&lt;/strong&gt;&lt;span&gt;validate · document · escalate if needed&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Safety&lt;/strong&gt;&lt;span&gt;never guess production parameters&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Dialect awareness&#x27;,
+              title: &#x27;The idea stays stable while syntax can change&#x27;,
+              copy: &#x27;PostgreSQL often uses LIMIT; SQL Server commonly uses TOP; Vertica is optimized for large analytical workloads. Learn portable SQL first, then verify dialect-specific syntax.&#x27;,
+              demo: `&lt;div class=&quot;pa-anatomy&quot;&gt;&lt;div class=&quot;pa-anatomy-item&quot;&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;span&gt;LIMIT · ILIKE · DATE_TRUNC&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-anatomy-item&quot;&gt;&lt;strong&gt;SQL Server&lt;/strong&gt;&lt;span&gt;TOP · EXEC · DATEADD&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-anatomy-item&quot;&gt;&lt;strong&gt;Vertica&lt;/strong&gt;&lt;span&gt;analytical SQL · CALL · projections&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Mastery check&#x27;,
+              title: &#x27;What should happen before a production procedure is executed?&#x27;,
+              copy: &#x27;Choose the operationally safe answer.&#x27;,
+              check: {
+                choices: [&#x27;Verify environment, parameters, effects, and validation plan&#x27;, &#x27;Run it first and inspect later&#x27;, &#x27;Guess missing parameters from memory&#x27;],
+                answer: 0,
+                explanation: &#x27;Correct. Safe execution starts with verified scope, parameters, impact, and a way to confirm success.&#x27;
+              }
+            }
+          ]
+        },
+        {
+          name: &#x27;AdTech Data&#x27;,
+          outcome: &#x27;Reason about campaigns, impressions, clicks, conversions, spend, and attribution.&#x27;,
+          job: &#x27;The posting expects AdTech fluency alongside SQL and troubleshooting.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;Event data has a grain&#x27;,
+              title: &#x27;One ad event is not the same as one campaign&#x27;,
+              copy: &#x27;A campaign can generate millions of impression rows. Always identify whether a table is one row per campaign, per event, per user, or per reporting interval before joining.&#x27;,
+              demo: `&lt;div class=&quot;pa-flow&quot;&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Campaign&lt;/strong&gt;&lt;span&gt;budget and targeting configuration&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Impression&lt;/strong&gt;&lt;span&gt;an ad was served&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Click&lt;/strong&gt;&lt;span&gt;a user interacted&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Conversion&lt;/strong&gt;&lt;span&gt;a measured outcome occurred&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Discrepancy thinking&#x27;,
+              title: &#x27;Differences can come from time, definitions, identity, or data freshness&#x27;,
+              copy: &#x27;Before declaring a platform defect, compare timezone, attribution window, event deduplication, filters, report freshness, and metric definitions.&#x27;,
+              demo: `&lt;div class=&quot;pa-terms&quot;&gt;&lt;span class=&quot;pa-term&quot;&gt;timezone&lt;/span&gt;&lt;span class=&quot;pa-term&quot;&gt;attribution window&lt;/span&gt;&lt;span class=&quot;pa-term&quot;&gt;deduplication&lt;/span&gt;&lt;span class=&quot;pa-term&quot;&gt;filters&lt;/span&gt;&lt;span class=&quot;pa-term&quot;&gt;freshness&lt;/span&gt;&lt;span class=&quot;pa-term&quot;&gt;metric definition&lt;/span&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Mastery check&#x27;,
+              title: &#x27;A client reports fewer conversions than your dashboard. What should you compare first?&#x27;,
+              copy: &#x27;Choose the answer that establishes whether both sides measure the same thing.&#x27;,
+              check: {
+                choices: [&#x27;Definitions, time window, timezone, filters, and attribution window&#x27;, &#x27;Only the campaign name&#x27;, &#x27;Only whether SQL keywords are uppercase&#x27;],
+                answer: 0,
+                explanation: &#x27;Correct. Align scope and definitions before treating a discrepancy as a defect.&#x27;
+              }
+            }
+          ]
+        },
+        {
+          name: &#x27;Trade Desk Simulation&#x27;,
+          outcome: &#x27;Combine SQL, troubleshooting, safety, and client communication under time pressure.&#x27;,
+          job: &#x27;The final badge mirrors the role: investigate accurately, act safely, and explain clearly.&#x27;,
+          steps: [
+            {
+              kicker: &#x27;Interview framework&#x27;,
+              title: &#x27;Say your assumptions before writing SQL&#x27;,
+              copy: &#x27;Clarify table grain, keys, NULL behavior, time boundaries, timezone, and whether the task is read-only. Interviewers can then follow your reasoning even before the query is complete.&#x27;,
+              demo: `&lt;div class=&quot;pa-flow&quot;&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Clarify&lt;/strong&gt;&lt;span&gt;what exactly are we measuring?&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Plan&lt;/strong&gt;&lt;span&gt;tables · keys · grain · filters&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Query&lt;/strong&gt;&lt;span&gt;build and validate in steps&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;pa-flow-item&quot;&gt;&lt;strong&gt;Explain&lt;/strong&gt;&lt;span&gt;finding · confidence · next action&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Final communication pattern&#x27;,
+              title: &#x27;Translate the query into impact and action&#x27;,
+              copy: &#x27;A strong update states what happened, who or what is affected, the evidence, any uncertainty, the immediate remedy, and the owner of the next step.&#x27;,
+              demo: `&lt;div class=&quot;pa-job-link&quot;&gt;&lt;strong&gt;Example:&lt;/strong&gt; Delivery continued, but reporting events arrived approximately three hours late. The issue affects dashboard freshness, not campaign serving. Engineering is investigating ingestion latency; the next update is scheduled for 2:00 PM PT.&lt;/div&gt;`
+            },
+            {
+              kicker: &#x27;Readiness gate&#x27;,
+              title: &#x27;What is the strongest first response to a spend discrepancy?&#x27;,
+              copy: &#x27;Use the complete investigation framework you have built.&#x27;,
+              check: {
+                choices: [&#x27;Clarify scope and definitions, inspect grain and freshness, then query and validate&#x27;, &#x27;Immediately execute a production procedure&#x27;, &#x27;Assume the dashboard is wrong&#x27;],
+                answer: 0,
+                explanation: &#x27;Correct. That sequence combines analytical rigor, operational safety, and clear support judgment.&#x27;
+              }
+            }
+          ]
         }
       ];
 
-      const storageKey = 'pokysql-academy-progress-v1';
+      const storageKey = &#x27;pokysql-course-progress-v2&#x27;;
       let state;
       try {
-        state = JSON.parse(localStorage.getItem(storageKey) || '{}');
+        state = JSON.parse(localStorage.getItem(storageKey) || &#x27;{}&#x27;);
       } catch (error) {
         state = {};
       }
-      state.done = Array.isArray(state.done) ? state.done : [];
-      state.xp = Number.isFinite(state.xp) ? state.xp : 0;
-      state.active = Number.isInteger(state.active) ? state.active : 0;
-      state.quizIndex = Number.isInteger(state.quizIndex) ? state.quizIndex : 0;
+      state.completed = Array.isArray(state.completed) ? state.completed : [];
+      state.passed = Array.isArray(state.passed) ? state.passed : [];
+      state.module = Number.isInteger(state.module) ? Math.min(state.module, modules.length - 1) : 0;
+      state.step = Number.isInteger(state.step) ? state.step : 0;
+      state.xp = Number.isFinite(state.xp) ? state.xp : state.completed.length * 100;
 
-      const $ = (selector) =&gt; root.querySelector(selector);
       const save = () =&gt; {
         try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (error) {}
       };
 
+      const unlocked = (index) =&gt; index === 0 || state.completed.includes(index - 1);
+
       const renderProgress = () =&gt; {
-        const completed = state.done.length;
-        const pct = Math.round((completed / stages.length) * 100);
-        $('#pk-progress-text').textContent = `${completed} / ${stages.length} badges`;
-        $('#pk-xp').textContent = `${state.xp} XP`;
-        $('#pk-progress-bar').style.width = `${pct}%`;
-        const rank = state.xp &gt;= 900 ? 'SQL Champion' : state.xp &gt;= 500 ? 'Query Ace' : state.xp &gt;= 200 ? 'Badge Collector' : 'SQL Trainer';
-        $('#pk-rank').textContent = rank;
+        const complete = state.completed.length;
+        const pct = Math.round((complete / modules.length) * 100);
+        $(&#x27;#pa-progress-copy&#x27;).textContent = `${complete} of ${modules.length} badges`;
+        $(&#x27;#pa-progress-bar&#x27;).style.width = `${pct}%`;
+        const rank = complete === modules.length ? &#x27;SQL League Champion&#x27; : complete &gt;= 9 ? &#x27;Support Ace&#x27; : complete &gt;= 5 ? &#x27;Query Trainer&#x27; : complete &gt;= 1 ? &#x27;Rising Trainer&#x27; : &#x27;New Trainer&#x27;;
+        $(&#x27;#pa-rank&#x27;).textContent = `${rank} · ${state.xp} XP`;
       };
 
-      const renderMap = () =&gt; {
-        const map = $('#pk-map');
-        map.innerHTML = '';
-        stages.forEach((stage, index) =&gt; {
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = 'pk-stage';
-          if (index === state.active) button.classList.add('is-active');
-          if (state.done.includes(index)) button.classList.add('is-done');
-          button.innerHTML = `&lt;span class=&quot;pk-stage-num&quot;&gt;BADGE ${stage[0]}&lt;/span&gt;&lt;span class=&quot;pk-stage-name&quot;&gt;${stage[1]}&lt;/span&gt;&lt;span class=&quot;pk-stage-state&quot;&gt;${state.done.includes(index) ? 'Complete · revisit' : 'Open quest'}&lt;/span&gt;`;
-          button.addEventListener('click', () =&gt; { state.active = index; renderAll(); });
-          map.appendChild(button);
-        });
-      };
-
-      const renderDetail = () =&gt; {
-        const stage = stages[state.active];
-        const done = state.done.includes(state.active);
-        $('#pk-detail').innerHTML = `&lt;div class=&quot;pk-detail-title&quot;&gt;Badge ${stage[0]} · ${stage[1]}&lt;/div&gt;&lt;div class=&quot;pk-detail-copy&quot;&gt;${stage[2]}&lt;/div&gt;&lt;div class=&quot;pk-tags&quot;&gt;${stage[3].map((tag) =&gt; `&lt;span class=&quot;pk-tag&quot;&gt;${tag}&lt;/span&gt;`).join('')}&lt;/div&gt;&lt;div class=&quot;pk-actions&quot;&gt;&lt;button id=&quot;pk-complete&quot; class=&quot;pk-button pk-primary&quot; type=&quot;button&quot;&gt;${done ? 'Badge complete' : 'Mark badge complete'}&lt;/button&gt;&lt;/div&gt;`;
-        $('#pk-complete').disabled = done;
-        $('#pk-complete').addEventListener('click', () =&gt; {
-          if (!state.done.includes(state.active)) {
-            state.done.push(state.active);
-            state.xp += 100;
+      const renderModules = () =&gt; {
+        const host = $(&#x27;#pa-modules&#x27;);
+        host.innerHTML = &#x27;&#x27;;
+        modules.forEach((module, index) =&gt; {
+          const button = document.createElement(&#x27;button&#x27;);
+          const isDone = state.completed.includes(index);
+          const isUnlocked = unlocked(index);
+          button.type = &#x27;button&#x27;;
+          button.className = `pa-module${index === state.module ? &#x27; is-active&#x27; : &#x27;&#x27;}${isDone ? &#x27; is-done&#x27; : &#x27;&#x27;}`;
+          button.disabled = !isUnlocked;
+          button.setAttribute(&#x27;aria-label&#x27;, `${module.name}: ${isDone ? &#x27;complete&#x27; : isUnlocked ? &#x27;available&#x27; : &#x27;locked&#x27;}`);
+          button.innerHTML = `&lt;span class=&quot;pa-module-num&quot;&gt;${isDone ? &#x27;✓&#x27; : String(index + 1).padStart(2, &#x27;0&#x27;)}&lt;/span&gt;&lt;span class=&quot;pa-module-name&quot;&gt;${module.name}&lt;/span&gt;&lt;span class=&quot;pa-module-state&quot;&gt;${isDone ? &#x27;done&#x27; : isUnlocked ? &#x27;open&#x27; : &#x27;🔒&#x27;}&lt;/span&gt;`;
+          button.addEventListener(&#x27;click&#x27;, () =&gt; {
+            state.module = index;
+            state.step = 0;
             save();
             renderAll();
-          }
+          });
+          host.appendChild(button);
         });
       };
 
-      const renderQuiz = () =&gt; {
-        const quiz = quizzes[state.quizIndex % quizzes.length];
-        $('#pk-quiz-count').textContent = `Encounter ${(state.quizIndex % quizzes.length) + 1} / ${quizzes.length}`;
-        $('#pk-quiz-prompt').textContent = quiz.prompt;
-        const choices = $('#pk-choices');
-        choices.innerHTML = '';
-        $('#pk-feedback').textContent = '';
-        $('#pk-feedback').className = 'pk-feedback';
-        quiz.choices.forEach((choice, index) =&gt; {
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = 'pk-choice';
-          button.textContent = choice;
-          button.addEventListener('click', () =&gt; {
-            Array.from(choices.children).forEach((item) =&gt; { item.disabled = true; });
-            if (index === quiz.answer) {
-              button.classList.add('is-correct');
-              $('#pk-feedback').textContent = quiz.good;
-              $('#pk-feedback').className = 'pk-feedback is-good';
-              state.xp += 10;
-              save();
-              renderProgress();
-            } else {
-              button.classList.add('is-wrong');
-              const correct = choices.children[quiz.answer];
-              if (correct) correct.classList.add('is-correct');
-              $('#pk-feedback').textContent = 'Not quite. Inspect the highlighted answer, then write the rule in your error log.';
-              $('#pk-feedback').className = 'pk-feedback is-bad';
-            }
-          });
-          choices.appendChild(button);
+      const renderDots = () =&gt; {
+        const host = $(&#x27;#pa-step-dots&#x27;);
+        host.innerHTML = &#x27;&#x27;;
+        modules[state.module].steps.forEach((step, index) =&gt; {
+          const dot = document.createElement(&#x27;span&#x27;);
+          dot.className = `pa-step-dot${index === state.step ? &#x27; is-current&#x27; : index &lt; state.step ? &#x27; is-past&#x27; : &#x27;&#x27;}`;
+          host.appendChild(dot);
         });
+      };
+
+      const renderQuery = (query) =&gt; `
+        &lt;div class=&quot;pa-demo&quot;&gt;
+          &lt;pre&gt;${query.code}&lt;/pre&gt;
+          &lt;div class=&quot;pa-run-row&quot;&gt;&lt;button class=&quot;pa-button is-primary pa-run&quot; type=&quot;button&quot;&gt;Run query&lt;/button&gt;&lt;span class=&quot;pa-feedback&quot;&gt;Read-only practice query&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;pa-output&quot;&gt;${tableHtml(query.headers, query.rows)}&lt;/div&gt;
+        &lt;/div&gt;`;
+
+      const renderCheck = (check) =&gt; `
+        &lt;div class=&quot;pa-choices&quot;&gt;${check.choices.map((choice, index) =&gt; `&lt;button class=&quot;pa-choice&quot; type=&quot;button&quot; data-choice=&quot;${index}&quot;&gt;${choice}&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;
+        &lt;div class=&quot;pa-feedback&quot; id=&quot;pa-feedback&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;pa-claim-wrap&quot;&gt;&lt;/div&gt;`;
+
+      const bindStageInteractions = (step) =&gt; {
+        const run = $(&#x27;.pa-run&#x27;);
+        if (run) {
+          run.addEventListener(&#x27;click&#x27;, () =&gt; {
+            const output = $(&#x27;.pa-output&#x27;);
+            output.classList.add(&#x27;is-visible&#x27;);
+            run.textContent = &#x27;Query ran ✓&#x27;;
+            run.disabled = true;
+          });
+        }
+
+        if (step.check) {
+          root.querySelectorAll(&#x27;.pa-choice&#x27;).forEach((button) =&gt; {
+            button.addEventListener(&#x27;click&#x27;, () =&gt; {
+              const selected = Number(button.dataset.choice);
+              const feedback = $(&#x27;#pa-feedback&#x27;);
+              root.querySelectorAll(&#x27;.pa-choice&#x27;).forEach((choiceButton) =&gt; {
+                choiceButton.disabled = true;
+              });
+              if (selected === step.check.answer) {
+                button.classList.add(&#x27;is-correct&#x27;);
+                feedback.textContent = step.check.explanation;
+                feedback.className = &#x27;pa-feedback is-good&#x27;;
+                if (!state.passed.includes(state.module)) state.passed.push(state.module);
+                const isDone = state.completed.includes(state.module);
+                $(&#x27;#pa-claim-wrap&#x27;).innerHTML = isDone ? &#x27;&lt;span class=&quot;pa-feedback is-good&quot;&gt;Badge already earned. Revisit anytime.&lt;/span&gt;&#x27; : &#x27;&lt;button id=&quot;pa-claim&quot; class=&quot;pa-button is-primary&quot; type=&quot;button&quot;&gt;Claim badge and unlock next lesson&lt;/button&gt;&#x27;;
+                const claim = $(&#x27;#pa-claim&#x27;);
+                if (claim) {
+                  claim.addEventListener(&#x27;click&#x27;, () =&gt; {
+                    if (!state.completed.includes(state.module)) {
+                      state.completed.push(state.module);
+                      state.xp += 100;
+                    }
+                    if (state.module &lt; modules.length - 1) {
+                      state.module += 1;
+                      state.step = 0;
+                    }
+                    save();
+                    renderAll();
+                  });
+                }
+                save();
+              } else {
+                button.classList.add(&#x27;is-wrong&#x27;);
+                const correct = root.querySelector(`.pa-choice[data-choice=&quot;${step.check.answer}&quot;]`);
+                if (correct) correct.classList.add(&#x27;is-correct&#x27;);
+                feedback.textContent = &#x27;Not yet. Review the highlighted answer, then go Back through the lesson before retrying.&#x27;;
+                feedback.className = &#x27;pa-feedback is-bad&#x27;;
+              }
+            });
+          });
+        }
+      };
+
+      const renderLesson = () =&gt; {
+        const module = modules[state.module];
+        state.step = Math.min(state.step, module.steps.length - 1);
+        const step = module.steps[state.step];
+        $(&#x27;#pa-module-eyebrow&#x27;).textContent = `Badge ${String(state.module + 1).padStart(2, &#x27;0&#x27;)} · Step ${state.step + 1} of ${module.steps.length}`;
+        $(&#x27;#pa-module-title&#x27;).textContent = module.name;
+        $(&#x27;#pa-module-outcome&#x27;).textContent = module.outcome;
+        renderDots();
+
+        let body = `&lt;div class=&quot;pa-step-kicker&quot;&gt;${step.kicker}&lt;/div&gt;&lt;div class=&quot;pa-step-title&quot;&gt;${step.title}&lt;/div&gt;&lt;div class=&quot;pa-step-copy&quot;&gt;${step.copy}&lt;/div&gt;`;
+        if (step.demo) body += `&lt;div class=&quot;pa-demo&quot;&gt;${step.demo}&lt;/div&gt;`;
+        if (step.query) body += renderQuery(step.query);
+        if (step.check) body += renderCheck(step.check);
+        body += `&lt;div class=&quot;pa-job-link&quot;&gt;&lt;strong&gt;Why this matters at The Trade Desk:&lt;/strong&gt; ${module.job}&lt;/div&gt;`;
+        $(&#x27;#pa-stage&#x27;).innerHTML = body;
+
+        $(&#x27;#pa-back&#x27;).disabled = state.step === 0;
+        $(&#x27;#pa-next&#x27;).style.display = step.check ? &#x27;none&#x27; : &#x27;&#x27;;
+        $(&#x27;#pa-next&#x27;).disabled = state.step &gt;= module.steps.length - 1;
+        bindStageInteractions(step);
       };
 
       const renderAll = () =&gt; {
         renderProgress();
-        renderMap();
-        renderDetail();
-        renderQuiz();
+        renderModules();
+        renderLesson();
         save();
       };
 
-      $('#pk-next').addEventListener('click', () =&gt; { state.quizIndex += 1; renderQuiz(); });
-      $('#pk-reset').addEventListener('click', () =&gt; {
-        state = { done: [], xp: 0, active: 0, quizIndex: 0 };
+      $(&#x27;#pa-back&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+        if (state.step &gt; 0) {
+          state.step -= 1;
+          renderAll();
+        }
+      });
+
+      $(&#x27;#pa-next&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+        const steps = modules[state.module].steps;
+        if (state.step &lt; steps.length - 1) {
+          state.step += 1;
+          renderAll();
+        }
+      });
+
+      $(&#x27;#pa-reset&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+        state = { completed: [], passed: [], module: 0, step: 0, xp: 0 };
         save();
         renderAll();
       });
+
+      if (!unlocked(state.module)) {
+        state.module = 0;
+        state.step = 0;
+      }
       renderAll();
     })();
   &lt;/script&gt;
 &lt;/div&gt;
-
-
-&lt;style id=&quot;codex-visualization-document-scrollbar&quot;&gt;html,body{scrollbar-width:none!important}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}&lt;/style&gt;
 
 &lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
@@ -1830,112 +2085,5 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 "></iframe>
-<script>(() => {
-  const frame = document.getElementById("codex-visualization");
-  if (!(frame instanceof HTMLIFrameElement)) {
-    return;
-  }
-  let viewportHeight = globalThis.innerHeight;
-
-  const channel = new MessageChannel();
-  channel.port1.addEventListener("message", (event) => {
-    const data = event.data;
-    if (typeof data !== "object" || data == null) {
-      return;
-    }
-    if (data.type === "height") {
-      const height = data.height;
-      if (
-        typeof height === "number" &&
-        Number.isFinite(height) &&
-        height >= 0 &&
-        height <= 10_000
-      ) {
-        frame.style.height = Math.ceil(height) + "px";
-      }
-      return;
-    }
-    if (data.type === "scroll-to") {
-      const top = data.top;
-      if (
-        typeof top === "number" &&
-        Number.isFinite(top) &&
-        top >= 0 &&
-        globalThis.navigator.userActivation?.isActive === true
-      ) {
-        globalThis.scrollTo({
-          top: Math.ceil(
-            globalThis.scrollY + frame.getBoundingClientRect().top + top,
-          ),
-        });
-      }
-      return;
-    }
-    if (data.type === "open-external") {
-      const rawHref = data.href;
-      if (typeof rawHref !== "string") {
-        return;
-      }
-      let href;
-      try {
-        const url = new URL(rawHref, document.baseURI);
-        if (url.protocol !== "https:") {
-          return;
-        }
-        href = url.href;
-      } catch {
-        return;
-      }
-      if (globalThis.navigator.userActivation?.isActive === true) {
-        const anchor = document.createElement("a");
-        anchor.href = href;
-        anchor.rel = "noopener noreferrer";
-        anchor.target = "_blank";
-        document.body.appendChild(anchor);
-        anchor.click();
-        anchor.remove();
-      }
-      return;
-    }
-    if (data.type === "follow-up") {
-      const prompt = data.prompt;
-      if (
-        typeof prompt !== "string" ||
-        globalThis.navigator.userActivation?.isActive !== true
-      ) {
-        return;
-      }
-      const title = data.title;
-      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
-    }
-  });
-  channel.port1.start();
-  const srcdoc = frame.dataset.srcdoc;
-  if (srcdoc == null) {
-    return;
-  }
-  globalThis.addEventListener("resize", () => {
-    const height = Number.parseFloat(frame.style.height);
-    if (!Number.isFinite(height) || height <= viewportHeight) {
-      frame.style.removeProperty("height");
-    }
-    viewportHeight = globalThis.innerHeight;
-    channel.port1.postMessage({ type: "measure" });
-  });
-  frame.addEventListener(
-    "load",
-    () => {
-      frame.contentWindow?.postMessage(
-        { type: "codex-visualization-initialize" },
-        "*",
-        [channel.port2],
-      );
-    },
-    { once: true },
-  );
-  frame.srcdoc = srcdoc;
-  delete frame.dataset.srcdoc;
-})();
-</script>
 </body>
 </html>
