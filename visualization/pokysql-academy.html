@@ -1235,23 +1235,46 @@
 
       const storageKey = 'pokysql-course-progress-v3';
       const previousStorageKey = 'pokysql-course-progress-v2';
+      const validModuleIndexes = (values) => [...new Set((Array.isArray(values) ? values : [])
+        .filter((value) => Number.isInteger(value) && value >= 0 && value < modules.length))];
+      const normalizeProgress = (raw) => {
+        const candidate = raw && typeof raw === 'object' ? raw : {};
+        const importedCompleted = new Set(validModuleIndexes(candidate.completed));
+        const completed = [];
+        for (let index = 0; index < modules.length && importedCompleted.has(index); index += 1) completed.push(index);
+        const module = Number.isInteger(candidate.module) ? Math.max(0, Math.min(candidate.module, modules.length - 1)) : 0;
+        const labDrafts = candidate.labDrafts && typeof candidate.labDrafts === 'object'
+          ? Object.fromEntries(Object.entries(candidate.labDrafts)
+              .filter(([key, value]) => Number.isInteger(Number(key)) && Number(key) >= 0 && Number(key) < modules.length && typeof value === 'string')
+              .map(([key, value]) => [key, value.slice(0, 20000)]))
+          : {};
+        const labAttempts = candidate.labAttempts && typeof candidate.labAttempts === 'object'
+          ? Object.fromEntries(Object.entries(candidate.labAttempts)
+              .filter(([key, value]) => Number.isInteger(Number(key)) && Number(key) >= 0 && Number(key) < modules.length && Number.isFinite(Number(value)))
+              .map(([key, value]) => [key, Math.max(0, Math.floor(Number(value)))]))
+          : {};
+        return {
+          completed,
+          passed: validModuleIndexes(candidate.passed),
+          labCompleted: validModuleIndexes(candidate.labCompleted),
+          labDrafts,
+          labAttempts,
+          module,
+          step: Number.isInteger(candidate.step) ? Math.max(0, candidate.step) : 0,
+          xp: Number.isFinite(candidate.xp) ? Math.max(0, Math.floor(candidate.xp)) : completed.length * 100
+        };
+      };
       let state;
       try {
         state = JSON.parse(localStorage.getItem(storageKey) || localStorage.getItem(previousStorageKey) || '{}');
       } catch (error) {
         state = {};
       }
-      state.completed = Array.isArray(state.completed) ? state.completed : [];
-      state.passed = Array.isArray(state.passed) ? state.passed : [];
-      state.labCompleted = Array.isArray(state.labCompleted) ? state.labCompleted : [];
-      state.labDrafts = state.labDrafts && typeof state.labDrafts === 'object' ? state.labDrafts : {};
-      state.labAttempts = state.labAttempts && typeof state.labAttempts === 'object' ? state.labAttempts : {};
-      state.module = Number.isInteger(state.module) ? Math.min(state.module, modules.length - 1) : 0;
-      state.step = Number.isInteger(state.step) ? state.step : 0;
-      state.xp = Number.isFinite(state.xp) ? state.xp : state.completed.length * 100;
+      state = normalizeProgress(state);
 
       const save = () => {
         try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (error) {}
+        window.parent.postMessage({ type: 'pokysql-progress', state }, '*');
       };
 
       const unlocked = (index) => index === 0 || state.completed.includes(index - 1);
@@ -1583,12 +1606,23 @@
         renderAll();
       });
 
+      window.addEventListener('message', (event) => {
+        if (event.source !== window.parent || !event.data || event.data.type !== 'pokysql-load-progress') return;
+        state = normalizeProgress(event.data.state);
+        if (!unlocked(state.module)) {
+          state.module = 0;
+          state.step = 0;
+        }
+        renderAll();
+      });
+
       if (!unlocked(state.module)) {
         state.module = 0;
         state.step = 0;
       }
       initializeLab();
       renderAll();
+      window.parent.postMessage({ type: 'pokysql-ready' }, '*');
     })();
   </script>
 </div>

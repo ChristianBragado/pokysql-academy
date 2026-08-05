@@ -14,11 +14,15 @@ test("preserves the sandboxed visualization wrapper and CSP", async () => {
 
   assert.match(html, /Content-Security-Policy/);
   assert.match(html, /script-src[^\"]*https:\/\/cdn\.jsdelivr\.net/);
-  assert.match(html, /<iframe sandbox="allow-scripts"/);
+  assert.match(html, /<iframe id="course-frame" sandbox="allow-scripts"/);
   assert.doesNotMatch(html, /sandbox="[^"]*allow-same-origin/);
   assert.match(html, /referrerpolicy="no-referrer"/);
   assert.match(html, /PokéSQL Academy/);
   assert.match(html, /og-pokysql-academy\.png/);
+  assert.match(html, /id="copy-progress"/);
+  assert.match(html, /id="export-progress"/);
+  assert.match(html, /id="import-progress"/);
+  assert.match(html, /history\.replaceState/);
 });
 
 test("ships the progressive course, live SQL engine, and final arena", async () => {
@@ -34,6 +38,9 @@ test("ships the progressive course, live SQL engine, and final arena", async () 
   assert.match(fragment, /generation-i\/red-blue/);
   assert.match(fragment, /generation-ii\/crystal/);
   assert.match(fragment, /generation-iii\/emerald/);
+  assert.match(fragment, /normalizeProgress/);
+  assert.match(fragment, /pokysql-load-progress/);
+  assert.match(fragment, /window\.parent\.postMessage/);
 });
 
 test("includes the complete RunSQL capstone kit", async () => {
@@ -74,6 +81,7 @@ test("includes the complete RunSQL capstone kit", async () => {
 test("copies every learner-facing asset into the production build", async () => {
   await Promise.all([
     access(new URL("../dist/client/pokysql-academy.html", import.meta.url)),
+    access(new URL("../dist/client/index.html", import.meta.url)),
     access(new URL("../dist/client/og-pokysql-academy.png", import.meta.url)),
     access(
       new URL(
