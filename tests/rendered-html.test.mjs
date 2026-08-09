@@ -22,6 +22,9 @@ test("preserves the sandboxed visualization wrapper and CSP", async () => {
   assert.match(html, /id="copy-progress"/);
   assert.match(html, /id="export-progress"/);
   assert.match(html, /id="import-progress"/);
+  assert.match(html, /id="theme-toggle"/);
+  assert.match(html, /pokysql-theme-v1/);
+  assert.match(html, /type: 'pokysql-theme'/);
   assert.match(html, /history\.replaceState/);
 });
 
@@ -40,6 +43,8 @@ test("ships the progressive course, live SQL engine, and final arena", async () 
   assert.match(fragment, /generation-iii\/emerald/);
   assert.match(fragment, /normalizeProgress/);
   assert.match(fragment, /pokysql-load-progress/);
+  assert.match(fragment, /pokysql-theme/);
+  assert.match(fragment, /document\.documentElement\.dataset\.theme/);
   assert.match(fragment, /window\.parent\.postMessage/);
 });
 

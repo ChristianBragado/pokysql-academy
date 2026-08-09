@@ -2,58 +2,60 @@
 
 import React, { useEffect, useState } from "react";
 
+const themeStorageKey = "pokysql-theme-v1";
+
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("theme");
-      if (saved === "light" || saved === "dark") {
-        document.documentElement.classList.remove(saved === "light" ? "dark" : "light");
-        document.documentElement.classList.add(saved);
-        setTheme(saved);
-      } else {
+    const animationFrame = window.requestAnimationFrame(() => {
+      let initial: "light" | "dark";
+      try {
+        const saved = localStorage.getItem(themeStorageKey);
+        if (saved === "light" || saved === "dark") {
+          initial = saved;
+        } else {
+          initial = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+      } catch {
         const prefersDark =
           window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const initial = prefersDark ? "dark" : "light";
-        document.documentElement.classList.add(initial);
-        setTheme(initial);
+        initial = prefersDark ? "dark" : "light";
       }
-    } catch (e) {
-      // localStorage might be unavailable in some environments — fall back to prefers-color-scheme
-      const prefersDark =
-        typeof window !== "undefined" &&
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const initial = prefersDark ? "dark" : "light";
+
+      document.documentElement.classList.remove("light", "dark");
       document.documentElement.classList.add(initial);
       setTheme(initial);
-    }
+    });
+
+    return () => window.cancelAnimationFrame(animationFrame);
   }, []);
 
   const toggle = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    if (theme) {
-      document.documentElement.classList.remove(theme);
-    }
+    const current = theme ?? (document.documentElement.classList.contains("dark") ? "dark" : "light");
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.classList.remove("light", "dark");
     document.documentElement.classList.add(next);
     try {
-      localStorage.setItem("theme", next);
-    } catch (_) {
-      // ignore
-    }
+      localStorage.setItem(themeStorageKey, next);
+    } catch {}
     setTheme(next);
   };
+
+  const isDark = theme === "dark";
 
   return (
     <button
       type="button"
-      aria-label="Toggle theme"
-      title="Toggle theme"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-pressed={isDark}
+      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
       onClick={toggle}
       className="theme-toggle"
     >
-      {theme === "dark" ? "🌙" : "☀️"}
+      {isDark ? "☾" : "☀"}
     </button>
   );
 }
