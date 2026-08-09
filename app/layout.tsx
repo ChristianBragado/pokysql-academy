@@ -43,6 +43,8 @@ export const metadata: Metadata = {
   },
 };
 
+const setThemeScript = `try { const saved = localStorage.getItem('pokysql-theme-v1'); const theme = saved === 'light' || saved === 'dark' ? saved : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.classList.add(theme); } catch (error) { document.documentElement.classList.add('light'); }`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,6 +52,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeToggle />
         {children}

@@ -4,6 +4,22 @@ import React, { useEffect, useState } from "react";
 
 const themeStorageKey = "pokysql-theme-v1";
 
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M6.995 12c0 2.761 2.246 5.007 5.005 5.007s5.005-2.246 5.005-5.007S14.761 6.993 12 6.993 6.995 9.239 6.995 12zm13.002-.5h2v1h-2v-1zM2 11.5h2v1H2v-1zm16.95-6.364l1.414-1.414.707.707-1.414 1.414-.707-.707zM4.93 19.778l-1.414 1.414-.707-.707L4.222 19.07l.707.708zM19.364 19.07l.707-.708 1.414 1.414-.707.707-1.414-1.414zM4.222 4.848L5.636 3.434l.707.707L4.93 5.555l-.707-.707zM12 .5h1v2h-1V.5zM12 20.5h1v2h-1v-2z" />
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 1012 21a9 9 0 009-8.21z" />
+    </svg>
+  );
+}
+
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
 
@@ -55,7 +71,7 @@ export default function ThemeToggle() {
       onClick={toggle}
       className="theme-toggle"
     >
-      {isDark ? "☾" : "☀"}
+      {isDark ? <MoonIcon /> : <SunIcon />}
     </button>
   );
 }
