@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://cdn.jsdelivr.net; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' blob: data: https://cdn.jsdelivr.net; font-src https://fonts.gstatic.com; connect-src blob: data: https://cdn.jsdelivr.net; worker-src blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>PokéSQL Academy — SQL, AdTech & Interview Training</title>
+<meta name="description" content="A progressive, hands-on SQL, AdTech, and interview academy built for The Trade Desk Platform Support Analyst path.">
+<meta property="og:title" content="PokéSQL Academy">
+<meta property="og:description" content="SQL → AdTech → Ops → Interview Ready">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://christianbragado.github.io/pokysql-academy/">
+<meta property="og:image" content="https://christianbragado.github.io/pokysql-academy/og-pokysql-academy.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PokéSQL Academy">
+<meta name="twitter:description" content="SQL → AdTech → Ops → Interview Ready">
+<meta name="twitter:image" content="https://christianbragado.github.io/pokysql-academy/og-pokysql-academy.png">
+<link rel="icon" href="./favicon.svg">
+<script>
+(() => {
+  const storageKey = 'pokysql-theme-v1';
+  let theme = 'light';
+  try {
+    const saved = localStorage.getItem(storageKey);
+    theme = saved === 'light' || saved === 'dark'
+      ? saved
+      : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  } catch (error) {
+    theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&family=Silkscreen:wght@400;700&display=swap">
+<style>
+/*__STYLES__*/
+</style>
+</head>
+<body>
+<div id="app" class="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/sql.js@1.13.0/dist/sql-wasm.min.js"></script>
+<script>
+/*__APP__*/
+</script>
+</body>
+</html>
